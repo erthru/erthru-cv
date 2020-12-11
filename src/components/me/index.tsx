@@ -19,10 +19,6 @@ const Me = () => {
     const [toEditTitle, setToEditTitle] = useState("");
 
     useEffect(() => {
-        getProfile();
-    }, []);
-
-    useEffect(() => {
         if (isProfileUpdated) {
             setIsEditModalShown(false);
             getProfile();
@@ -63,7 +59,7 @@ const Me = () => {
     return (
         <div>
             <div className="w-full bg-white rounded-xl flex flex-wrap p-10">
-                {isLoading && Object.keys(profile).length === 0 && <ProgressBar className="mx-auto" />}
+                {isLoading || Object.keys(profile).length === 0 && <ProgressBar className="mx-auto" />}
 
                 {Object.keys(profile).length > 0 && (
                     <div className="w-full flex flex-wrap">

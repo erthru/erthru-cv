@@ -59,8 +59,9 @@
 
 @media (max-width: 640px) {
     .modal {
-        left: 36px;
-        top: 26px;
-        transform: translate(-16px, 0);
+        top: 36px;
+        left: 18px;
+        width: 90%;
+        transform: translate(0, -10%);
     }
 }

@@ -2,7 +2,6 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { Profile } from "../../plugins/db/repositories/profile-repository";
 import * as profileRepository from "../../plugins/db/repositories/profile-repository";
 import ProgressBar from "../progress-bar";
-import ContentHoc from "../../hoc/ContentHoc";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../modal";
@@ -97,7 +96,7 @@ const Me = () => {
 
     return (
         <div>
-            <ContentHoc className="w-full bg-white rounded-xl flex flex-wrap">
+            <div className="w-full bg-white rounded-xl flex flex-wrap p-10">
                 {isLoading && <ProgressBar className="mx-auto" />}
 
                 {!isLoading && (
@@ -116,10 +115,10 @@ const Me = () => {
 
                         <div className="w-full flex">
                             <div className="flex mx-auto items-center pl-6">
-                                <span className="mt-4 font-medium text-gray-800 text-2xl text-center">{profile?.fullName}</span>
+                                <span className="mt-4 font-medium text-gray-700 text-2xl text-center">{profile?.fullName}</span>
 
                                 <FontAwesomeIcon
-                                    className="text-gray-800 mt-4 ml-2 cursor-pointer"
+                                    className="text-gray-700 mt-4 ml-2 cursor-pointer"
                                     icon={faEdit}
                                     onClick={() => setIsEditFullNameModalShown(true)}
                                 />
@@ -142,10 +141,10 @@ const Me = () => {
 
                         <div className="w-full flex items-center md:px-10">
                             <div className="mx-auto flex items-center pl-6">
-                                <p className="text-gray-800 mt-2 text-center">{profile?.intro}</p>
+                                <p className="text-gray-700 mt-2 text-center">{profile?.intro}</p>
 
                                 <FontAwesomeIcon
-                                    className="text-gray-800 ml-2 cursor-pointer"
+                                    className="text-gray-700 ml-2 cursor-pointer"
                                     icon={faEdit}
                                     onClick={() => setIsEditIntroModalShown(true)}
                                 />
@@ -153,7 +152,7 @@ const Me = () => {
                         </div>
                     </div>
                 )}
-            </ContentHoc>
+            </div>
 
             <Modal title="Edit Avatar Url" isShown={isEditAvatarModalShown}>
                 <form className="w-full md:w-96 mt-2" onSubmit={(e) => updateData(e, Update.avatar)}>

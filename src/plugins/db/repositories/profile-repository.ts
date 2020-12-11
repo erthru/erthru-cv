@@ -11,14 +11,14 @@ enum ProfileField {
 
 export type Profile = {
     id?: string;
-    [ProfileField.fullName]?: string;
-    [ProfileField.avatarUrl]?: string;
-    [ProfileField.intro]?: string;
-    [ProfileField.career]?: string;
+    [ProfileField.fullName]: string;
+    [ProfileField.avatarUrl]: string;
+    [ProfileField.intro]: string;
+    [ProfileField.career]: string;
 };
 
 export const getSingle = async (): Promise<Profile> => {
-    let profiles: Array<any> = [];
+    let profiles: any[] = [];
     let profilesSnapshots = await db.collection(COL_NAME).get();
 
     if (profilesSnapshots.docs.length === 0) {

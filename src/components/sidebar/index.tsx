@@ -1,6 +1,7 @@
 import { faBriefcase, faFileCode, faIdCard, faLanguage, faLayerGroup, faThLarge, faUniversity } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { APP_TITLE } from "../../helpers/environments";
 import { Store } from "../../plugins/store";
 import { setKey } from "../../plugins/store/navigation/actions";
 import { Key } from "../../plugins/store/navigation/types";
@@ -17,8 +18,8 @@ const Sidebar = (props: Props) => {
     return (
         <div className={"bg-white hidden lg:flex flex-wrap rounded-xl py-6 " + props.className} style={{ width: "350px" }}>
             <div className="flex flex-wrap mx-auto text-center">
-                <span className="text-2xl font-bold text-gray-600 w-full">Erthru</span>
-                <span className="text-lg font-bold text-gray-400 w-full -mt-1">CV</span>
+                <span className="text-2xl font-bold text-gray-600 w-full">{APP_TITLE.split(" ")[0]}</span>
+                <span className="text-lg font-bold text-gray-400 w-full -mt-1">{APP_TITLE.split(" ")[1]}</span>
             </div>
 
             <SidebarItem

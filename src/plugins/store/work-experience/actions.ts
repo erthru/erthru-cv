@@ -30,6 +30,22 @@ export const fetchWorkExperiences = () => async (dispatch: Dispatch<Action>) => 
     } catch (e) {}
 };
 
+export const fetchWorkExperience = (id: string) => async (dispatch: Dispatch<Action>) => {
+    try {
+        dispatch({ type: TYPES.FETCH_WORK_EXPERIENCE_PREPARE });
+
+        let workExperience: any = {};
+        const workExperienceDoc = await db.collection(COL_NAME).doc(id).get();
+
+        workExperience = {
+            id: workExperienceDoc.id,
+            ...workExperienceDoc.data(),
+        };
+
+        dispatch({ type: TYPES.FETCH_WORK_EXPERIENCE_COMPLETED, payload: { workExperience: workExperience as WorkExperience } });
+    } catch (e) {}
+};
+
 export const addWorkExperience = (workExperience: WorkExperience) => async (dispatch: Dispatch<Action>) => {
     try {
         dispatch({ type: TYPES.ADD_WORK_EXPERIENCE_PREPARE });

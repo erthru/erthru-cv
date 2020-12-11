@@ -13,7 +13,7 @@ type Props = {
 };
 
 const Button = (props: Props) => (
-    <button type={props.type} className={"flex items-center font-medium text-lg text-" + props.color + " " + props.className} disabled={props.disabled} onClick={props.onClick}>
+    <button type={props.type} className={"flex focus:outline-none items-center font-medium text-lg text-" + props.color + " " + props.className} disabled={props.disabled} onClick={props.onClick}>
         {props.isLoading && <FontAwesomeIcon icon={faCircleNotch} className={"text-" + props.color + " text-2xl animate-spin"} />}
         {!props.isLoading && props.children}
     </button>

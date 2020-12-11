@@ -1,6 +1,8 @@
 export enum TYPES {
     FETCH_WORK_EXPERIENCES_PREPARE = "FETCH_WORK_EXPERIENCES_PREPARE",
     FETCH_WORK_EXPERIENCES_COMPLETED = "FETCH_WORK_EXPERIENCES_COMPLETED",
+    FETCH_WORK_EXPERIENCE_PREPARE = "FETCH_WORK_EXPERIENCE_PREPARE",
+    FETCH_WORK_EXPERIENCE_COMPLETED = "FETCH_WORK_EXPERIENCE_COMPLETED",
     ADD_WORK_EXPERIENCE_PREPARE = "ADD_WORK_EXPERIENCE_PREPARE",
     ADD_WORK_EXPERIENCE_COMPLETED = "ADD_WORK_EXPERIENCE_COMPLETED",
     UPDATE_WORK_EXPERIENCE_PREPARE = "UPDATE_WORK_EXPERIENCE_PREPARE",
@@ -19,13 +21,14 @@ export enum WorkExperienceField {
 
 export type WorkExperience = {
     id?: string;
-    [WorkExperienceField.description]: string;
-    [WorkExperienceField.place]: string;
-    [WorkExperienceField.activities]: string[];
+    [WorkExperienceField.description]?: string;
+    [WorkExperienceField.place]?: string;
+    [WorkExperienceField.activities]?: string[];
 };
 
 export type State = {
     workExperiences: WorkExperience[];
+    workExperience: WorkExperience;
     isNewWorkExperienceAdded: boolean;
     isWorkExperienceUpdated: Boolean;
     isWorkExperienceRemoved: boolean;
@@ -34,6 +37,7 @@ export type State = {
 export type Action = {
     type: TYPES;
     payload?: {
-        workExperiences: WorkExperience[];
+        workExperiences?: WorkExperience[];
+        workExperience?: WorkExperience;
     };
 };

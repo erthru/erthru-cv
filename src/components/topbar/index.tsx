@@ -16,12 +16,14 @@ import { Link } from "react-router-dom";
 import { Store } from "../../plugins/store";
 import { setKey } from "../../plugins/store/navigation/actions";
 import { Key } from "../../plugins/store/navigation/types";
+import { Profile } from "../../plugins/store/profile/types";
 import SearchInput from "../search-input";
 import TopbarItem from "../topbar-item";
 import "./index.css";
 
 const Topbar = () => {
     const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey) as Key;
+    const profile = useSelector((store: Store) => store.profile.profile) as Profile;
     const dispatch = useDispatch();
     const [isItemsActive, setIsItemsActive] = useState(false);
 
@@ -43,7 +45,10 @@ const Topbar = () => {
                     onClick={() => setIsItemsActive(!isItemsActive)}
                 />
 
-                <SearchInput className="w-full lg:w-auto ml-4 lg:ml-0" />
+                <div className="w-full flex lg:w-auto ml-4 lg:ml-0 text-lg">
+                    <span className="text-gray-500">Hi,</span>
+                    <span className="text-gray-800 font-bold ml-1">{profile.fullName?.split(" ")[0]}</span>
+                </div>
 
                 <Link to="/logout" className="ml-4 lg:ml-auto cursor-pointer hidden lg:block">
                     <FontAwesomeIcon icon={faSignOutAlt} className="text-red-800 text-xl" />

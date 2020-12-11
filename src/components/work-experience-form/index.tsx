@@ -2,6 +2,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { Store } from "../../plugins/store";
 import { addWorkExperience, fetchWorkExperience, updateWorkExperience } from "../../plugins/store/work-experience/actions";
 import { WorkExperience } from "../../plugins/store/work-experience/types";
@@ -16,6 +17,7 @@ type Props = {
 
 const WorkExperienceForm = (props: Props) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const workExperience = useSelector((store: Store) => store.workExperience.workExperience) as WorkExperience;
     const isNewWorkExperienceAdded = useSelector((store: Store) => store.workExperience.isNewWorkExperienceAdded) as boolean;
     const isWorkExperienceUpdated = useSelector((store: Store) => store.workExperience.isWorkExperienceUpdated) as boolean;
@@ -35,8 +37,7 @@ const WorkExperienceForm = (props: Props) => {
     }, []);
 
     useEffect(() => {
-        if (isNewWorkExperienceAdded) alert("haha");
-        if (isWorkExperienceUpdated) alert("haha");
+        if (isNewWorkExperienceAdded || isWorkExperienceUpdated) history.push("/admin/work-experience");
     }, [isNewWorkExperienceAdded, isWorkExperienceUpdated]);
 
     useEffect(() => {

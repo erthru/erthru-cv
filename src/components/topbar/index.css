@@ -1,0 +1,11 @@
+.topbar-expand {
+    height: 0;
+    margin-top: -6px;
+    transition: all 0.3s;
+    overflow-y: hidden;
+}
+
+.topbar-expand.active {
+    height: auto;
+    margin-top: 16px;
+}

@@ -16,7 +16,7 @@ const TopbarItem = (props: Props) => (
     <Link
         to={props.to}
         className={
-            "flex w-full cursor-pointer rounded-full px-4 py-1 " + (props.isActive ? "bg-red-50 text-red-500 " : "text-gray-600 ") + props.className
+            "flex w-full cursor-pointer rounded-full px-4 py-1 " + (props.isActive ? "bg-red-50 text-red-600 " : "text-gray-600 ") + props.className
         }
         onClick={props.onClick}
     >

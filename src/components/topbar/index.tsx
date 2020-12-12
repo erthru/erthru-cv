@@ -47,13 +47,13 @@ const Topbar = () => {
                 />
 
                 <div className="w-full flex lg:w-auto ml-4 lg:ml-0 text-lg items-center">
-                    <span className="text-gray-500">Hi,</span>
-                    {isFetchingProfile && <ProgressBar className="ml-1" color="gray-800" />}
-                    {!isFetchingProfile && <span className="text-gray-800 font-bold ml-1">{profile.fullName?.split(" ")[0]}</span>}
+                    <span className="text-gray-400">Hi,</span>
+                    {isFetchingProfile && <ProgressBar className="ml-1" color="gray-600" />}
+                    {!isFetchingProfile && <span className="text-gray-600 font-bold ml-1">{profile.fullName?.split(" ")[0]}</span>}
                 </div>
 
                 <Link to="/logout" className="ml-4 lg:ml-auto cursor-pointer hidden lg:block">
-                    <FontAwesomeIcon icon={faSignOutAlt} className="text-red-800 text-xl" />
+                    <FontAwesomeIcon icon={faSignOutAlt} className="text-red-600 text-xl" />
                 </Link>
             </div>
 

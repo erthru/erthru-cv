@@ -17,7 +17,7 @@ const SidebarItem = (props: Props) => (
         to={props.to}
         className={
             "w-full h-12 cursor-pointer items-center flex text-white font-medium text-sm " +
-            (props.isActive ? "text-red-500 bg-red-50 " : "text-gray-600 ") +
+            (props.isActive ? "text-red-600 bg-red-50 " : "text-gray-600 ") +
             props.className
         }
         onClick={props.onClick}

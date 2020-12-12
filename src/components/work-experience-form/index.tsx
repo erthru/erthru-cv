@@ -86,11 +86,11 @@ const WorkExperienceForm = (props: Props) => {
 
     return (
         <div className="w-full bg-white rounded-xl flex flex-wrap p-6">
-            {isFetchingWorkExperience && <ProgressBar className="mt-4 mx-auto text-4xl" color="red-700" />}
+            {isFetchingWorkExperience && <ProgressBar className="mt-4 mx-auto text-4xl" color="red-600" />}
 
             {!isFetchingWorkExperience && (
                 <div className="w-full flex flex-wrap">
-                    <span className="w-full text-2xl font-bold text-gray-700">
+                    <span className="w-full text-2xl font-bold text-gray-600">
                         {props.id !== undefined ? "Update Work Experience" : "Add New Work Experience"}
                     </span>
 
@@ -145,7 +145,7 @@ const WorkExperienceForm = (props: Props) => {
                             <div className="flex flex-wrap w-full">
                                 <div className="w-full mt-4">
                                     <label>Activities | </label>
-                                    <span className="text-red-700 font-medium cursor-pointer" onClick={() => setActivities([])}>
+                                    <span className="text-red-600 font-medium cursor-pointer" onClick={() => setActivities([])}>
                                         Clear
                                     </span>
                                 </div>

@@ -14,22 +14,22 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Store } from "../../plugins/store";
-import { setKey } from "../../plugins/store/navigation/actions";
-import { Key } from "../../plugins/store/navigation/types";
+import { setNavigationKey } from "../../plugins/store/navigation/actions";
+import { NavigationKey } from "../../plugins/store/navigation/types";
 import { Profile } from "../../plugins/store/profile/types";
 import ProgressBar from "../progress-bar";
 import TopbarItem from "../topbar-item";
 import "./index.css";
 
 const Topbar = () => {
-    const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey) as Key;
+    const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey) as NavigationKey;
     const profile = useSelector((store: Store) => store.profile.profile) as Profile;
     const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile) as boolean;
     const dispatch = useDispatch();
     const [isItemsActive, setIsItemsActive] = useState(false);
 
-    const onItemClicked = (key: Key) => {
-        dispatch(setKey(key));
+    const onItemClicked = (key: NavigationKey) => {
+        dispatch(setNavigationKey(key));
         expand();
     };
 
@@ -62,8 +62,8 @@ const Topbar = () => {
                     title="OVERVIEW"
                     to="/admin"
                     icon={faThLarge}
-                    isActive={currentActiveKey === Key.overview}
-                    onClick={() => onItemClicked(Key.overview)}
+                    isActive={currentActiveKey === NavigationKey.overview}
+                    onClick={() => onItemClicked(NavigationKey.overview)}
                 />
 
                 <TopbarItem
@@ -71,8 +71,8 @@ const Topbar = () => {
                     to="/admin/work-experience"
                     className="mt-2"
                     icon={faBriefcase}
-                    isActive={currentActiveKey === Key.workExperience}
-                    onClick={() => onItemClicked(Key.workExperience)}
+                    isActive={currentActiveKey === NavigationKey.workExperience}
+                    onClick={() => onItemClicked(NavigationKey.workExperience)}
                 />
 
                 <TopbarItem
@@ -80,8 +80,8 @@ const Topbar = () => {
                     to="/admin/formal-education"
                     className="mt-2"
                     icon={faUniversity}
-                    isActive={currentActiveKey === Key.formalEducation}
-                    onClick={() => onItemClicked(Key.formalEducation)}
+                    isActive={currentActiveKey === NavigationKey.formalEducation}
+                    onClick={() => onItemClicked(NavigationKey.formalEducation)}
                 />
 
                 <TopbarItem
@@ -89,8 +89,8 @@ const Topbar = () => {
                     to="/admin/language"
                     className="mt-2"
                     icon={faLanguage}
-                    isActive={currentActiveKey === Key.language}
-                    onClick={() => onItemClicked(Key.language)}
+                    isActive={currentActiveKey === NavigationKey.language}
+                    onClick={() => onItemClicked(NavigationKey.language)}
                 />
 
                 <TopbarItem
@@ -98,8 +98,8 @@ const Topbar = () => {
                     to="/admin/portfolio"
                     icon={faLayerGroup}
                     className="mt-2"
-                    isActive={currentActiveKey === Key.portfolio}
-                    onClick={() => onItemClicked(Key.portfolio)}
+                    isActive={currentActiveKey === NavigationKey.portfolio}
+                    onClick={() => onItemClicked(NavigationKey.portfolio)}
                 />
 
                 <TopbarItem
@@ -107,8 +107,8 @@ const Topbar = () => {
                     to="/admin/contact"
                     icon={faIdCard}
                     className="mt-2"
-                    isActive={currentActiveKey === Key.contact}
-                    onClick={() => onItemClicked(Key.contact)}
+                    isActive={currentActiveKey === NavigationKey.contact}
+                    onClick={() => onItemClicked(NavigationKey.contact)}
                 />
 
                 <TopbarItem
@@ -116,8 +116,8 @@ const Topbar = () => {
                     to="/admin/document"
                     icon={faFileCode}
                     className="mt-2"
-                    isActive={currentActiveKey === Key.document}
-                    onClick={() => onItemClicked(Key.document)}
+                    isActive={currentActiveKey === NavigationKey.document}
+                    onClick={() => onItemClicked(NavigationKey.document)}
                 />
 
                 <TopbarItem title="LOGOUT" to="/logout" icon={faSignOutAlt} className="mt-2" />

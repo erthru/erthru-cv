@@ -3,8 +3,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { APP_TITLE } from "../../helpers/environments";
 import { Store } from "../../plugins/store";
-import { setKey } from "../../plugins/store/navigation/actions";
-import { Key } from "../../plugins/store/navigation/types";
+import { setNavigationKey } from "../../plugins/store/navigation/actions";
+import { NavigationKey } from "../../plugins/store/navigation/types";
 import SidebarItem from "../sidebar-item";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Sidebar = (props: Props) => {
-    const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey) as Key;
+    const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey) as NavigationKey;
     const dispatch = useDispatch();
 
     return (
@@ -25,64 +25,64 @@ const Sidebar = (props: Props) => {
             <SidebarItem
                 icon={faThLarge}
                 title="OVERVIEW"
-                isActive={currentActiveKey === Key.overview}
+                isActive={currentActiveKey === NavigationKey.overview}
                 to="/admin"
                 className="mt-6"
-                onClick={() => dispatch(setKey(Key.overview))}
+                onClick={() => dispatch(setNavigationKey(NavigationKey.overview))}
             />
 
             <SidebarItem
                 icon={faBriefcase}
                 title="WORK EXPERIENCE"
                 className="mt-2"
-                isActive={currentActiveKey === Key.workExperience}
+                isActive={currentActiveKey === NavigationKey.workExperience}
                 to="/admin/work-experience"
-                onClick={() => dispatch(setKey(Key.workExperience))}
+                onClick={() => dispatch(setNavigationKey(NavigationKey.workExperience))}
             />
 
             <SidebarItem
                 icon={faUniversity}
                 title="FORMAL EDUCATION"
                 className="mt-2"
-                isActive={currentActiveKey === Key.formalEducation}
+                isActive={currentActiveKey === NavigationKey.formalEducation}
                 to="/admin/formal-education"
-                onClick={() => dispatch(setKey(Key.formalEducation))}
+                onClick={() => dispatch(setNavigationKey(NavigationKey.formalEducation))}
             />
 
             <SidebarItem
                 icon={faLanguage}
                 title="LANGUAGE"
                 className="mt-2"
-                isActive={currentActiveKey === Key.language}
+                isActive={currentActiveKey === NavigationKey.language}
                 to="/admin/language"
-                onClick={() => dispatch(setKey(Key.language))}
+                onClick={() => dispatch(setNavigationKey(NavigationKey.language))}
             />
 
             <SidebarItem
                 icon={faLayerGroup}
                 title="PORTFOLIO"
                 className="mt-2"
-                isActive={currentActiveKey === Key.portfolio}
+                isActive={currentActiveKey === NavigationKey.portfolio}
                 to="/admin/portfolio"
-                onClick={() => dispatch(setKey(Key.portfolio))}
+                onClick={() => dispatch(setNavigationKey(NavigationKey.portfolio))}
             />
 
             <SidebarItem
                 icon={faIdCard}
                 title="CONTACT"
                 className="mt-2"
-                isActive={currentActiveKey === Key.contact}
+                isActive={currentActiveKey === NavigationKey.contact}
                 to="/admin/contact"
-                onClick={() => dispatch(setKey(Key.contact))}
+                onClick={() => dispatch(setNavigationKey(NavigationKey.contact))}
             />
 
             <SidebarItem
                 icon={faFileCode}
                 title="DOCUMENT"
                 className="mt-2"
-                isActive={currentActiveKey === Key.document}
+                isActive={currentActiveKey === NavigationKey.document}
                 to="/admin/document"
-                onClick={() => dispatch(setKey(Key.document))}
+                onClick={() => dispatch(setNavigationKey(NavigationKey.document))}
             />
 
             <div className="w-full flex mt-8">

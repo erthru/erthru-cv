@@ -1,8 +1,8 @@
-export enum TYPES {
-    SET_KEY = "SET_KEY",
+export enum NAVIGATION_TYPES {
+    SET_NAVIGATION_KEY = "SET_NAVIGATION_KEY",
 }
 
-export enum Key {
+export enum NavigationKey {
     overview = "overview",
     workExperience = "workExperience",
     formalEducation = "formalEducation",
@@ -12,13 +12,13 @@ export enum Key {
     document = "document",
 }
 
-export type State = {
-    currentActiveKey: Key;
+export type NavigationState = {
+    currentActiveKey: NavigationKey;
 };
 
-export type Action = {
-    type: TYPES;
+export type NavigationAction = {
+    type: NAVIGATION_TYPES;
     payloads?: {
-        currentActiveKey?: Key;
+        currentActiveKey?: NavigationKey;
     };
 };

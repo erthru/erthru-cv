@@ -1,8 +1,5 @@
-import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { Store } from "../../plugins/store";
 import { removeWorkExperience } from "../../plugins/store/work-experience/actions";
 import { WorkExperience } from "../../plugins/store/work-experience/types";

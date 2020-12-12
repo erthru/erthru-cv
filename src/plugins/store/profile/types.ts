@@ -1,11 +1,11 @@
-export enum TYPES {
+export enum PROFILE_TYPES {
     FETCH_PROFILE_PREPARE,
     FETCH_PROFILE_COMPLETED,
     UPDATE_PROFILE_PREPARE,
     UPDATE_PROFILE_COMPLETED,
 }
 
-export const COL_NAME = "profiles";
+export const PROFILE_COL_NAME = "profiles";
 
 export type Profile = {
     id?: string;
@@ -26,15 +26,15 @@ export enum ProfileField {
     updatedOn = "updatedOn",
 }
 
-export type State = {
+export type ProfileState = {
     profile: Profile;
     isFetchingProfile: boolean;
     isUpdatingProfile: boolean;
     isProfileUpdated: boolean;
 };
 
-export type Action = {
-    type: TYPES;
+export type ProfileAction = {
+    type: PROFILE_TYPES;
     payload?: {
         profile?: Profile;
     };

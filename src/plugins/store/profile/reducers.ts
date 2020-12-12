@@ -1,36 +1,36 @@
-import { Action, State, TYPES } from "./types";
+import { ProfileAction, ProfileState, PROFILE_TYPES } from "./types";
 
-const initialState: State = {
+const initialState: ProfileState = {
     profile: {},
     isFetchingProfile: false,
     isUpdatingProfile: false,
     isProfileUpdated: false,
 };
 
-const reducers = (state = initialState, { type, payload }: Action): State => {
+const reducers = (state = initialState, { type, payload }: ProfileAction): ProfileState => {
     switch (type) {
-        case TYPES.FETCH_PROFILE_PREPARE:
+        case PROFILE_TYPES.FETCH_PROFILE_PREPARE:
             return {
                 ...state,
                 isFetchingProfile: true,
                 profile: {},
             };
 
-        case TYPES.FETCH_PROFILE_COMPLETED:
+        case PROFILE_TYPES.FETCH_PROFILE_COMPLETED:
             return {
                 ...state,
                 isFetchingProfile: false,
                 profile: payload?.profile!!,
             };
 
-        case TYPES.UPDATE_PROFILE_PREPARE:
+        case PROFILE_TYPES.UPDATE_PROFILE_PREPARE:
             return {
                 ...state,
                 isUpdatingProfile: true,
                 isProfileUpdated: false,
             };
 
-        case TYPES.UPDATE_PROFILE_COMPLETED:
+        case PROFILE_TYPES.UPDATE_PROFILE_COMPLETED:
             return {
                 ...state,
                 isUpdatingProfile: false,

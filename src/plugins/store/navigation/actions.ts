@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
-import { Action, Key, TYPES } from "./types";
+import { NavigationAction, NavigationKey, NAVIGATION_TYPES } from "./types";
 
-export const setKey = (key: Key) => (dispatch: Dispatch<Action>) => {
-    dispatch({ type: TYPES.SET_KEY, payloads: { currentActiveKey: key } });
+export const setNavigationKey = (key: NavigationKey) => (dispatch: Dispatch<NavigationAction>) => {
+    dispatch({ type: NAVIGATION_TYPES.SET_NAVIGATION_KEY, payloads: { currentActiveKey: key } });
 };

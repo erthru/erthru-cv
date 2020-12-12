@@ -1,4 +1,4 @@
-export enum TYPES {
+export enum WORK_EXPERIENCE_TYPES {
     FETCH_WORK_EXPERIENCES_PREPARE = "FETCH_WORK_EXPERIENCES_PREPARE",
     FETCH_WORK_EXPERIENCES_COMPLETED = "FETCH_WORK_EXPERIENCES_COMPLETED",
     FETCH_WORK_EXPERIENCE_PREPARE = "FETCH_WORK_EXPERIENCE_PREPARE",
@@ -11,7 +11,7 @@ export enum TYPES {
     REMOVE_WORK_EXPERIENCE_COMPLETED = "REMOVE_WORK_EXPERIENCE_COMPLETED",
 }
 
-export const COL_NAME = "workExperiences";
+export const WORK_EXPERIENCE_COL_NAME = "workExperiences";
 
 export enum WorkExperienceField {
     timeframe = "timeframe",
@@ -30,7 +30,7 @@ export type WorkExperience = {
     [WorkExperienceField.updatedOn]?: Date;
 };
 
-export type State = {
+export type WorkExperineceState = {
     workExperiences: WorkExperience[];
     workExperience: WorkExperience;
     isNewWorkExperienceAdded: boolean;
@@ -43,8 +43,8 @@ export type State = {
     isRemovingWorkExperience: boolean;
 };
 
-export type Action = {
-    type: TYPES;
+export type WorkExperienceAction = {
+    type: WORK_EXPERIENCE_TYPES;
     payload?: {
         workExperiences?: WorkExperience[];
         workExperience?: WorkExperience;

@@ -14,7 +14,7 @@ export enum TYPES {
 export const COL_NAME = "workExperiences";
 
 export enum WorkExperienceField {
-    description = "description",
+    timeframe = "timeframe",
     place = "place",
     activities = "activities",
     createdOn = "createdOn",
@@ -23,7 +23,7 @@ export enum WorkExperienceField {
 
 export type WorkExperience = {
     id?: string;
-    [WorkExperienceField.description]?: string;
+    [WorkExperienceField.timeframe]?: string;
     [WorkExperienceField.place]?: string;
     [WorkExperienceField.activities]?: string[];
     [WorkExperienceField.createdOn]?: Date;

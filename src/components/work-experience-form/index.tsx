@@ -24,7 +24,7 @@ const WorkExperienceForm = (props: Props) => {
     const isFetchingWorkExperience = useSelector((store: Store) => store.workExperience.isFetchingWorkExperience) as boolean;
     const isAddingWorkExperience = useSelector((store: Store) => store.workExperience.isAddingWorkExperience) as boolean;
     const isUpdatingWorkExperience = useSelector((store: Store) => store.workExperience.isUpdatingWorkExperience) as boolean;
-    const [description, setDescription] = useState("");
+    const [timeframe, setTimeframe] = useState("");
     const [place, setPlace] = useState("");
     const [activity, setActivity] = useState("");
     const [activities, setActivities] = useState<string[]>([]);
@@ -41,7 +41,7 @@ const WorkExperienceForm = (props: Props) => {
 
     useEffect(() => {
         if (Object.keys(workExperience).length > 0 && props.id !== undefined) {
-            setDescription(workExperience.description!!);
+            setTimeframe(workExperience.timeframe!!);
             setPlace(workExperience.place!!);
             setActivities(workExperience.activities!!);
         }
@@ -66,7 +66,7 @@ const WorkExperienceForm = (props: Props) => {
                 setReadyToCheckChanges(true);
                 dispatch(
                     updateWorkExperience(props.id, {
-                        description: description,
+                        timeframe: timeframe,
                         place: place,
                         activities: activities,
                     })
@@ -75,7 +75,7 @@ const WorkExperienceForm = (props: Props) => {
                 setReadyToCheckChanges(true);
                 dispatch(
                     addWorkExperience({
-                        description: description,
+                        timeframe: timeframe,
                         place: place,
                         activities: activities,
                     })
@@ -95,15 +95,15 @@ const WorkExperienceForm = (props: Props) => {
                     </span>
 
                     <form className="flex flex-wrap mt-2 w-full md:w-2/3 lg:1/2" onSubmit={onSubmit}>
-                        <label className="w-full">Description</label>
+                        <label className="w-full">Timeframe</label>
 
                         <Input
                             className="w-full mt-2"
                             type="text"
-                            placeholder="Input Description"
+                            placeholder="Input Timeframe"
                             required
-                            onChange={(e) => setDescription(e.currentTarget.value)}
-                            value={description}
+                            onChange={(e) => setTimeframe(e.currentTarget.value)}
+                            value={timeframe}
                             disabled={isAddingWorkExperience || isUpdatingWorkExperience}
                         />
 

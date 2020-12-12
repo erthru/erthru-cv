@@ -11,7 +11,7 @@ export const fetchWorkExperiences = () => async (dispatch: Dispatch<Action>) => 
 
         if (workExperiencesSnapshot.docs.length === 0) {
             await db.collection(COL_NAME).add({
-                [WorkExperienceField.description]: "2016 - Present",
+                [WorkExperienceField.timeframe]: "2016 - Present",
                 [WorkExperienceField.place]: "Cafe Stile",
                 [WorkExperienceField.activities]: ["Serving guest", "Cosplay as sadistic character"],
                 [WorkExperienceField.createdOn]: new Date(),

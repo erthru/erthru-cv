@@ -18,7 +18,6 @@ import { setKey } from "../../plugins/store/navigation/actions";
 import { Key } from "../../plugins/store/navigation/types";
 import { Profile } from "../../plugins/store/profile/types";
 import ProgressBar from "../progress-bar";
-import SearchInput from "../search-input";
 import TopbarItem from "../topbar-item";
 import "./index.css";
 

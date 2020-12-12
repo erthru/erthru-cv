@@ -25,6 +25,11 @@ const Me = () => {
         }
     }, [isProfileUpdated]);
 
+    useEffect(() => {
+        if (Object.keys(profile).length > 0) setIsLoading(false);
+        else setIsLoading(true);
+    }, [profile]);
+
     const getProfile = () => {
         setIsLoading(true);
         dispatch(fetchProfile());
@@ -59,9 +64,9 @@ const Me = () => {
     return (
         <div>
             <div className="w-full bg-white rounded-xl flex flex-wrap p-10">
-                {isLoading || Object.keys(profile).length === 0 && <ProgressBar className="mx-auto" />}
+                {isLoading && <ProgressBar className="mx-auto" />}
 
-                {Object.keys(profile).length > 0 && (
+                {!isLoading && (
                     <div className="w-full flex flex-wrap">
                         <div className="w-24 h-24 flex mx-auto relative">
                             <img src={profile?.avatarUrl} alt="avatar" className="w-full h-full rounded-full" style={{ objectFit: "cover" }} />

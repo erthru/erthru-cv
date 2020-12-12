@@ -14,6 +14,8 @@ export const fetchWorkExperiences = () => async (dispatch: Dispatch<Action>) => 
                 [WorkExperienceField.description]: "2016 - Present",
                 [WorkExperienceField.place]: "Cafe Stile",
                 [WorkExperienceField.activities]: ["Serving guest", "Cosplay as sadistic character"],
+                [WorkExperienceField.createdOn]: new Date(),
+                [WorkExperienceField.updatedOn]: new Date(),
             });
 
             workExperiencesSnapshot = await db.collection(COL_NAME).get();
@@ -49,7 +51,13 @@ export const fetchWorkExperience = (id: string) => async (dispatch: Dispatch<Act
 export const addWorkExperience = (workExperience: WorkExperience) => async (dispatch: Dispatch<Action>) => {
     try {
         dispatch({ type: TYPES.ADD_WORK_EXPERIENCE_PREPARE });
-        await db.collection(COL_NAME).add(workExperience);
+
+        await db.collection(COL_NAME).add({
+            [WorkExperienceField.createdOn]: new Date(),
+            [WorkExperienceField.updatedOn]: new Date(),
+            ...workExperience,
+        });
+
         dispatch({ type: TYPES.ADD_WORK_EXPERIENCE_COMPLETED });
     } catch (e) {}
 };
@@ -57,7 +65,15 @@ export const addWorkExperience = (workExperience: WorkExperience) => async (disp
 export const updateWorkExperience = (id: string, workExperience: WorkExperience) => async (dispatch: Dispatch<Action>) => {
     try {
         dispatch({ type: TYPES.UPDATE_WORK_EXPERIENCE_PREPARE });
-        await db.collection(COL_NAME).doc(id).update(workExperience);
+
+        await db
+            .collection(COL_NAME)
+            .doc(id)
+            .update({
+                [WorkExperienceField.updatedOn]: new Date(),
+                ...workExperience,
+            });
+
         dispatch({ type: TYPES.UPDATE_WORK_EXPERIENCE_COMPLETED });
     } catch (e) {}
 };

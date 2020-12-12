@@ -17,6 +17,8 @@ export enum WorkExperienceField {
     description = "description",
     place = "place",
     activities = "activities",
+    createdOn = "createdOn",
+    updatedOn = "updatedOn",
 }
 
 export type WorkExperience = {
@@ -24,6 +26,8 @@ export type WorkExperience = {
     [WorkExperienceField.description]?: string;
     [WorkExperienceField.place]?: string;
     [WorkExperienceField.activities]?: string[];
+    [WorkExperienceField.createdOn]?: Date;
+    [WorkExperienceField.updatedOn]?: Date;
 };
 
 export type State = {

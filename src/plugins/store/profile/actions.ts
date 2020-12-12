@@ -17,6 +17,8 @@ export const fetchProfile = () => async (dispatch: Dispatch<Action>) => {
                 [ProfileField.intro]:
                     "16-year-old girl who despite having a positive and cheerful personality, unintentionally gains a sadistic look in her eyes whenever she smiles. This look catches the attention of Dino who scouts her to be the sadistic girl waitress at Cafe Stile.",
                 [ProfileField.career]: "Maid Cafe",
+                [ProfileField.createdOn]: new Date(),
+                [ProfileField.updatedOn]: new Date(),
             });
 
             profilesSnapshots = await db.collection(COL_NAME).get();
@@ -41,7 +43,14 @@ export const updateProfile = (profile: Profile) => async (dispatch: Dispatch<Act
         let profilesSnapshots = await db.collection(COL_NAME).get();
         id = profilesSnapshots.docs[0].id;
 
-        await db.collection(COL_NAME).doc(id).update(profile);
+        await db
+            .collection(COL_NAME)
+            .doc(id)
+            .update({
+                [ProfileField.updatedOn]: new Date(),
+                ...profile,
+            });
+
         dispatch({ type: TYPES.UPDATE_PROFILE_COMPLETED });
     } catch (e) {}
 };

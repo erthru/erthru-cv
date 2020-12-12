@@ -13,6 +13,9 @@ const reducers = (state = initialState, { type, payload }: Action): State => {
         case TYPES.FETCH_WORK_EXPERIENCES_PREPARE:
             return {
                 ...state,
+                isNewWorkExperienceAdded: false,
+                isWorkExperienceUpdated: false,
+                isWorkExperienceRemoved: false,
                 workExperiences: [],
             };
 
@@ -25,6 +28,9 @@ const reducers = (state = initialState, { type, payload }: Action): State => {
         case TYPES.FETCH_WORK_EXPERIENCE_PREPARE:
             return {
                 ...state,
+                isNewWorkExperienceAdded: false,
+                isWorkExperienceUpdated: false,
+                isWorkExperienceRemoved: false,
                 workExperience: {},
             };
 

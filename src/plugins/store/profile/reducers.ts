@@ -10,6 +10,7 @@ const reducers = (state = initialState, { type, payload }: Action): State => {
         case TYPES.FETCH_PROFILE_PREPARE:
             return {
                 ...state,
+                isProfileUpdated: false,
                 profile: {},
             };
 

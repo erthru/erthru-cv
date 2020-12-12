@@ -13,6 +13,8 @@ export type Profile = {
     [ProfileField.avatarUrl]?: string;
     [ProfileField.intro]?: string;
     [ProfileField.career]?: string;
+    [ProfileField.createdOn]?: Date;
+    [ProfileField.updatedOn]?: Date;
 };
 
 export enum ProfileField {
@@ -20,6 +22,8 @@ export enum ProfileField {
     avatarUrl = "avatarUrl",
     intro = "intro",
     career = "career",
+    createdOn = "createdOn",
+    updatedOn = "updatedOn",
 }
 
 export type State = {

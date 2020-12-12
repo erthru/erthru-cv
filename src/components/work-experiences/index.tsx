@@ -27,7 +27,10 @@ const WorkExperiences = () => {
 
     useEffect(() => {
         if (search !== "") {
-            const tempWorkExperiences = _workExperiences.filter((workExperience) => workExperience.activities?.join(", ").includes(search));
+            const tempWorkExperiences = _workExperiences.filter(
+                (workExperience) => workExperience.activities?.join(", ").includes(search) || workExperience.place?.includes(search)
+            );
+
             _setWorkExperiences(tempWorkExperiences);
         } else {
             _setWorkExperiences(workExperiences);

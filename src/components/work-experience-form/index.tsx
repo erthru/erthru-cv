@@ -29,17 +29,18 @@ const WorkExperienceForm = (props: Props) => {
     const [activity, setActivity] = useState("");
     const [activities, setActivities] = useState<string[]>([]);
     const [isActivitiesEmpty, setIsActivitiesEmpty] = useState(false);
+    const [readyToCheckChanges, setReadyToCheckChanges] = useState(false);
 
     useEffect(() => {
         if (props.id !== undefined) dispatch(fetchWorkExperience(props.id));
     }, []);
 
     useEffect(() => {
-        if (isNewWorkExperienceAdded || isWorkExperienceUpdated) history.push("/admin/work-experience");
+        if ((isNewWorkExperienceAdded || isWorkExperienceUpdated) && readyToCheckChanges) history.push("/admin/work-experience");
     }, [isNewWorkExperienceAdded, isWorkExperienceUpdated]);
 
     useEffect(() => {
-        if (Object.keys(workExperience).length > 0) {
+        if (Object.keys(workExperience).length > 0 && props.id !== undefined) {
             setDescription(workExperience.description!!);
             setPlace(workExperience.place!!);
             setActivities(workExperience.activities!!);
@@ -61,7 +62,8 @@ const WorkExperienceForm = (props: Props) => {
 
         if (activities.length === 0) setIsActivitiesEmpty(true);
         else {
-            if (props.id !== undefined)
+            if (props.id !== undefined) {
+                setReadyToCheckChanges(true);
                 dispatch(
                     updateWorkExperience(props.id, {
                         description: description,
@@ -69,7 +71,8 @@ const WorkExperienceForm = (props: Props) => {
                         activities: activities,
                     })
                 );
-            else
+            } else {
+                setReadyToCheckChanges(true);
                 dispatch(
                     addWorkExperience({
                         description: description,
@@ -77,6 +80,7 @@ const WorkExperienceForm = (props: Props) => {
                         activities: activities,
                     })
                 );
+            }
         }
     };
 

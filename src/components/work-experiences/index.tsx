@@ -1,4 +1,4 @@
-import { faEdit, faPlus, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,9 @@ import { Store } from "../../plugins/store";
 import { removeWorkExperience } from "../../plugins/store/work-experience/actions";
 import { WorkExperience } from "../../plugins/store/work-experience/types";
 import AddNewButton from "../add-new-button";
+import EditButton from "../edit-button";
 import ProgressBar from "../progress-bar";
+import RemoveButton from "../remove-button";
 import SearchInput from "../search-input";
 import Table from "../table";
 
@@ -60,23 +62,11 @@ const WorkExperiences = () => {
 
                                     <div className="flex flex-wrap">
                                         <div className="w-full flex">
-                                            <Link
-                                                to={"/admin/work-experience/edit/" + workExperience.id}
-                                                className="mx-auto flex text-yellow-600 items-center font-medium cursor-pointer"
-                                            >
-                                                <FontAwesomeIcon icon={faEdit} />
-                                                <span className="ml-2">Edit</span>
-                                            </Link>
+                                            <EditButton to={"/admin/work-experience/edit/" + workExperience.id} className="mx-auto" />
                                         </div>
 
                                         <div className="w-full flex mt-1">
-                                            <div
-                                                className="mx-auto flex text-red-600 items-center font-medium cursor-pointer"
-                                                onClick={() => dispatch(removeWorkExperience(workExperience.id!!))}
-                                            >
-                                                <FontAwesomeIcon icon={faTrashAlt} />
-                                                <span className="ml-2">Remove</span>
-                                            </div>
+                                            <RemoveButton className="mx-auto" onClick={() => dispatch(removeWorkExperience(workExperience.id!!))} />
                                         </div>
                                     </div>,
                                 ];

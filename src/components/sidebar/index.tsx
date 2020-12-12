@@ -85,7 +85,15 @@ const Sidebar = (props: Props) => {
                 onClick={() => dispatch(setKey(Key.document))}
             />
 
-            <div className="h-full" />
+            <div className="w-full flex mt-8">
+                <span className="mx-auto text-sm text-gray-500">- by: erthru -</span>
+            </div>
+
+            <div className="w-full flex">
+                <a className="mx-auto text-xs text-gray-400" target="blank" href="https://github.com/erthru">
+                    https://github.com/erthru
+                </a>
+            </div>
         </div>
     );
 };

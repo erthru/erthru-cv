@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 // @ts-ignore
 import { ScrollSync, ScrollSyncPane } from "react-scroll-sync";

@@ -66,7 +66,7 @@ const WorkExperiences = () => {
                 <SearchInput className="mx-auto md:ml-auto md:mr-0 mt-3 md:mt-0" />
             </div>
 
-            {(isFetchingWorkExperiences || isRemovingWorkExperience) && <ProgressBar className="mt-4 mx-auto" />}
+            {(isFetchingWorkExperiences || isRemovingWorkExperience) && <ProgressBar color="red-700" className="mt-4 mx-auto text-4xl" />}
 
             {!isFetchingWorkExperiences && !isRemovingWorkExperience && (
                 <div className="w-full mt-4">

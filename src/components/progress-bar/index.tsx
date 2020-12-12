@@ -4,8 +4,11 @@ import React from "react";
 
 type Props = {
     className?: string;
+    color: string;
 };
 
-const ProgressBar = (props: Props) => <FontAwesomeIcon icon={faCircleNotch} className={"text-red-600 text-4xl animate-spin " + props.className} />;
+const ProgressBar = (props: Props) => (
+    <FontAwesomeIcon icon={faCircleNotch} className={"animate-spin " + "text-" + props.color + " " + props.className} />
+);
 
 export default ProgressBar;

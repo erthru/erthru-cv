@@ -86,7 +86,7 @@ const WorkExperienceForm = (props: Props) => {
 
     return (
         <div className="w-full bg-white rounded-xl flex flex-wrap p-6">
-            {isFetchingWorkExperience && <ProgressBar className="mt-4 mx-auto" />}
+            {isFetchingWorkExperience && <ProgressBar className="mt-4 mx-auto text-4xl" color="red-700" />}
 
             {!isFetchingWorkExperience && (
                 <div className="w-full flex flex-wrap">

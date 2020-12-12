@@ -36,7 +36,7 @@ const WorkExperienceForm = (props: Props) => {
     }, []);
 
     useEffect(() => {
-        if ((isNewWorkExperienceAdded || isWorkExperienceUpdated) && readyToCheckChanges) history.push("/admin/work-experience");
+        if ((isNewWorkExperienceAdded || isWorkExperienceUpdated) && readyToCheckChanges) history.push("/admin/work-experiences");
     }, [isNewWorkExperienceAdded, isWorkExperienceUpdated]);
 
     useEffect(() => {

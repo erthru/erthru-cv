@@ -48,7 +48,7 @@ const Me = () => {
 
     return (
         <div>
-            <div className="w-full bg-white rounded-xl flex flex-wrap p-10">
+            <div className="w-full bg-white rounded-xl flex flex-wrap p-6 md:p-10">
                 {isFetchingProfile && <ProgressBar className="mx-auto text-4xl" color="red-700" />}
 
                 {!isFetchingProfile && (

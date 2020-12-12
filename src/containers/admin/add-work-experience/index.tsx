@@ -10,7 +10,7 @@ const AddWorkExperience = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(setNavigationKey(NavigationKey.workExperience));
+        dispatch(setNavigationKey(NavigationKey.workExperiences));
     }, []);
 
     return (

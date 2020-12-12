@@ -16,7 +16,7 @@ const EditWorkExperience = () => {
     const params = useParams<Params>();
 
     useEffect(() => {
-        dispatch(setNavigationKey(NavigationKey.workExperience));
+        dispatch(setNavigationKey(NavigationKey.workExperiences));
     }, []);
 
     return (

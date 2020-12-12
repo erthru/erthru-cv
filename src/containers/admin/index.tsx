@@ -7,14 +7,15 @@ import { Store } from "../../plugins/store";
 import { fetchProfile } from "../../plugins/store/profile/actions";
 import { fetchWorkExperiences } from "../../plugins/store/work-experience/actions";
 import AddWorkExperience from "./add-work-experience";
-import Contact from "./contact";
-import Document from "./document";
+import Contacts from "./contacts";
+import Documents from "./documents";
 import EditWorkExperience from "./edit-work-experience";
-import FormalEducation from "./formal-education";
-import Language from "./language";
+import FormalEducations from "./formal-educations";
+import Languages from "./languages";
 import Overview from "./overview";
-import Portfolio from "./portfolio";
-import WorkExperience from "./work-experience";
+import Portfolios from "./portfolios";
+import Settings from "./settings";
+import WorkExperiences from "./work-experiences";
 
 const Admin = () => {
     const dispatch = useDispatch();
@@ -43,14 +44,15 @@ const Admin = () => {
                 <div className="w-full h-full mt-4 lg:mt-6">
                     <Switch>
                         <Route exact path="/admin" component={Overview} />
-                        <Route exact path="/admin/work-experience" component={WorkExperience} />
+                        <Route exact path="/admin/work-experiences" component={WorkExperiences} />
                         <Route exact path="/admin/work-experience/add" component={AddWorkExperience} />
                         <Route exact path="/admin/work-experience/edit/:id" component={EditWorkExperience} />
-                        <Route exact path="/admin/formal-education" component={FormalEducation} />
-                        <Route exact path="/admin/language" component={Language} />
-                        <Route exact path="/admin/portfolio" component={Portfolio} />
-                        <Route exact path="/admin/contact" component={Contact} />
-                        <Route exact path="/admin/document" component={Document} />
+                        <Route exact path="/admin/formal-educations" component={FormalEducations} />
+                        <Route exact path="/admin/languages" component={Languages} />
+                        <Route exact path="/admin/portfolios" component={Portfolios} />
+                        <Route exact path="/admin/contacts" component={Contacts} />
+                        <Route exact path="/admin/documents" component={Documents} />
+                        <Route exact path="/admin/settings" component={Settings} />
                     </Switch>
                 </div>
             </div>

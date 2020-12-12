@@ -4,12 +4,13 @@ export enum NAVIGATION_TYPES {
 
 export enum NavigationKey {
     overview = "overview",
-    workExperience = "workExperience",
-    formalEducation = "formalEducation",
-    language = "language",
-    portfolio = "portfolio",
-    contact = "contact",
-    document = "document",
+    workExperiences = "workExperiences",
+    formalEducations = "formalEducations",
+    languages = "languages",
+    portfolios = "portfolios",
+    contacts = "contacts",
+    documents = "documents",
+    settings = "settings",
 }
 
 export type NavigationState = {

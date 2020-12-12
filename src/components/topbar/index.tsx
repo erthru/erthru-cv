@@ -67,57 +67,66 @@ const Topbar = () => {
                 />
 
                 <TopbarItem
-                    title="WORK EXPERIENCE"
-                    to="/admin/work-experience"
+                    title="WORK EXPERIENCES"
+                    to="/admin/work-experiences"
                     className="mt-2"
                     icon={faBriefcase}
-                    isActive={currentActiveKey === NavigationKey.workExperience}
-                    onClick={() => onItemClicked(NavigationKey.workExperience)}
+                    isActive={currentActiveKey === NavigationKey.workExperiences}
+                    onClick={() => onItemClicked(NavigationKey.workExperiences)}
                 />
 
                 <TopbarItem
-                    title="FORMAL EDUCATION"
-                    to="/admin/formal-education"
+                    title="FORMAL EDUCATIONS"
+                    to="/admin/formal-educations"
                     className="mt-2"
                     icon={faUniversity}
-                    isActive={currentActiveKey === NavigationKey.formalEducation}
-                    onClick={() => onItemClicked(NavigationKey.formalEducation)}
+                    isActive={currentActiveKey === NavigationKey.formalEducations}
+                    onClick={() => onItemClicked(NavigationKey.formalEducations)}
                 />
 
                 <TopbarItem
-                    title="LANGUAGE"
-                    to="/admin/language"
+                    title="LANGUAGES"
+                    to="/admin/languages"
                     className="mt-2"
                     icon={faLanguage}
-                    isActive={currentActiveKey === NavigationKey.language}
-                    onClick={() => onItemClicked(NavigationKey.language)}
+                    isActive={currentActiveKey === NavigationKey.languages}
+                    onClick={() => onItemClicked(NavigationKey.languages)}
                 />
 
                 <TopbarItem
-                    title="PORTFOLIO"
-                    to="/admin/portfolio"
+                    title="PORTFOLIOS"
+                    to="/admin/portfolios"
                     icon={faLayerGroup}
                     className="mt-2"
-                    isActive={currentActiveKey === NavigationKey.portfolio}
-                    onClick={() => onItemClicked(NavigationKey.portfolio)}
+                    isActive={currentActiveKey === NavigationKey.portfolios}
+                    onClick={() => onItemClicked(NavigationKey.portfolios)}
                 />
 
                 <TopbarItem
-                    title="CONTACT"
-                    to="/admin/contact"
+                    title="CONTACTS"
+                    to="/admin/contacts"
                     icon={faIdCard}
                     className="mt-2"
-                    isActive={currentActiveKey === NavigationKey.contact}
-                    onClick={() => onItemClicked(NavigationKey.contact)}
+                    isActive={currentActiveKey === NavigationKey.contacts}
+                    onClick={() => onItemClicked(NavigationKey.contacts)}
                 />
 
                 <TopbarItem
-                    title="DOCUMENT"
-                    to="/admin/document"
+                    title="DOCUMENTS"
+                    to="/admin/documents"
                     icon={faFileCode}
                     className="mt-2"
-                    isActive={currentActiveKey === NavigationKey.document}
-                    onClick={() => onItemClicked(NavigationKey.document)}
+                    isActive={currentActiveKey === NavigationKey.documents}
+                    onClick={() => onItemClicked(NavigationKey.documents)}
+                />
+
+                <TopbarItem
+                    title="SETTINGS"
+                    to="/admin/settings"
+                    icon={faFileCode}
+                    className="mt-2"
+                    isActive={currentActiveKey === NavigationKey.settings}
+                    onClick={() => onItemClicked(NavigationKey.settings)}
                 />
 
                 <TopbarItem title="LOGOUT" to="/logout" icon={faSignOutAlt} className="mt-2" />

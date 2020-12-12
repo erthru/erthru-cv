@@ -1,4 +1,4 @@
-import { faBriefcase, faFileCode, faIdCard, faLanguage, faLayerGroup, faThLarge, faUniversity } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcase, faFileCode, faIdCard, faLanguage, faLayerGroup, faThLarge, faTools, faUniversity } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { APP_TITLE } from "../../helpers/environments";
@@ -33,67 +33,66 @@ const Sidebar = (props: Props) => {
 
             <SidebarItem
                 icon={faBriefcase}
-                title="WORK EXPERIENCE"
+                title="WORK EXPERIENCES"
                 className="mt-2"
-                isActive={currentActiveKey === NavigationKey.workExperience}
-                to="/admin/work-experience"
-                onClick={() => dispatch(setNavigationKey(NavigationKey.workExperience))}
+                isActive={currentActiveKey === NavigationKey.workExperiences}
+                to="/admin/work-experiences"
+                onClick={() => dispatch(setNavigationKey(NavigationKey.workExperiences))}
             />
 
             <SidebarItem
                 icon={faUniversity}
-                title="FORMAL EDUCATION"
+                title="FORMAL EDUCATIONS"
                 className="mt-2"
-                isActive={currentActiveKey === NavigationKey.formalEducation}
-                to="/admin/formal-education"
-                onClick={() => dispatch(setNavigationKey(NavigationKey.formalEducation))}
+                isActive={currentActiveKey === NavigationKey.formalEducations}
+                to="/admin/formal-educations"
+                onClick={() => dispatch(setNavigationKey(NavigationKey.formalEducations))}
             />
 
             <SidebarItem
                 icon={faLanguage}
-                title="LANGUAGE"
+                title="LANGUAGES"
                 className="mt-2"
-                isActive={currentActiveKey === NavigationKey.language}
-                to="/admin/language"
-                onClick={() => dispatch(setNavigationKey(NavigationKey.language))}
+                isActive={currentActiveKey === NavigationKey.languages}
+                to="/admin/languages"
+                onClick={() => dispatch(setNavigationKey(NavigationKey.languages))}
             />
 
             <SidebarItem
                 icon={faLayerGroup}
-                title="PORTFOLIO"
+                title="PORTFOLIOS"
                 className="mt-2"
-                isActive={currentActiveKey === NavigationKey.portfolio}
-                to="/admin/portfolio"
-                onClick={() => dispatch(setNavigationKey(NavigationKey.portfolio))}
+                isActive={currentActiveKey === NavigationKey.portfolios}
+                to="/admin/portfolios"
+                onClick={() => dispatch(setNavigationKey(NavigationKey.portfolios))}
             />
 
             <SidebarItem
                 icon={faIdCard}
-                title="CONTACT"
+                title="CONTACTS"
                 className="mt-2"
-                isActive={currentActiveKey === NavigationKey.contact}
-                to="/admin/contact"
-                onClick={() => dispatch(setNavigationKey(NavigationKey.contact))}
+                isActive={currentActiveKey === NavigationKey.contacts}
+                to="/admin/contacts"
+                onClick={() => dispatch(setNavigationKey(NavigationKey.contacts))}
             />
 
             <SidebarItem
                 icon={faFileCode}
-                title="DOCUMENT"
+                title="DOCUMENTS"
                 className="mt-2"
-                isActive={currentActiveKey === NavigationKey.document}
-                to="/admin/document"
-                onClick={() => dispatch(setNavigationKey(NavigationKey.document))}
+                isActive={currentActiveKey === NavigationKey.documents}
+                to="/admin/documents"
+                onClick={() => dispatch(setNavigationKey(NavigationKey.documents))}
             />
 
-            <div className="w-full flex mt-8">
-                <span className="mx-auto text-sm text-gray-500">- by: erthru -</span>
-            </div>
-
-            <div className="w-full flex">
-                <a className="mx-auto text-xs text-gray-400" target="blank" href="https://github.com/erthru">
-                    https://github.com/erthru
-                </a>
-            </div>
+            <SidebarItem
+                icon={faTools}
+                title="SETTINGS"
+                className="mt-2"
+                isActive={currentActiveKey === NavigationKey.settings}
+                to="/admin/settings"
+                onClick={() => dispatch(setNavigationKey(NavigationKey.settings))}
+            />
         </div>
     );
 };

@@ -1,22 +1,24 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useDispatch } from "react-redux";
+import _WorkExperiences from "../../../components/work-experiences";
 import { APP_TITLE } from "../../../helpers/environments";
 import { setNavigationKey } from "../../../plugins/store/navigation/actions";
 import { NavigationKey } from "../../../plugins/store/navigation/types";
 
-const FormalEducation = () => {
+const WorkExperiences = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(setNavigationKey(NavigationKey.formalEducation));
+        dispatch(setNavigationKey(NavigationKey.workExperiences));
     }, []);
 
     return (
         <div>
-            <Helmet title={"Formal Education - " + APP_TITLE} />
+            <Helmet title={"Work Experience - " + APP_TITLE} />
+            <_WorkExperiences />
         </div>
     );
 };
 
-export default FormalEducation;
+export default WorkExperiences;

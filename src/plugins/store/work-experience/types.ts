@@ -36,6 +36,11 @@ export type State = {
     isNewWorkExperienceAdded: boolean;
     isWorkExperienceUpdated: Boolean;
     isWorkExperienceRemoved: boolean;
+    isFetchingWorkExperiences: boolean;
+    isFetchingWorkExperience: boolean;
+    isAddingWorkExperience: boolean;
+    isUpdatingWorkExperience: boolean;
+    isRemovingWorkExperience: boolean;
 };
 
 export type Action = {

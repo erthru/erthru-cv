@@ -4,36 +4,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../modal";
 import { Store } from "../../plugins/store";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchProfile } from "../../plugins/store/profile/actions";
+import { useSelector } from "react-redux";
 import MeEditForm, { ToEdit } from "../me-edit-form";
 import { Profile } from "../../plugins/store/profile/types";
 
 const Me = () => {
-    const dispatch = useDispatch();
     const profile = useSelector((store: Store) => store.profile.profile) as Profile;
+    const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile) as boolean;
     const isProfileUpdated = useSelector((store: Store) => store.profile.isProfileUpdated) as boolean;
-    const [isLoading, setIsLoading] = useState(false);
     const [isEditModalShown, setIsEditModalShown] = useState(false);
     const [toEdit, setToEdit] = useState<ToEdit>(ToEdit.avatar);
     const [toEditTitle, setToEditTitle] = useState("");
 
     useEffect(() => {
-        if (isProfileUpdated) {
-            setIsEditModalShown(false);
-            getProfile();
-        }
+        if (isProfileUpdated) setIsEditModalShown(false);
     }, [isProfileUpdated]);
-
-    useEffect(() => {
-        if (Object.keys(profile).length > 0) setIsLoading(false);
-        else setIsLoading(true);
-    }, [profile]);
-
-    const getProfile = () => {
-        setIsLoading(true);
-        dispatch(fetchProfile());
-    };
 
     const _toEdit = (toEdit: ToEdit) => {
         setIsEditModalShown(true);
@@ -64,9 +49,9 @@ const Me = () => {
     return (
         <div>
             <div className="w-full bg-white rounded-xl flex flex-wrap p-10">
-                {isLoading && <ProgressBar className="mx-auto" />}
+                {isFetchingProfile && <ProgressBar className="mx-auto" />}
 
-                {!isLoading && (
+                {!isFetchingProfile && (
                     <div className="w-full flex flex-wrap">
                         <div className="w-24 h-24 flex mx-auto relative">
                             <img src={profile?.avatarUrl} alt="avatar" className="w-full h-full rounded-full" style={{ objectFit: "cover" }} />

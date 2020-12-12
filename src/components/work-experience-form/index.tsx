@@ -21,19 +21,17 @@ const WorkExperienceForm = (props: Props) => {
     const workExperience = useSelector((store: Store) => store.workExperience.workExperience) as WorkExperience;
     const isNewWorkExperienceAdded = useSelector((store: Store) => store.workExperience.isNewWorkExperienceAdded) as boolean;
     const isWorkExperienceUpdated = useSelector((store: Store) => store.workExperience.isWorkExperienceUpdated) as boolean;
+    const isFetchingWorkExperience = useSelector((store: Store) => store.workExperience.isFetchingWorkExperience) as boolean;
+    const isAddingWorkExperience = useSelector((store: Store) => store.workExperience.isAddingWorkExperience) as boolean;
+    const isUpdatingWorkExperience = useSelector((store: Store) => store.workExperience.isUpdatingWorkExperience) as boolean;
     const [description, setDescription] = useState("");
     const [place, setPlace] = useState("");
     const [activity, setActivity] = useState("");
     const [activities, setActivities] = useState<string[]>([]);
     const [isActivitiesEmpty, setIsActivitiesEmpty] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        if (props.id !== undefined) {
-            setIsLoading(true);
-            dispatch(fetchWorkExperience(props.id));
-        }
+        if (props.id !== undefined) dispatch(fetchWorkExperience(props.id));
     }, []);
 
     useEffect(() => {
@@ -45,7 +43,6 @@ const WorkExperienceForm = (props: Props) => {
             setDescription(workExperience.description!!);
             setPlace(workExperience.place!!);
             setActivities(workExperience.activities!!);
-            setIsLoading(false);
         }
     }, [workExperience]);
 
@@ -64,8 +61,6 @@ const WorkExperienceForm = (props: Props) => {
 
         if (activities.length === 0) setIsActivitiesEmpty(true);
         else {
-            setIsSubmitting(true);
-
             if (props.id !== undefined)
                 dispatch(
                     updateWorkExperience(props.id, {
@@ -87,9 +82,9 @@ const WorkExperienceForm = (props: Props) => {
 
     return (
         <div className="w-full bg-white rounded-xl flex flex-wrap p-6">
-            {isLoading && <ProgressBar className="mt-4 mx-auto" />}
+            {isFetchingWorkExperience && <ProgressBar className="mt-4 mx-auto" />}
 
-            {!isLoading && (
+            {!isFetchingWorkExperience && (
                 <div className="w-full flex flex-wrap">
                     <span className="w-full text-2xl font-bold text-gray-700">
                         {props.id !== undefined ? "Update Work Experience" : "Add New Work Experience"}
@@ -105,7 +100,7 @@ const WorkExperienceForm = (props: Props) => {
                             required
                             onChange={(e) => setDescription(e.currentTarget.value)}
                             value={description}
-                            disabled={isSubmitting}
+                            disabled={isAddingWorkExperience || isUpdatingWorkExperience}
                         />
 
                         <label className="w-full mt-4">Place</label>
@@ -117,7 +112,7 @@ const WorkExperienceForm = (props: Props) => {
                             required
                             onChange={(e) => setPlace(e.currentTarget.value)}
                             value={place}
-                            disabled={isSubmitting}
+                            disabled={isAddingWorkExperience || isUpdatingWorkExperience}
                         />
 
                         <label className="w-full mt-4">Activity</label>
@@ -159,7 +154,7 @@ const WorkExperienceForm = (props: Props) => {
                             </div>
                         )}
 
-                        <Button type="submit" className="mt-4 ml-1" color="green-700" isLoading={isSubmitting}>
+                        <Button type="submit" className="mt-4 ml-1" color="green-700" isLoading={isAddingWorkExperience || isUpdatingWorkExperience}>
                             Save
                         </Button>
                     </form>

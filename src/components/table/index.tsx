@@ -25,9 +25,9 @@ const Table = (props: Props) => (
                     </div>
                 </ScrollSyncPane>
 
-                <ScrollSyncPane>
-                    {props.rows.map((row, i) => (
-                        <div className="flex w-full overflow-x-auto border-2 border-gray-200 py-2 rounded-xl mt-2 text-center pl-2 pr-4" key={i}>
+                {props.rows.map((row, i) => (
+                    <ScrollSyncPane key={i}>
+                        <div className="flex w-full overflow-x-auto border-2 border-gray-200 py-2 rounded-xl mt-2 text-center pl-2 pr-4">
                             <div className="w-14 px-4">{i + 1}</div>
 
                             {row.map((_row, i) => (
@@ -36,8 +36,8 @@ const Table = (props: Props) => (
                                 </div>
                             ))}
                         </div>
-                    ))}
-                </ScrollSyncPane>
+                    </ScrollSyncPane>
+                ))}
             </div>
         </ScrollSync>
     </div>

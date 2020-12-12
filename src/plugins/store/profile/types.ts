@@ -28,6 +28,8 @@ export enum ProfileField {
 
 export type State = {
     profile: Profile;
+    isFetchingProfile: boolean;
+    isUpdatingProfile: boolean;
     isProfileUpdated: boolean;
 };
 

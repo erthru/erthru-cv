@@ -7,7 +7,7 @@ export const fetchWorkExperiences = () => async (dispatch: Dispatch<Action>) => 
         dispatch({ type: TYPES.FETCH_WORK_EXPERIENCES_PREPARE });
 
         let workExperiences: any[] = [];
-        let workExperiencesSnapshot = await db.collection(COL_NAME).get();
+        let workExperiencesSnapshot = await db.collection(COL_NAME).orderBy(WorkExperienceField.createdOn, "desc").get();
 
         if (workExperiencesSnapshot.docs.length === 0) {
             await db.collection(COL_NAME).add({
@@ -18,7 +18,7 @@ export const fetchWorkExperiences = () => async (dispatch: Dispatch<Action>) => 
                 [WorkExperienceField.updatedOn]: new Date(),
             });
 
-            workExperiencesSnapshot = await db.collection(COL_NAME).get();
+            workExperiencesSnapshot = await db.collection(COL_NAME).orderBy(WorkExperienceField.createdOn, "desc").get();
         }
 
         workExperiencesSnapshot.docs.map((doc) => {

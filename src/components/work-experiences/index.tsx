@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Store } from "../../plugins/store";
-import { fetchWorkExperiences, removeWorkExperience } from "../../plugins/store/work-experience/actions";
+import { removeWorkExperience } from "../../plugins/store/work-experience/actions";
 import { WorkExperience } from "../../plugins/store/work-experience/types";
 import ProgressBar from "../progress-bar";
 import SearchInput from "../search-input";
@@ -13,26 +13,9 @@ import Table from "../table";
 const WorkExperiences = () => {
     const dispatch = useDispatch();
     const workExperiences = useSelector((store: Store) => store.workExperience.workExperiences) as WorkExperience[];
-    const isWorkExperienceRemoved = useSelector((store: Store) => store.workExperience.isWorkExperienceRemoved) as boolean;
-    const [isLoading, setIsLoading] = useState(false);
+    const isFetchingWorkExperiences = useSelector((store: Store) => store.workExperience.isFetchingWorkExperiences) as boolean;
+    const isRemovingWorkExperience = useSelector((store: Store) => store.workExperience.isRemovingWorkExperience) as boolean;
     const [tableRows, setTableRows] = useState<JSX.Element[][]>([[]]);
-
-    useEffect(() => {
-        getWorkExperiences();
-    }, []);
-
-    useEffect(() => {
-        if (isWorkExperienceRemoved) getWorkExperiences();
-    }, [isWorkExperienceRemoved]);
-
-    useEffect(() => {
-        if (workExperiences.length > 0) setIsLoading(false);
-    }, [workExperiences]);
-
-    const remove = (id: string) => {
-        setIsLoading(true);
-        dispatch(removeWorkExperience(id));
-    };
 
     useEffect(() => {
         if (workExperiences.length > 0) {
@@ -58,7 +41,7 @@ const WorkExperiences = () => {
                         <div className="w-full flex mt-1">
                             <div
                                 className="mx-auto flex text-red-600 items-center font-medium cursor-pointer"
-                                onClick={() => remove(workExperience.id!!)}
+                                onClick={() => dispatch(removeWorkExperience(workExperience.id!!))}
                             >
                                 <FontAwesomeIcon icon={faTrashAlt} />
                                 <span className="ml-2">Remove</span>
@@ -72,11 +55,6 @@ const WorkExperiences = () => {
         }
     }, [workExperiences]);
 
-    const getWorkExperiences = () => {
-        setIsLoading(true);
-        dispatch(fetchWorkExperiences());
-    };
-
     return (
         <div className="bg-white w-full rounded-xl p-6 flex flex-wrap">
             <div className="flex flex-wrap w-full">
@@ -88,9 +66,9 @@ const WorkExperiences = () => {
                 <SearchInput className="mx-auto md:ml-auto md:mr-0 mt-3 md:mt-0" />
             </div>
 
-            {isLoading && <ProgressBar className="mt-4 mx-auto" />}
+            {(isFetchingWorkExperiences || isRemovingWorkExperience) && <ProgressBar className="mt-4 mx-auto" />}
 
-            {!isLoading && (
+            {!isFetchingWorkExperiences && !isRemovingWorkExperience && (
                 <div className="w-full mt-4">
                     <Table className="w-full" headers={["Description", "Place", "Activity", "Actions"]} rows={tableRows} />
                 </div>

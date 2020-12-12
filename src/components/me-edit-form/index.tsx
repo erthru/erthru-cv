@@ -22,12 +22,11 @@ export enum ToEdit {
 const MeEditForm = (props: Props) => {
     const dispatch = useDispatch();
     const profile = useSelector((store: Store) => store.profile.profile) as Profile;
-    const isProfileUpdated = useSelector((store: Store) => store.profile.isProfileUpdated) as boolean;
+    const isUpdatingProfile = useSelector((store: Store) => store.profile.isUpdatingProfile) as boolean;
     const [avatarUrl, setAvatarUrl] = useState("");
     const [fullName, setFullName] = useState("");
     const [career, setCareer] = useState("");
     const [intro, setIntro] = useState("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     useEffect(() => {
         if (Object.keys(profile).length > 0) {
@@ -38,13 +37,8 @@ const MeEditForm = (props: Props) => {
         }
     }, [profile]);
 
-    useEffect(() => {
-        if (isProfileUpdated) setIsSubmitting(false);
-    }, [isProfileUpdated]);
-
     const onSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIsSubmitting(true);
 
         switch (props.toEdit) {
             case ToEdit.avatar:
@@ -78,7 +72,7 @@ const MeEditForm = (props: Props) => {
                     onChange={(e) => setAvatarUrl(e.currentTarget.value)}
                     placeholder="Input Avatar Url"
                     required
-                    disabled={isSubmitting}
+                    disabled={isUpdatingProfile}
                 />
             )}
 
@@ -90,7 +84,7 @@ const MeEditForm = (props: Props) => {
                     onChange={(e) => setFullName(e.currentTarget.value)}
                     placeholder="Input Full Name"
                     required
-                    disabled={isSubmitting}
+                    disabled={isUpdatingProfile}
                 />
             )}
 
@@ -102,7 +96,7 @@ const MeEditForm = (props: Props) => {
                     onChange={(e) => setCareer(e.currentTarget.value)}
                     placeholder="Input Career"
                     required
-                    disabled={isSubmitting}
+                    disabled={isUpdatingProfile}
                 />
             )}
 
@@ -114,16 +108,16 @@ const MeEditForm = (props: Props) => {
                     onChange={(e) => setIntro(e.currentTarget.value)}
                     placeholder="Input Intro"
                     required
-                    disabled={isSubmitting}
+                    disabled={isUpdatingProfile}
                 />
             )}
 
             <div className="flex mt-2">
-                <Button type="submit" color="green-700" className="mt-2" isLoading={isSubmitting}>
+                <Button type="submit" color="green-700" className="mt-2" isLoading={isUpdatingProfile}>
                     Save
                 </Button>
 
-                {!isSubmitting && (
+                {!isUpdatingProfile && (
                     <Button type="button" color="red-600" className="mt-2 ml-2" onClick={props.onCancelClicked}>
                         Cancel
                     </Button>

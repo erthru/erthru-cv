@@ -121,15 +121,6 @@ const Topbar = () => {
                     onClick={() => onItemClicked(NavigationKey.documents)}
                 />
 
-                <TopbarItem
-                    title="SETTINGS"
-                    to="/admin/settings"
-                    icon={faFileCode}
-                    className="mt-2"
-                    isActive={currentActiveKey === NavigationKey.settings}
-                    onClick={() => onItemClicked(NavigationKey.settings)}
-                />
-
                 <TopbarItem title="LOGOUT" to="/logout" icon={faSignOutAlt} className="mt-2" />
             </div>
         </Card>

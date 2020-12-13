@@ -19,6 +19,7 @@ export enum LanguageField {
 }
 
 export enum LanguageLevel {
+    native = "native",
     active = "active",
     passive = "passive",
 }

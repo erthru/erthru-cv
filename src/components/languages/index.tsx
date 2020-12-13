@@ -19,7 +19,7 @@ const Languages = () => {
             {(isFetchingLanguages || isRemovingLanguage) && <ProgressBar color="red-600" className="mt-4 mx-auto text-4xl" />}
 
             {!isFetchingLanguages && !isRemovingLanguage && (
-                <div className="w-full mt-4">
+                <div className="w-full">
                     <Table
                         className="w-full"
                         headers={["Lang", "Level", "Actions"]}

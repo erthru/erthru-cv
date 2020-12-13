@@ -1,4 +1,6 @@
-export enum LANGUAGE_TYPES {}
+export enum LANGUAGE_TYPES {
+    T
+}
 
 export const LANGUAGE_COL_NAME = "languages";
 

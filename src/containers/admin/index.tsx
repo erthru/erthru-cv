@@ -7,9 +7,11 @@ import { Store } from "../../plugins/store";
 import { fetchFormalEducations } from "../../plugins/store/formal-education/actions";
 import { fetchProfile } from "../../plugins/store/profile/actions";
 import { fetchWorkExperiences } from "../../plugins/store/work-experience/actions";
+import AddFormalEducation from "./add-formal-education";
 import AddWorkExperience from "./add-work-experience";
 import Contacts from "./contacts";
 import Documents from "./documents";
+import EditFormalEducation from "./edit-formal-education";
 import EditWorkExperience from "./edit-work-experience";
 import FormalEducations from "./formal-educations";
 import Languages from "./languages";
@@ -62,6 +64,8 @@ const Admin = () => {
                         <Route exact path="/admin/work-experience/add" component={AddWorkExperience} />
                         <Route exact path="/admin/work-experience/edit/:id" component={EditWorkExperience} />
                         <Route exact path="/admin/formal-educations" component={FormalEducations} />
+                        <Route exact path="/admin/formal-education/add" component={AddFormalEducation} />
+                        <Route exact path="/admin/formal-education/edit/:id" component={EditFormalEducation} />
                         <Route exact path="/admin/languages" component={Languages} />
                         <Route exact path="/admin/portfolios" component={Portfolios} />
                         <Route exact path="/admin/contacts" component={Contacts} />

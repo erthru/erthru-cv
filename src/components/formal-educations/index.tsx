@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Store } from "../../plugins/store";
+import { removeFormalEducation } from "../../plugins/store/formal-education/actions";
 import { FormalEducation } from "../../plugins/store/formal-education/types";
 import AddNewButton from "../add-new-button";
 import Card from "../card";
@@ -11,6 +12,7 @@ import SearchInput from "../search-input";
 import Table from "../table";
 
 const FormalEducations = () => {
+    const dispatch = useDispatch();
     const formalEducations = useSelector((store: Store) => store.formalEducation.formalEducations) as FormalEducation[];
     const isFetchingFormalEducations = useSelector((store: Store) => store.formalEducation.isFetchingFormalEducations) as boolean;
     const isRemovingFormalEducation = useSelector((store: Store) => store.formalEducation.isRemovingFormalEducation) as boolean;
@@ -64,7 +66,7 @@ const FormalEducations = () => {
                                         </div>
 
                                         <div className="w-full flex mt-1">
-                                            <RemoveButton className="mx-auto" onClick={() => null} />
+                                            <RemoveButton className="mx-auto" onClick={() => dispatch(removeFormalEducation(formalEducation.id!!))} />
                                         </div>
                                     </div>,
                                 ];

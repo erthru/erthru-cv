@@ -47,11 +47,9 @@ export const fetchWorkExperiences = () => async (dispatch: Dispatch<WorkExperien
 export const fetchWorkExperience = (id: string) => async (dispatch: Dispatch<WorkExperienceAction>) => {
     try {
         dispatch({ type: WORK_EXPERIENCE_TYPES.FETCH_WORK_EXPERIENCE_PREPARE });
-
-        let workExperience: any = {};
         const workExperienceDoc = await db.collection(WORK_EXPERIENCE_COL_NAME).doc(id).get();
 
-        workExperience = {
+        let workExperience = {
             id: workExperienceDoc.id,
             ...workExperienceDoc.data(),
         };

@@ -34,3 +34,55 @@ export const fetchFormalEducations = () => async (dispatch: Dispatch<FormalEduca
         });
     } catch (e) {}
 };
+
+export const fetchFormalEducation = (id: string) => async (dispatch: Dispatch<FormalEducationAction>) => {
+    try {
+        dispatch({ type: FORMAL_EDUCATION_TYPES.FETCH_FORMAL_EDUCATION_PREPARE });
+        const formalEducationDoc = await db.collection(FORMAL_EDUCATION_COL_NAME).doc(id).get();
+
+        let formalEducation: any = {
+            id: formalEducationDoc.id,
+            ...formalEducationDoc.data(),
+        };
+
+        dispatch({ type: FORMAL_EDUCATION_TYPES.FETCH_FORMAL_EDUCATION_COMPLETED, payload: { formalEducation: formalEducation as FormalEducation } });
+    } catch (e) {}
+};
+
+export const addFormalEducation = (formalEducation: FormalEducation) => async (dispatch: Dispatch<FormalEducationAction>) => {
+    try {
+        dispatch({ type: FORMAL_EDUCATION_TYPES.ADD_FORMAL_EDUCATION_PREPARE });
+
+        await db.collection(FORMAL_EDUCATION_COL_NAME).add({
+            [FormalEducationField.createdOn]: new Date(),
+            [FormalEducationField.updatedOn]: new Date(),
+            ...formalEducation,
+        });
+
+        dispatch({ type: FORMAL_EDUCATION_TYPES.ADD_FORMAL_EDUCATION_COMPLETED });
+    } catch (e) {}
+};
+
+export const updateFormalEducation = (id: string, formalEducation: FormalEducation) => async (dispatch: Dispatch<FormalEducationAction>) => {
+    try {
+        dispatch({ type: FORMAL_EDUCATION_TYPES.UPDATE_FORMAL_EDUCATION_PREPARE });
+
+        await db
+            .collection(FORMAL_EDUCATION_COL_NAME)
+            .doc(id)
+            .update({
+                [FormalEducationField.updatedOn]: new Date(),
+                ...formalEducation,
+            });
+
+        dispatch({ type: FORMAL_EDUCATION_TYPES.UPDATE_FORMAL_EDUCATION_COMPLETED });
+    } catch (e) {}
+};
+
+export const removeFormalEducation = (id: string) => async (dispatch: Dispatch<FormalEducationAction>) => {
+    try {
+        dispatch({ type: FORMAL_EDUCATION_TYPES.REMOVE_FORMAL_EDUCATION_PREPARE });
+        await db.collection(FORMAL_EDUCATION_COL_NAME).doc(id).delete();
+        dispatch({ type: FORMAL_EDUCATION_TYPES.REMOVE_FORMAL_EDUCATION_COMPLETED });
+    } catch (e) {}
+};

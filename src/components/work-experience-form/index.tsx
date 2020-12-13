@@ -63,8 +63,8 @@ const WorkExperienceForm = (props: Props) => {
 
         if (activities.length === 0) setIsActivitiesEmpty(true);
         else {
+            setReadyToCheckChanges(true);
             if (props.id !== undefined) {
-                setReadyToCheckChanges(true);
                 dispatch(
                     updateWorkExperience(props.id, {
                         timeframe: timeframe,
@@ -73,7 +73,6 @@ const WorkExperienceForm = (props: Props) => {
                     })
                 );
             } else {
-                setReadyToCheckChanges(true);
                 dispatch(
                     addWorkExperience({
                         timeframe: timeframe,

@@ -8,6 +8,7 @@ import { addWorkExperience, fetchWorkExperience, updateWorkExperience } from "..
 import { WorkExperience } from "../../plugins/store/work-experience/types";
 import Alert, { AlertMode } from "../alert";
 import Button from "../button";
+import Card from "../card";
 import Input from "../input";
 import ProgressBar from "../progress-bar";
 
@@ -85,7 +86,7 @@ const WorkExperienceForm = (props: Props) => {
     };
 
     return (
-        <div className="w-full bg-white rounded-xl flex flex-wrap p-6">
+        <Card className="w-full bg-white flex flex-wrap p-6">
             {isFetchingWorkExperience && <ProgressBar className="mt-4 mx-auto text-4xl" color="red-600" />}
 
             {!isFetchingWorkExperience && (
@@ -164,7 +165,7 @@ const WorkExperienceForm = (props: Props) => {
                     </form>
                 </div>
             )}
-        </div>
+        </Card>
     );
 };
 

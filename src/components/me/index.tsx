@@ -7,6 +7,7 @@ import { Store } from "../../plugins/store";
 import { useSelector } from "react-redux";
 import MeEditForm, { ToEdit } from "../me-edit-form";
 import { Profile } from "../../plugins/store/profile/types";
+import Card from "../card";
 
 const Me = () => {
     const profile = useSelector((store: Store) => store.profile.profile) as Profile;
@@ -51,7 +52,7 @@ const Me = () => {
     };
 
     return (
-        <div>
+        <Card>
             <div className="w-full bg-white rounded-xl flex flex-wrap">
                 {isFetchingProfile && (
                     <div className="flex w-full p-10">
@@ -62,7 +63,7 @@ const Me = () => {
                 {!isFetchingProfile && (
                     <div className="w-full h-64 rounded-t-xl relative">
                         <img src={profile.coverUrl} alt="cover" className="w-full h-full rounded-t-xl" style={{ objectFit: "cover" }} />
-                        <div className="w-full h-full absolute top-0 rounded-t-xl" style={{ backgroundColor: "rgba(255, 138, 138, 0.8)" }}></div>
+                        <div className="w-full h-full absolute top-0 rounded-t-xl" style={{ backgroundColor: "rgba(255, 148, 148, 0.8)" }}></div>
 
                         <div className="absolute" style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
                             <div className="w-24 h-24 flex mx-auto relative">
@@ -124,7 +125,7 @@ const Me = () => {
             <Modal title={toEditTitle} isShown={isEditModalShown}>
                 <MeEditForm toEdit={toEdit} onCancelClicked={() => setIsEditModalShown(false)} />
             </Modal>
-        </div>
+        </Card>
     );
 };
 

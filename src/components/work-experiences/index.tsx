@@ -4,6 +4,7 @@ import { Store } from "../../plugins/store";
 import { removeWorkExperience } from "../../plugins/store/work-experience/actions";
 import { WorkExperience } from "../../plugins/store/work-experience/types";
 import AddNewButton from "../add-new-button";
+import Card from "../card";
 import EditButton from "../edit-button";
 import ProgressBar from "../progress-bar";
 import RemoveButton from "../remove-button";
@@ -39,7 +40,7 @@ const WorkExperiences = () => {
     }, [search]);
 
     return (
-        <div className="bg-white w-full rounded-xl p-6 flex flex-wrap">
+        <Card className="w-full p-6 flex flex-wrap">
             <div className="flex flex-wrap w-full">
                 <AddNewButton to="/admin/work-experience/add" className="mx-auto md:mx-0" />
                 <SearchInput value={search} onChange={(e) => setSearch(e.currentTarget.value)} className="mx-auto md:ml-auto md:mr-0 mt-3 md:mt-0" />
@@ -74,7 +75,7 @@ const WorkExperiences = () => {
                     />
                 </div>
             )}
-        </div>
+        </Card>
     );
 };
 

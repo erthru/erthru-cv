@@ -17,6 +17,7 @@ import { Store } from "../../plugins/store";
 import { setNavigationKey } from "../../plugins/store/navigation/actions";
 import { NavigationKey } from "../../plugins/store/navigation/types";
 import { Profile } from "../../plugins/store/profile/types";
+import Card from "../card";
 import ProgressBar from "../progress-bar";
 import TopbarItem from "../topbar-item";
 import "./index.css";
@@ -38,7 +39,7 @@ const Topbar = () => {
     };
 
     return (
-        <div className="w-full py-3 px-4 bg-white rounded-xl items-center flex flex-wrap">
+        <Card className="w-full py-3 px-4 items-center flex flex-wrap">
             <div className="flex w-full items-center">
                 <FontAwesomeIcon
                     icon={faBars}
@@ -131,7 +132,7 @@ const Topbar = () => {
 
                 <TopbarItem title="LOGOUT" to="/logout" icon={faSignOutAlt} className="mt-2" />
             </div>
-        </div>
+        </Card>
     );
 };
 

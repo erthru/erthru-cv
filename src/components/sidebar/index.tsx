@@ -5,6 +5,7 @@ import { APP_TITLE } from "../../helpers/environments";
 import { Store } from "../../plugins/store";
 import { setNavigationKey } from "../../plugins/store/navigation/actions";
 import { NavigationKey } from "../../plugins/store/navigation/types";
+import Card from "../card";
 import SidebarItem from "../sidebar-item";
 
 type Props = {
@@ -16,7 +17,7 @@ const Sidebar = (props: Props) => {
     const dispatch = useDispatch();
 
     return (
-        <div className={"bg-white hidden lg:flex flex-wrap rounded-xl py-6 " + props.className} style={{ width: "350px" }}>
+        <Card className={"hidden lg:flex flex-wrap py-6 " + props.className} style={{ width: "350px" }}>
             <div className="flex flex-wrap mx-auto text-center">
                 <span className="text-2xl font-bold text-gray-600 w-full">{APP_TITLE.split(" ")[0]}</span>
                 <span className="text-lg font-bold text-gray-400 w-full -mt-1">{APP_TITLE.split(" ")[1]}</span>
@@ -86,7 +87,7 @@ const Sidebar = (props: Props) => {
             />
 
             <div className="h-full" />
-        </div>
+        </Card>
     );
 };
 

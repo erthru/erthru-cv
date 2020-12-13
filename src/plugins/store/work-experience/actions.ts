@@ -6,7 +6,7 @@ export const fetchWorkExperiences = () => async (dispatch: Dispatch<WorkExperien
     try {
         dispatch({ type: WORK_EXPERIENCE_TYPES.FETCH_WORK_EXPERIENCES_PREPARE });
 
-        let workExperiences: any[] = [];
+        const workExperiences: any[] = [];
         let workExperiencesSnapshot = await db.collection(WORK_EXPERIENCE_COL_NAME).orderBy(WorkExperienceField.createdOn, "desc").get();
 
         if (workExperiencesSnapshot.docs.length === 0) {

@@ -6,7 +6,7 @@ export const fetchProfile = () => async (dispatch: Dispatch<ProfileAction>) => {
     try {
         dispatch({ type: PROFILE_TYPES.FETCH_PROFILE_PREPARE });
 
-        let profiles: any[] = [];
+        const profiles: any[] = [];
         let profilesSnapshots = await db.collection(PROFILE_COL_NAME).get();
 
         if (profilesSnapshots.docs.length === 0) {
@@ -17,7 +17,7 @@ export const fetchProfile = () => async (dispatch: Dispatch<ProfileAction>) => {
                 [ProfileField.intro]:
                     "Very enthusiastic in following technological developments such as web (front end / back end) development, mobile (android / ios) development and many more. Had 3 years of experience as a developer. Always using git version control for my repository. Since I’m a developer, I’m very interested in learning and moving forward into latest technologies required to work with it.",
                 [ProfileField.career]: "Software Developer",
-                [ProfileField.currentResidenceAddress]: "Jl. Something Inside in Indonesia or Maybe in Sulawesi, Jakarta",
+                [ProfileField.currentResidenceAddress]: "Jl. Something Inside in Indonesia or Maybe in Sulawesi, Gorontalo",
                 [ProfileField.createdOn]: new Date(),
                 [ProfileField.updatedOn]: new Date(),
             });

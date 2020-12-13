@@ -19,9 +19,9 @@ export enum LanguageField {
 }
 
 export enum LanguageLevel {
-    native = "native",
-    active = "active",
-    passive = "passive",
+    native = "Native",
+    active = "Active",
+    passive = "Passive",
 }
 
 export type Language = {
@@ -37,7 +37,7 @@ export type LanguageState = {
     isNewLanguageAdded: boolean;
     isLanguageUpdated: boolean;
     isLanguageRemoved: boolean;
-    isFetchingLanguage: boolean;
+    isFetchingLanguages: boolean;
     isAddingLanguage: boolean;
     isUpdaingLanguage: boolean;
     isRemovingLanguage: boolean;

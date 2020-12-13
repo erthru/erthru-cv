@@ -5,11 +5,16 @@ import { Link } from "react-router-dom";
 
 type Props = {
     className?: string;
-    to: string;
+    to?: string;
+    onClick?(): void;
 };
 
 const EditButton = (props: Props) => (
-    <Link to={props.to} className={"flex text-yellow-600 items-center font-medium cursor-pointer " + props.className}>
+    <Link
+        to={props.to === undefined ? "#" : props.to}
+        className={"flex text-yellow-600 items-center font-medium cursor-pointer " + props.className}
+        onClick={props.onClick}
+    >
         <FontAwesomeIcon icon={faEdit} />
         <span className="ml-2">Edit</span>
     </Link>

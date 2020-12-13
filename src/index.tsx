@@ -3,14 +3,14 @@ import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/styles/index.css";
 import { BrowserRouter, Route } from "react-router-dom";
-import App from "./containers/app";
+import Landing from "./containers";
 import { Provider } from "react-redux";
 import store from "./plugins/store";
 
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-            <Route component={App} />
+            <Route component={Landing} />
         </BrowserRouter>
     </Provider>,
     document.getElementById("root")

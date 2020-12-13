@@ -5,7 +5,7 @@ import { APP_TITLE } from "../../../helpers/environments";
 
 const Overview = () => (
     <div>
-        <Helmet title={"Admin Overview - " + APP_TITLE} />
+        <Helmet title={"Overview - " + APP_TITLE} />
         <Me />
     </div>
 );

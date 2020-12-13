@@ -15,7 +15,7 @@ const FormalEducations = () => {
 
     return (
         <div>
-            <Helmet title={"Admin Formal Educations - " + APP_TITLE} />
+            <Helmet title={"Formal Educations - " + APP_TITLE} />
             <_FormalEducations />
         </div>
     );

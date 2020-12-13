@@ -14,7 +14,6 @@ export type Profile = {
     [ProfileField.coverUrl]?: string;
     [ProfileField.intro]?: string;
     [ProfileField.career]?: string;
-    [ProfileField.currentResidenceAddress]?: string;
     [ProfileField.createdOn]?: Date;
     [ProfileField.updatedOn]?: Date;
 };
@@ -25,7 +24,6 @@ export enum ProfileField {
     coverUrl = "coverUrl",
     intro = "intro",
     career = "career",
-    currentResidenceAddress = "currentResidenceAddress",
     createdOn = "createdOn",
     updatedOn = "updatedOn",
 }

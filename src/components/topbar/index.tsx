@@ -53,7 +53,7 @@ const Topbar = () => {
                     {!isFetchingProfile && <span className="text-gray-600 font-bold ml-1">{profile.fullName?.split(" ")[0]}</span>}
                 </div>
 
-                <Link to="/logout" className="ml-4 lg:ml-auto cursor-pointer hidden lg:block">
+                <Link to="/logout" className="ml-4 lg:ml-auto cursor-pointer">
                     <FontAwesomeIcon icon={faSignOutAlt} className="text-red-600 text-xl" />
                 </Link>
             </div>
@@ -120,8 +120,6 @@ const Topbar = () => {
                     isActive={currentActiveKey === NavigationKey.documents}
                     onClick={() => onItemClicked(NavigationKey.documents)}
                 />
-
-                <TopbarItem title="LOGOUT" to="/logout" icon={faSignOutAlt} className="mt-2" />
             </div>
         </Card>
     );

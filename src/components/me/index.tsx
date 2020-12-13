@@ -67,7 +67,7 @@ const Me = () => {
                 {!isFetchingProfile && (
                     <div className="w-full h-64 rounded-t-xl relative">
                         <img src={profile.coverUrl} alt="cover" className="w-full h-full rounded-t-xl" style={{ objectFit: "cover" }} />
-                        <div className="w-full h-full absolute top-0 rounded-t-xl" style={{ backgroundColor: "rgba(255, 148, 148, 0.8)" }}></div>
+                        <div className="w-full h-full absolute top-0 rounded-t-xl" style={{ backgroundColor: "rgba(255, 148, 148, 0.7)" }}></div>
 
                         <div className="absolute" style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
                             <div className="w-24 h-24 flex mx-auto relative">

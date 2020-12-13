@@ -11,9 +11,21 @@ export const fetchWorkExperiences = () => async (dispatch: Dispatch<WorkExperien
 
         if (workExperiencesSnapshot.docs.length === 0) {
             await db.collection(WORK_EXPERIENCE_COL_NAME).add({
-                [WorkExperienceField.timeframe]: "2016 - Present",
-                [WorkExperienceField.place]: "Cafe Stile",
-                [WorkExperienceField.activities]: ["Serving guest", "Cosplay as sadistic character"],
+                [WorkExperienceField.timeframe]: "01/2018 - Present",
+                [WorkExperienceField.place]: "Blod Id",
+                [WorkExperienceField.activities]: ["Develop backend web using Laravel", "Develop android app using Android Studio"],
+                [WorkExperienceField.createdOn]: new Date(),
+                [WorkExperienceField.updatedOn]: new Date(),
+            });
+
+            await db.collection(WORK_EXPERIENCE_COL_NAME).add({
+                [WorkExperienceField.timeframe]: "01/2019 - 08/2019",
+                [WorkExperienceField.place]: "PT Mitra Net Data Nusantara",
+                [WorkExperienceField.activities]: [
+                    "Develop backend web using Codeigniter",
+                    "Develop android app using Android Studio",
+                    "Develop desktop app using JavaFX",
+                ],
                 [WorkExperienceField.createdOn]: new Date(),
                 [WorkExperienceField.updatedOn]: new Date(),
             });

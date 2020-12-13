@@ -11,12 +11,11 @@ export const fetchProfile = () => async (dispatch: Dispatch<ProfileAction>) => {
 
         if (profilesSnapshots.docs.length === 0) {
             await db.collection(PROFILE_COL_NAME).add({
-                [ProfileField.fullName]: "Maika Sakuranomiya",
-                [ProfileField.avatarUrl]:
-                    "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9b36e35b-648b-4842-9d0e-9a7267c791be/dbodh2f-9beb6117-8dc4-4229-a29d-7a60bbc93f1b.png/v1/fill/w_1024,h_576,q_80,strp/sakuranomiya_maika_minimalist_by_desonime_dbodh2f-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01NzYiLCJwYXRoIjoiXC9mXC85YjM2ZTM1Yi02NDhiLTQ4NDItOWQwZS05YTcyNjdjNzkxYmVcL2Rib2RoMmYtOWJlYjYxMTctOGRjNC00MjI5LWEyOWQtN2E2MGJiYzkzZjFiLnBuZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.s1ktek-4tpr13FZeRPZL1QZyRIaCvmamZ67Ik3o0-D4",
+                [ProfileField.fullName]: "Suprianto Djamalu",
+                [ProfileField.avatarUrl]: "https://i.ibb.co/5K3Nd8P/me.jpg",
                 [ProfileField.intro]:
-                    "16-year-old girl who despite having a positive and cheerful personality, unintentionally gains a sadistic look in her eyes whenever she smiles. This look catches the attention of Dino who scouts her to be the sadistic girl waitress at Cafe Stile.",
-                [ProfileField.career]: "Maid Cafe",
+                    "Very enthusiastic in following technological developments such as web (front end / back end) development, mobile (android / ios) development and many more. Had 3 years of experience as a developer. Always using git version control for my repository. Since I’m a developer, I’m very interested in learning and moving forward into latest technologies required to work with it.",
+                [ProfileField.career]: "Software Developer",
                 [ProfileField.createdOn]: new Date(),
                 [ProfileField.updatedOn]: new Date(),
             });

@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import navigationReducer from "./navigation/reducers";
 import profileReducer from "./profile/reducers";
 import workExperienceReducer from "./work-experience/reducers";
+import formalEducationReducer from "./formal-education/reducers";
 
 const combinedReducers = combineReducers({
     navigation: navigationReducer,
     profile: profileReducer,
     workExperience: workExperienceReducer,
+    formalEducation: formalEducationReducer,
 });
 
 const store = createStore(combinedReducers, {}, applyMiddleware(...[thunk]));

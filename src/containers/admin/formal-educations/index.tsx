@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { APP_TITLE } from "../../../helpers/environments";
 import { setNavigationKey } from "../../../plugins/store/navigation/actions";
 import { NavigationKey } from "../../../plugins/store/navigation/types";
+import _FormalEducations from "../../../components/formal-educations";
 
 const FormalEducations = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const FormalEducations = () => {
     return (
         <div>
             <Helmet title={"Admin Formal Educations - " + APP_TITLE} />
+            <_FormalEducations />
         </div>
     );
 };

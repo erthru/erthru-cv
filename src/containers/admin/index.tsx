@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Sidebar from "../../components/sidebar";
 import Topbar from "../../components/topbar";
 import { Store } from "../../plugins/store";
+import { fetchFormalEducations } from "../../plugins/store/formal-education/actions";
 import { fetchProfile } from "../../plugins/store/profile/actions";
 import { fetchWorkExperiences } from "../../plugins/store/work-experience/actions";
 import AddWorkExperience from "./add-work-experience";
@@ -23,16 +24,29 @@ const Admin = () => {
     const isNewWorkExperienceAdded = useSelector((store: Store) => store.workExperience.isNewWorkExperienceAdded) as boolean;
     const isWorkExperienceUpdated = useSelector((store: Store) => store.workExperience.isWorkExperienceUpdated) as boolean;
     const isWorkExperienceRemoved = useSelector((store: Store) => store.workExperience.isWorkExperienceRemoved) as boolean;
+    const isNewFormalEducationAdded = useSelector((store: Store) => store.formalEducation.isNewFormalEducationAdded) as boolean;
+    const isFormalEducationUpdated = useSelector((store: Store) => store.formalEducation.isFormalEducationUpdated) as boolean;
+    const isFormalEducationRemoved = useSelector((store: Store) => store.formalEducation.isFormalEducationRemoved) as boolean;
 
     useEffect(() => {
         dispatch(fetchProfile());
         dispatch(fetchWorkExperiences());
+        dispatch(fetchFormalEducations());
     }, []);
 
     useEffect(() => {
         if (isProfileUpdated) dispatch(fetchProfile());
         if (isNewWorkExperienceAdded || isWorkExperienceUpdated || isWorkExperienceRemoved) dispatch(fetchWorkExperiences());
-    }, [isProfileUpdated, isNewWorkExperienceAdded, isWorkExperienceUpdated, isWorkExperienceRemoved]);
+        if (isNewFormalEducationAdded || isFormalEducationUpdated || isFormalEducationRemoved) dispatch(fetchFormalEducations());
+    }, [
+        isProfileUpdated,
+        isNewWorkExperienceAdded,
+        isWorkExperienceUpdated,
+        isWorkExperienceRemoved,
+        isNewFormalEducationAdded,
+        isFormalEducationUpdated,
+        isFormalEducationRemoved,
+    ]);
 
     return (
         <div className="flex p-4 lg:p-6 container mx-auto">

@@ -1,5 +1,12 @@
 export enum LANGUAGE_TYPES {
-    T
+    FETCH_LANGUAGES_PREPARE = "FETCH_LANGUAGES_PREPARE",
+    FETCH_LANGUAGES_COMPLETED = "FETCH_LANGUAGES_COMPLETED",
+    ADD_LANGUAGE_PREPARE = "ADD_LANGUAGE_PREPARE",
+    ADD_LANGUAGE_COMPLETED = "ADD_LANGUAGE_COMPLETED",
+    UPDATE_LANGUAGE_PREPARE = "UPDATE_LANGUAGE_PREPARE",
+    UPDATE_LANGUAGE_COMPLETED = "UPDATE_LANGUAGE_COMPLETED",
+    REMOVE_LANGUAGE_PREPARE = "REMOVE_LANGUAGE_PREPARE",
+    REMOVE_LANGUAGE_COMPLETED = "REMOVE_LANGUAGE_COMPLETED",
 }
 
 export const LANGUAGE_COL_NAME = "languages";
@@ -22,4 +29,22 @@ export type Language = {
     [LanguageField.level]?: LanguageLevel;
     [LanguageField.createdOn]?: Date;
     [LanguageField.updatedOn]?: Date;
+};
+
+export type LanguageState = {
+    languages: Language[];
+    isNewLanguageAdded: boolean;
+    isLanguageUpdated: boolean;
+    isLanguageRemoved: boolean;
+    isFetchingLanguage: boolean;
+    isAddingLanguage: boolean;
+    isUpdaingLanguage: boolean;
+    isRemovingLanguage: boolean;
+};
+
+export type LanguageAction = {
+    type: LANGUAGE_TYPES;
+    payload?: {
+        languages: Language[];
+    };
 };

@@ -85,14 +85,7 @@ const Sidebar = (props: Props) => {
                 onClick={() => dispatch(setNavigationKey(NavigationKey.documents))}
             />
 
-            <SidebarItem
-                icon={faTools}
-                title="SETTINGS"
-                className="mt-2"
-                isActive={currentActiveKey === NavigationKey.settings}
-                to="/admin/settings"
-                onClick={() => dispatch(setNavigationKey(NavigationKey.settings))}
-            />
+            <div className="h-full" />
         </div>
     );
 };

@@ -14,6 +14,7 @@ type Props = {
 
 export enum ToEdit {
     avatar = "avatar",
+    cover = "cover",
     fullName = "fullName",
     career = "career",
     intro = "intro",
@@ -24,6 +25,7 @@ const MeEditForm = (props: Props) => {
     const profile = useSelector((store: Store) => store.profile.profile) as Profile;
     const isUpdatingProfile = useSelector((store: Store) => store.profile.isUpdatingProfile) as boolean;
     const [avatarUrl, setAvatarUrl] = useState("");
+    const [coverUrl, setCoverUrl] = useState("");
     const [fullName, setFullName] = useState("");
     const [career, setCareer] = useState("");
     const [intro, setIntro] = useState("");
@@ -31,6 +33,7 @@ const MeEditForm = (props: Props) => {
     useEffect(() => {
         if (Object.keys(profile).length > 0) {
             setAvatarUrl(profile.avatarUrl!!);
+            setCoverUrl(profile.coverUrl!!);
             setFullName(profile.fullName!!);
             setCareer(profile.career!!);
             setIntro(profile.intro!!);
@@ -43,6 +46,10 @@ const MeEditForm = (props: Props) => {
         switch (props.toEdit) {
             case ToEdit.avatar:
                 dispatch(updateProfile({ avatarUrl: avatarUrl }));
+                break;
+
+            case ToEdit.cover:
+                dispatch(updateProfile({ coverUrl: coverUrl }));
                 break;
 
             case ToEdit.fullName:
@@ -71,6 +78,18 @@ const MeEditForm = (props: Props) => {
                     value={avatarUrl}
                     onChange={(e) => setAvatarUrl(e.currentTarget.value)}
                     placeholder="Input Avatar Url"
+                    required
+                    disabled={isUpdatingProfile}
+                />
+            )}
+
+            {props.toEdit === ToEdit.cover && (
+                <Input
+                    type="text"
+                    className="w-full mt-1"
+                    value={coverUrl}
+                    onChange={(e) => setCoverUrl(e.currentTarget.value)}
+                    placeholder="Input Cover Url"
                     required
                     disabled={isUpdatingProfile}
                 />

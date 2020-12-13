@@ -13,6 +13,7 @@ export const fetchProfile = () => async (dispatch: Dispatch<ProfileAction>) => {
             await db.collection(PROFILE_COL_NAME).add({
                 [ProfileField.fullName]: "Suprianto Djamalu",
                 [ProfileField.avatarUrl]: "https://i.ibb.co/5K3Nd8P/me.jpg",
+                [ProfileField.coverUrl]: "https://i.ibb.co/ftLQmtM/pexels-junior-teixeira-2047905-1.jpg",
                 [ProfileField.intro]:
                     "Very enthusiastic in following technological developments such as web (front end / back end) development, mobile (android / ios) development and many more. Had 3 years of experience as a developer. Always using git version control for my repository. Since I’m a developer, I’m very interested in learning and moving forward into latest technologies required to work with it.",
                 [ProfileField.career]: "Software Developer",

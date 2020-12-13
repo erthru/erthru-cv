@@ -46,6 +46,10 @@ const Me = () => {
                 setToEditTitle("Edit Intro");
                 break;
 
+            case ToEdit.currentResidenceAddress:
+                setToEditTitle("Edit Current Residence Address");
+                break;
+
             default:
                 break;
         }
@@ -104,9 +108,20 @@ const Me = () => {
                         <div className="w-full flex">
                             <div className="flex mx-auto items-center pl-6">
                                 <span className="font-medium text-gray-400 text-lg">{profile?.career}</span>
-
                                 <FontAwesomeIcon className="text-gray-400 ml-2 cursor-pointer" icon={faEdit} onClick={() => _toEdit(ToEdit.career)} />
                             </div>
+                        </div>
+
+                        <span className="w-full text-center">. . .</span>
+
+                        <div className="flex items-center md:w-96 mx-auto">
+                            <p className="text-gray-600 mt-2 text-center">{profile?.currentResidenceAddress}</p>
+
+                            <FontAwesomeIcon
+                                className="text-gray-600 ml-2 cursor-pointer"
+                                icon={faEdit}
+                                onClick={() => _toEdit(ToEdit.currentResidenceAddress)}
+                            />
                         </div>
 
                         <span className="w-full text-center">. . .</span>
@@ -114,7 +129,6 @@ const Me = () => {
                         <div className="w-full flex items-center md:px-10">
                             <div className="mx-auto flex items-center pl-6">
                                 <p className="text-gray-600 mt-2 text-center">{profile?.intro}</p>
-
                                 <FontAwesomeIcon className="text-gray-600 ml-2 cursor-pointer" icon={faEdit} onClick={() => _toEdit(ToEdit.intro)} />
                             </div>
                         </div>

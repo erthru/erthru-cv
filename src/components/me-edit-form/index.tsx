@@ -18,6 +18,7 @@ export enum ToEdit {
     fullName = "fullName",
     career = "career",
     intro = "intro",
+    currentResidenceAddress = "currentResidenceAddress",
 }
 
 const MeEditForm = (props: Props) => {
@@ -29,6 +30,7 @@ const MeEditForm = (props: Props) => {
     const [fullName, setFullName] = useState("");
     const [career, setCareer] = useState("");
     const [intro, setIntro] = useState("");
+    const [currentResidenceAddress, setCurrentResidenceAddress] = useState("");
 
     useEffect(() => {
         if (Object.keys(profile).length > 0) {
@@ -37,6 +39,7 @@ const MeEditForm = (props: Props) => {
             setFullName(profile.fullName!!);
             setCareer(profile.career!!);
             setIntro(profile.intro!!);
+            setCurrentResidenceAddress(profile.currentResidenceAddress!!);
         }
     }, [profile]);
 
@@ -62,6 +65,10 @@ const MeEditForm = (props: Props) => {
 
             case ToEdit.intro:
                 dispatch(updateProfile({ intro: intro }));
+                break;
+
+            case ToEdit.currentResidenceAddress:
+                dispatch(updateProfile({ currentResidenceAddress: currentResidenceAddress }));
                 break;
 
             default:
@@ -126,6 +133,18 @@ const MeEditForm = (props: Props) => {
                     value={intro}
                     onChange={(e) => setIntro(e.currentTarget.value)}
                     placeholder="Input Intro"
+                    required
+                    disabled={isUpdatingProfile}
+                />
+            )}
+
+            {props.toEdit === ToEdit.currentResidenceAddress && (
+                <Input
+                    isTextArea
+                    className="w-full mt-1"
+                    value={currentResidenceAddress}
+                    onChange={(e) => setCurrentResidenceAddress(e.currentTarget.value)}
+                    placeholder="Input Current Residence Address"
                     required
                     disabled={isUpdatingProfile}
                 />

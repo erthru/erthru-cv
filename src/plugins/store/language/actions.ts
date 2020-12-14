@@ -44,3 +44,21 @@ export const fetchLanguages = () => async (dispatch: Dispatch<LanguageAction>) =
         dispatch({ type: LANGUAGE_TYPES.FETCH_LANGUAGES_COMPLETED, payload: { languages: languages as Language[] } });
     } catch (e) {}
 };
+
+export const setLanguageToUpdate = (language: Language) => (dispatch: Dispatch<LanguageAction>) => {
+    dispatch({ type: LANGUAGE_TYPES.SET_LANGUAGE_TO_UPDATE, payload: { languageToUpdate: language } });
+};
+
+export const addLanguage = (language: Language) => async (dispatch: Dispatch<LanguageAction>) => {
+    try {
+        dispatch({ type: LANGUAGE_TYPES.ADD_LANGUAGE_PREPARE });
+
+        await db.collection(LANGUAGE_COL_NAME).add({
+            [LanguageField.createdOn]: new Date(),
+            [LanguageField.updatedOn]: new Date(),
+            ...language,
+        });
+
+        dispatch({ type: LANGUAGE_TYPES.ADD_LANGUAGE_COMPLETED });
+    } catch (e) {}
+};

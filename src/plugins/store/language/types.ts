@@ -1,6 +1,7 @@
 export enum LANGUAGE_TYPES {
     FETCH_LANGUAGES_PREPARE = "FETCH_LANGUAGES_PREPARE",
     FETCH_LANGUAGES_COMPLETED = "FETCH_LANGUAGES_COMPLETED",
+    SET_LANGUAGE_TO_UPDATE = "SET_LANGUAGE_TO_UPDATE",
     ADD_LANGUAGE_PREPARE = "ADD_LANGUAGE_PREPARE",
     ADD_LANGUAGE_COMPLETED = "ADD_LANGUAGE_COMPLETED",
     UPDATE_LANGUAGE_PREPARE = "UPDATE_LANGUAGE_PREPARE",
@@ -34,6 +35,7 @@ export type Language = {
 
 export type LanguageState = {
     languages: Language[];
+    languageToUpdate: Language;
     isNewLanguageAdded: boolean;
     isLanguageUpdated: boolean;
     isLanguageRemoved: boolean;
@@ -46,6 +48,7 @@ export type LanguageState = {
 export type LanguageAction = {
     type: LANGUAGE_TYPES;
     payload?: {
-        languages: Language[];
+        languages?: Language[];
+        languageToUpdate?: Language;
     };
 };

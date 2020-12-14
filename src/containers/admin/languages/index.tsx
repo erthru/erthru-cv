@@ -5,6 +5,7 @@ import { APP_TITLE } from "../../../helpers/environments";
 import { setNavigationKey } from "../../../plugins/store/navigation/actions";
 import { NavigationKey } from "../../../plugins/store/navigation/types";
 import _Languages from "../../../components/languages";
+import LanguageForm from "../../../components/language-form";
 
 const Languages = () => {
     const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Languages = () => {
     return (
         <div>
             <Helmet title={"Languages - " + APP_TITLE} />
+            <LanguageForm />
             <_Languages />
         </div>
     );

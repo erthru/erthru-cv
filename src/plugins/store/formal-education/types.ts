@@ -13,6 +13,14 @@ export enum FORMAL_EDUCATION_TYPES {
 
 export const FORMAL_EDUCATION_COL_NAME = "formalEducations";
 
+export enum FormalEducationField {
+    timeframe = "timeframe",
+    place = "place",
+    majors = "majors",
+    createdOn = "createdOn",
+    updatedOn = "updatedOn",
+}
+
 export type FormalEducation = {
     id?: string;
     [FormalEducationField.timeframe]?: string;
@@ -21,14 +29,6 @@ export type FormalEducation = {
     [FormalEducationField.createdOn]?: Date;
     [FormalEducationField.updatedOn]?: Date;
 };
-
-export enum FormalEducationField {
-    timeframe = "timeframe",
-    place = "place",
-    majors = "majors",
-    createdOn = "createdOn",
-    updatedOn = "updatedOn",
-}
 
 export type FormalEducationState = {
     formalEducations: FormalEducation[];

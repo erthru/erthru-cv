@@ -7,6 +7,16 @@ export enum PROFILE_TYPES {
 
 export const PROFILE_COL_NAME = "profiles";
 
+export enum ProfileField {
+    fullName = "fullName",
+    avatarUrl = "avatarUrl",
+    coverUrl = "coverUrl",
+    intro = "intro",
+    career = "career",
+    createdOn = "createdOn",
+    updatedOn = "updatedOn",
+}
+
 export type Profile = {
     id?: string;
     [ProfileField.fullName]?: string;
@@ -17,16 +27,6 @@ export type Profile = {
     [ProfileField.createdOn]?: Date;
     [ProfileField.updatedOn]?: Date;
 };
-
-export enum ProfileField {
-    fullName = "fullName",
-    avatarUrl = "avatarUrl",
-    coverUrl = "coverUrl",
-    intro = "intro",
-    career = "career",
-    createdOn = "createdOn",
-    updatedOn = "updatedOn",
-}
 
 export type ProfileState = {
     profile: Profile;

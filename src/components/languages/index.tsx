@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Store } from "../../plugins/store";
-import { setLanguageToUpdate } from "../../plugins/store/language/actions";
+import { removeLanguage, setLanguageToUpdate } from "../../plugins/store/language/actions";
 import { Language } from "../../plugins/store/language/types";
 import Card from "../card";
 import EditButton from "../edit-button";
@@ -9,7 +9,11 @@ import ProgressBar from "../progress-bar";
 import RemoveButton from "../remove-button";
 import Table from "../table";
 
-const Languages = () => {
+type Props = {
+    className?: string;
+};
+
+const Languages = (props: Props) => {
     const dispatch = useDispatch();
     const languages = useSelector((store: Store) => store.language.languages) as Language[];
     const isFetchingLanguages = useSelector((store: Store) => store.language.isFetchingLanguages) as boolean;
@@ -17,10 +21,11 @@ const Languages = () => {
 
     const remove = (id: string) => {
         dispatch(setLanguageToUpdate({}));
+        dispatch(removeLanguage(id));
     };
 
     return (
-        <Card className="w-full p-6 flex flex-wrap">
+        <Card className={"w-full p-6 flex flex-wrap " + props.className}>
             {(isFetchingLanguages || isRemovingLanguage) && <ProgressBar color="red-600" className="mt-4 mx-auto text-4xl" />}
 
             {!isFetchingLanguages && !isRemovingLanguage && (

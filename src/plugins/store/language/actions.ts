@@ -62,3 +62,27 @@ export const addLanguage = (language: Language) => async (dispatch: Dispatch<Lan
         dispatch({ type: LANGUAGE_TYPES.ADD_LANGUAGE_COMPLETED });
     } catch (e) {}
 };
+
+export const updateLanguage = (id: string, language: Language) => async (dispatch: Dispatch<LanguageAction>) => {
+    try {
+        dispatch({ type: LANGUAGE_TYPES.UPDATE_LANGUAGE_PREPARE });
+
+        await db
+            .collection(LANGUAGE_COL_NAME)
+            .doc(id)
+            .update({
+                [LanguageField.updatedOn]: new Date(),
+                ...language,
+            });
+
+        dispatch({ type: LANGUAGE_TYPES.UPDATE_LANGUAGE_COMPLETED });
+    } catch (e) {}
+};
+
+export const removeLanguage = (id: string) => async (dispatch: Dispatch<LanguageAction>) => {
+    try {
+        dispatch({ type: LANGUAGE_TYPES.REMOVE_LANGUAGE_PREPARE });
+        await db.collection(LANGUAGE_COL_NAME).doc(id).delete();
+        dispatch({ type: LANGUAGE_TYPES.REMOVE_LANGUAGE_COMPLETED });
+    } catch (e) {}
+};

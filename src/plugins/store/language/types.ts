@@ -41,7 +41,7 @@ export type LanguageState = {
     isLanguageRemoved: boolean;
     isFetchingLanguages: boolean;
     isAddingLanguage: boolean;
-    isUpdaingLanguage: boolean;
+    isUpdatingLanguage: boolean;
     isRemovingLanguage: boolean;
 };
 

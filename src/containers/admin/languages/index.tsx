@@ -18,7 +18,7 @@ const Languages = () => {
         <div>
             <Helmet title={"Languages - " + APP_TITLE} />
             <LanguageForm />
-            <_Languages />
+            <_Languages className="mt-6" />
         </div>
     );
 };

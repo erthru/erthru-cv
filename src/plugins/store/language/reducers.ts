@@ -8,7 +8,7 @@ const initialState: LanguageState = {
     isLanguageRemoved: false,
     isFetchingLanguages: false,
     isAddingLanguage: false,
-    isUpdaingLanguage: false,
+    isUpdatingLanguage: false,
     isRemovingLanguage: false,
 };
 
@@ -52,14 +52,14 @@ const reducers = (state = initialState, { type, payload }: LanguageAction): Lang
             return {
                 ...state,
                 isLanguageUpdated: false,
-                isUpdaingLanguage: true,
+                isUpdatingLanguage: true,
             };
 
         case LANGUAGE_TYPES.UPDATE_LANGUAGE_COMPLETED:
             return {
                 ...state,
                 isLanguageUpdated: true,
-                isUpdaingLanguage: false,
+                isUpdatingLanguage: false,
             };
 
         case LANGUAGE_TYPES.REMOVE_LANGUAGE_PREPARE:

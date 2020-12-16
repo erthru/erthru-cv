@@ -7,7 +7,7 @@ export const fetchPortfolios = () => async (dispatch: Dispatch<PortfolioAction>)
         dispatch({ type: PORTFOLIO_TYPES.FETCH_PORTFOLIOS_PREPARE });
 
         const portfolios: any[] = [];
-        const portfoliosSnapshots = await db.collection(PORTFOLIO_COL_NAME).get();
+        const portfoliosSnapshots = await db.collection(PORTFOLIO_COL_NAME).orderBy(PortfolioField.createdOn, "desc").get();
 
         portfoliosSnapshots.docs.map((doc) => {
             portfolios.push({

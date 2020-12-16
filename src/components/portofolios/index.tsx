@@ -55,11 +55,11 @@ const Portfolios = () => {
                             ..._portfolios.map((portfolio) => {
                                 return [
                                     <span>{portfolio.title}</span>,
-                                    <span>{portfolio.description}</span>,
+                                    <span>{portfolio.description?.substring(0, 35) + "..."}</span>,
 
                                     <div className="flex flex-wrap">
                                         <div className="w-full flex">
-                                            <EditButton to={"/admin/formal-education/edit/" + portfolio.id} className="mx-auto" />
+                                            <EditButton to={"/admin/portfolio/edit/" + portfolio.id} className="mx-auto" />
                                         </div>
 
                                         <div className="w-full flex mt-1">

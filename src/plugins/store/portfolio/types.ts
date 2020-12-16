@@ -16,9 +16,9 @@ export const PORTFOLIO_COL_NAME = "portfolios";
 export enum PortfolioField {
     title = "title",
     description = "description",
-    preview_one = "preview_one",
-    preview_two = "preview_two",
-    preview_three = "preview_three",
+    previewOneUrl = "previewOneUrl",
+    previewTwoUrl = "previewTwoUrl",
+    previewThreeUrl = "previewThreeUrl",
     createdOn = "createdOn",
     updatedOn = "updatedOn",
 }
@@ -27,9 +27,9 @@ export type Portfolio = {
     id?: string;
     [PortfolioField.title]?: string;
     [PortfolioField.description]?: string;
-    [PortfolioField.preview_one]?: string;
-    [PortfolioField.preview_two]?: string;
-    [PortfolioField.preview_three]?: string;
+    [PortfolioField.previewOneUrl]?: string;
+    [PortfolioField.previewTwoUrl]?: string;
+    [PortfolioField.previewThreeUrl]?: string;
     [PortfolioField.createdOn]?: Date;
     [PortfolioField.updatedOn]?: Date;
 };

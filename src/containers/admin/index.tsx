@@ -10,10 +10,12 @@ import { fetchPortfolios } from "../../plugins/store/portfolio/actions";
 import { fetchProfile } from "../../plugins/store/profile/actions";
 import { fetchWorkExperiences } from "../../plugins/store/work-experience/actions";
 import AddFormalEducation from "./add-formal-education";
+import AddPortfolio from "./add-portfolio";
 import AddWorkExperience from "./add-work-experience";
 import Contacts from "./contacts";
 import Documents from "./documents";
 import EditFormalEducation from "./edit-formal-education";
+import EditPortfolio from "./edit-portfolio";
 import EditWorkExperience from "./edit-work-experience";
 import FormalEducations from "./formal-educations";
 import Languages from "./languages";
@@ -86,6 +88,8 @@ const Admin = () => {
                         <Route exact path="/admin/formal-education/edit/:id" component={EditFormalEducation} />
                         <Route exact path="/admin/languages" component={Languages} />
                         <Route exact path="/admin/portfolios" component={Portfolios} />
+                        <Route exact path="/admin/portfolio/add" component={AddPortfolio} />
+                        <Route exact path="/admin/portfolio/edit/:id" component={EditPortfolio} />
                         <Route exact path="/admin/contacts" component={Contacts} />
                         <Route exact path="/admin/documents" component={Documents} />
                         <Route exact path="/admin/settings" component={Settings} />

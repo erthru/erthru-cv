@@ -50,12 +50,18 @@ const Portfolios = () => {
                 <div className="w-full mt-4">
                     <Table
                         className="w-full"
-                        headers={["Title", "Description", "Actions"]}
+                        headers={["Title", "Description", "Previews", "Actions"]}
                         rows={[
                             ..._portfolios.map((portfolio) => {
                                 return [
                                     <span>{portfolio.title}</span>,
                                     <span>{portfolio.description?.substring(0, 35) + "..."}</span>,
+
+                                    <div className="flex w-full">
+                                        <img src={portfolio.previewOneUrl} alt="preview" className="ml-auto w-10 rounded-xl h-10" />
+                                        <img src={portfolio.previewTwoUrl} alt="preview" className="w-10 h-10 rounded-xl ml-2" />
+                                        <img src={portfolio.previewThreeUrl} alt="preview" className="mr-auto w-10 rounded-xl h-10 ml-2" />
+                                    </div>,
 
                                     <div className="flex flex-wrap">
                                         <div className="w-full flex">

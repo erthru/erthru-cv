@@ -20,9 +20,7 @@ const WorkExperiences = () => {
     const [_workExperiences, _setWorkExperiences] = useState<WorkExperience[]>([]);
 
     useEffect(() => {
-        if (workExperiences.length > 0) {
-            _setWorkExperiences(workExperiences);
-        }
+        if (workExperiences.length > 0) _setWorkExperiences(workExperiences);
     }, [workExperiences]);
 
     useEffect(() => {

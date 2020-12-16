@@ -6,6 +6,7 @@ import Topbar from "../../components/topbar";
 import { Store } from "../../plugins/store";
 import { fetchFormalEducations } from "../../plugins/store/formal-education/actions";
 import { fetchLanguages } from "../../plugins/store/language/actions";
+import { fetchPortfolios } from "../../plugins/store/portfolio/actions";
 import { fetchProfile } from "../../plugins/store/profile/actions";
 import { fetchWorkExperiences } from "../../plugins/store/work-experience/actions";
 import AddFormalEducation from "./add-formal-education";
@@ -33,12 +34,16 @@ const Admin = () => {
     const isNewLanguageAdded = useSelector((store: Store) => store.language.isNewLanguageAdded) as boolean;
     const isLanguageUpdated = useSelector((store: Store) => store.language.isLanguageUpdated) as boolean;
     const isLanguageRemoved = useSelector((store: Store) => store.language.isLanguageRemoved) as boolean;
+    const isNewPortfolioAdded = useSelector((store: Store) => store.portfolio.isNewPortfolioAdded) as boolean;
+    const isPortfolioUpdated = useSelector((store: Store) => store.portfolio.isPortfolioUpdated) as boolean;
+    const isPortfolioRemoved = useSelector((store: Store) => store.portfolio.isPortfolioRemoved) as boolean;
 
     useEffect(() => {
         dispatch(fetchProfile());
         dispatch(fetchWorkExperiences());
         dispatch(fetchFormalEducations());
         dispatch(fetchLanguages());
+        dispatch(fetchPortfolios());
     }, []);
 
     useEffect(() => {
@@ -46,6 +51,7 @@ const Admin = () => {
         if (isNewWorkExperienceAdded || isWorkExperienceUpdated || isWorkExperienceRemoved) dispatch(fetchWorkExperiences());
         if (isNewFormalEducationAdded || isFormalEducationUpdated || isFormalEducationRemoved) dispatch(fetchFormalEducations());
         if (isNewLanguageAdded || isLanguageUpdated || isLanguageRemoved) dispatch(fetchLanguages());
+        if (isNewPortfolioAdded || isPortfolioUpdated || isPortfolioRemoved) dispatch(fetchPortfolios());
     }, [
         isProfileUpdated,
         isNewWorkExperienceAdded,
@@ -57,6 +63,9 @@ const Admin = () => {
         isNewLanguageAdded,
         isLanguageUpdated,
         isLanguageRemoved,
+        isNewPortfolioAdded,
+        isPortfolioUpdated,
+        isPortfolioRemoved,
     ]);
 
     return (

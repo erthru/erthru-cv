@@ -2,7 +2,7 @@ import { Dispatch } from "react";
 import db from "../../db";
 import { Portfolio, PortfolioAction, PortfolioField, PORTFOLIO_COL_NAME, PORTFOLIO_TYPES } from "./types";
 
-export const getPortfolios = () => async (dispatch: Dispatch<PortfolioAction>) => {
+export const fetchPortfolios = () => async (dispatch: Dispatch<PortfolioAction>) => {
     try {
         dispatch({ type: PORTFOLIO_TYPES.FETCH_PORTFOLIOS_PREPARE });
 
@@ -20,7 +20,7 @@ export const getPortfolios = () => async (dispatch: Dispatch<PortfolioAction>) =
     } catch (e) {}
 };
 
-export const getPortfolio = (id: string) => async (dispatch: Dispatch<PortfolioAction>) => {
+export const fetchPortfolio = (id: string) => async (dispatch: Dispatch<PortfolioAction>) => {
     try {
         dispatch({ type: PORTFOLIO_TYPES.FETCH_PORTFOLIO_PREPARE });
 

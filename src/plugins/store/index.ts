@@ -5,6 +5,7 @@ import profileReducer from "./profile/reducers";
 import workExperienceReducer from "./work-experience/reducers";
 import formalEducationReducer from "./formal-education/reducers";
 import languageReducer from "./language/reducers";
+import portfolioReducer from "./portfolio/reducers";
 
 const combinedReducers = combineReducers({
     navigation: navigationReducer,
@@ -12,6 +13,7 @@ const combinedReducers = combineReducers({
     workExperience: workExperienceReducer,
     formalEducation: formalEducationReducer,
     language: languageReducer,
+    portfolio: portfolioReducer,
 });
 
 const store = createStore(combinedReducers, {}, applyMiddleware(...[thunk]));

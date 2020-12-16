@@ -20,9 +20,7 @@ const FormalEducations = () => {
     const [_formalEducations, _setFormalEducations] = useState<FormalEducation[]>([]);
 
     useEffect(() => {
-        if (formalEducations.length > 0) {
-            _setFormalEducations(formalEducations);
-        }
+        if (formalEducations.length > 0) _setFormalEducations(formalEducations);
     }, [formalEducations]);
 
     useEffect(() => {

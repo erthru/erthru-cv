@@ -55,7 +55,7 @@ const Portfolios = () => {
                             ..._portfolios.map((portfolio) => {
                                 return [
                                     <span>{portfolio.title}</span>,
-                                    <span>{portfolio.description?.substring(0, 35) + "..."}</span>,
+                                    <span>{portfolio.description?.substring(0, 50) + "..."}</span>,
 
                                     <div className="flex w-full">
                                         <img src={portfolio.previewOneUrl} alt="preview" className="ml-auto w-10 rounded-xl h-10" />

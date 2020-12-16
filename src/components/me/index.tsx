@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProgressBar from "../progress-bar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faPenSquare } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../modal";
 import { Store } from "../../plugins/store";
 import { useSelector } from "react-redux";
@@ -72,7 +72,7 @@ const Me = () => {
 
                                 <FontAwesomeIcon
                                     className="text-white mr-auto cursor-pointer absolute text-2xl"
-                                    icon={faEdit}
+                                    icon={faPenSquare}
                                     style={{ top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}
                                     onClick={() => _toEdit(ToEdit.avatar)}
                                 />
@@ -81,7 +81,7 @@ const Me = () => {
 
                         <FontAwesomeIcon
                             className="text-white mt-4 ml-2 text-xl mr-3 cursor-pointer absolute top-0 right-0"
-                            icon={faEdit}
+                            icon={faPenSquare}
                             onClick={() => _toEdit(ToEdit.cover)}
                         />
                     </div>
@@ -95,7 +95,7 @@ const Me = () => {
 
                                 <FontAwesomeIcon
                                     className="text-gray-600 mt-4 ml-2 cursor-pointer"
-                                    icon={faEdit}
+                                    icon={faPenSquare}
                                     onClick={() => _toEdit(ToEdit.fullName)}
                                 />
                             </div>
@@ -104,7 +104,11 @@ const Me = () => {
                         <div className="w-full flex">
                             <div className="flex mx-auto items-center pl-6">
                                 <span className="font-medium text-gray-400 text-lg">{profile?.career}</span>
-                                <FontAwesomeIcon className="text-gray-400 ml-2 cursor-pointer" icon={faEdit} onClick={() => _toEdit(ToEdit.career)} />
+                                <FontAwesomeIcon
+                                    className="text-gray-400 ml-2 cursor-pointer"
+                                    icon={faPenSquare}
+                                    onClick={() => _toEdit(ToEdit.career)}
+                                />
                             </div>
                         </div>
 
@@ -113,7 +117,11 @@ const Me = () => {
                         <div className="w-full flex items-center md:px-10">
                             <div className="mx-auto flex items-center pl-6">
                                 <p className="text-gray-600 mt-2 text-center">{profile?.intro}</p>
-                                <FontAwesomeIcon className="text-gray-600 ml-2 cursor-pointer" icon={faEdit} onClick={() => _toEdit(ToEdit.intro)} />
+                                <FontAwesomeIcon
+                                    className="text-gray-600 ml-2 cursor-pointer"
+                                    icon={faPenSquare}
+                                    onClick={() => _toEdit(ToEdit.intro)}
+                                />
                             </div>
                         </div>
                     </div>

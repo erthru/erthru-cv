@@ -14,7 +14,7 @@ const Table = (props: Props) => (
         <ScrollSync>
             <div className="w-full">
                 <ScrollSyncPane>
-                    <div className="flex text-center w-full overflow-x-auto pl-2 pr-4 font-medium text-gray-600">
+                    <div className="flex text-center w-full overflow-x-auto pl-2 pr-4 font-medium text-gray-400">
                         <span className="w-14">No</span>
 
                         {props.headers.map((header, i) => (
@@ -27,7 +27,12 @@ const Table = (props: Props) => (
 
                 {props.rows.map((row, i) => (
                     <ScrollSyncPane key={i}>
-                        <div className="flex w-full overflow-x-auto border-2 border-gray-200 py-2 rounded-xl mt-2 text-center pl-2 pr-4">
+                        <div
+                            className={
+                                "flex w-full overflow-x-auto py-2 rounded-xl mt-2 text-center pl-2 pr-4 " +
+                                (i % 2 === 0 ? "bg-gray-100" : "bg-gray-300")
+                            }
+                        >
                             <div className="w-14 px-4">{i + 1}</div>
 
                             {row.map((_row, i) => (

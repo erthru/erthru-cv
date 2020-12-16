@@ -1,4 +1,4 @@
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faPenSquare } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ const EditButton = (props: Props) => (
         className={"flex text-yellow-600 items-center font-medium cursor-pointer " + props.className}
         onClick={props.onClick}
     >
-        <FontAwesomeIcon icon={faEdit} />
+        <FontAwesomeIcon icon={faPenSquare} />
         <span className="ml-2">Edit</span>
     </Link>
 );

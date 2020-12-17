@@ -31,7 +31,7 @@ export const fetchProfile = () => async (dispatch: Dispatch<ProfileAction>) => {
             });
         });
 
-        dispatch({ type: PROFILE_TYPES.FETCH_PROFILE_COMPLETED, payload: { profile: profiles[0] } });
+        dispatch({ type: PROFILE_TYPES.FETCH_PROFILE_COMPLETED, payload: { profile: profiles[0] as Profile } });
     } catch (e) {}
 };
 
@@ -39,9 +39,8 @@ export const updateProfile = (profile: Profile) => async (dispatch: Dispatch<Pro
     try {
         dispatch({ type: PROFILE_TYPES.UPDATE_PROFILE_PREPARE });
 
-        let id = "";
-        let profilesSnapshots = await db.collection(PROFILE_COL_NAME).get();
-        id = profilesSnapshots.docs[0].id;
+        const profilesSnapshots = await db.collection(PROFILE_COL_NAME).get();
+        const id = profilesSnapshots.docs[0].id;
 
         await db
             .collection(PROFILE_COL_NAME)

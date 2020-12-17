@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import Sidebar from "../../components/sidebar";
 import Topbar from "../../components/topbar";
 import { Store } from "../../plugins/store";
+import { fetchContact } from "../../plugins/store/contact/actions";
 import { fetchFormalEducations } from "../../plugins/store/formal-education/actions";
 import { fetchLanguages } from "../../plugins/store/language/actions";
 import { fetchPortfolios } from "../../plugins/store/portfolio/actions";
@@ -39,6 +40,7 @@ const Admin = () => {
     const isNewPortfolioAdded = useSelector((store: Store) => store.portfolio.isNewPortfolioAdded) as boolean;
     const isPortfolioUpdated = useSelector((store: Store) => store.portfolio.isPortfolioUpdated) as boolean;
     const isPortfolioRemoved = useSelector((store: Store) => store.portfolio.isPortfolioRemoved) as boolean;
+    const isContactUpdated = useSelector((store: Store) => store.contact.isContactUpdated) as boolean;
 
     useEffect(() => {
         dispatch(fetchProfile());
@@ -46,6 +48,7 @@ const Admin = () => {
         dispatch(fetchFormalEducations());
         dispatch(fetchLanguages());
         dispatch(fetchPortfolios());
+        dispatch(fetchContact());
     }, []);
 
     useEffect(() => {
@@ -54,6 +57,7 @@ const Admin = () => {
         if (isNewFormalEducationAdded || isFormalEducationUpdated || isFormalEducationRemoved) dispatch(fetchFormalEducations());
         if (isNewLanguageAdded || isLanguageUpdated || isLanguageRemoved) dispatch(fetchLanguages());
         if (isNewPortfolioAdded || isPortfolioUpdated || isPortfolioRemoved) dispatch(fetchPortfolios());
+        if (isContactUpdated) dispatch(fetchContact());
     }, [
         isProfileUpdated,
         isNewWorkExperienceAdded,
@@ -68,6 +72,7 @@ const Admin = () => {
         isNewPortfolioAdded,
         isPortfolioUpdated,
         isPortfolioRemoved,
+        isContactUpdated,
     ]);
 
     return (

@@ -14,7 +14,7 @@ import AddFormalEducation from "./add-formal-education";
 import AddPortfolio from "./add-portfolio";
 import AddWorkExperience from "./add-work-experience";
 import Contacts from "./contacts";
-import Documents from "./documents";
+import Document from "./document";
 import EditFormalEducation from "./edit-formal-education";
 import EditPortfolio from "./edit-portfolio";
 import EditWorkExperience from "./edit-work-experience";
@@ -96,7 +96,7 @@ const Admin = () => {
                         <Route exact path="/admin/portfolio/add" component={AddPortfolio} />
                         <Route exact path="/admin/portfolio/edit/:id" component={EditPortfolio} />
                         <Route exact path="/admin/contacts" component={Contacts} />
-                        <Route exact path="/admin/documents" component={Documents} />
+                        <Route exact path="/admin/document" component={Document} />
                         <Route exact path="/admin/settings" component={Settings} />
                     </Switch>
                 </div>

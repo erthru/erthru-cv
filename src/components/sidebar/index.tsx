@@ -79,11 +79,11 @@ const Sidebar = (props: Props) => {
 
             <SidebarItem
                 icon={faFileCode}
-                title="DOCUMENTS"
+                title="DOCUMENT"
                 className="mt-2"
-                isActive={currentActiveKey === NavigationKey.documents}
-                to="/admin/documents"
-                onClick={() => dispatch(setNavigationKey(NavigationKey.documents))}
+                isActive={currentActiveKey === NavigationKey.document}
+                to="/admin/document"
+                onClick={() => dispatch(setNavigationKey(NavigationKey.document))}
             />
 
             <div className="h-full" />

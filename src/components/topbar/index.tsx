@@ -113,12 +113,12 @@ const Topbar = () => {
                 />
 
                 <TopbarItem
-                    title="DOCUMENTS"
-                    to="/admin/documents"
+                    title="DOCUMENT"
+                    to="/admin/document"
                     icon={faFileCode}
                     className="mt-2"
-                    isActive={currentActiveKey === NavigationKey.documents}
-                    onClick={() => onItemClicked(NavigationKey.documents)}
+                    isActive={currentActiveKey === NavigationKey.document}
+                    onClick={() => onItemClicked(NavigationKey.document)}
                 />
             </div>
         </Card>

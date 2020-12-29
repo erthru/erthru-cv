@@ -9,7 +9,7 @@ export enum NavigationKey {
     languages = "languages",
     portfolios = "portfolios",
     contacts = "contacts",
-    documents = "documents",
+    document = "document",
     settings = "settings",
 }
 

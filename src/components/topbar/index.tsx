@@ -10,10 +10,11 @@ import {
     faUniversity,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Store } from "../../plugins/store";
+import { signOut } from "../../plugins/store/auth/actions";
 import { setNavigationKey } from "../../plugins/store/navigation/actions";
 import { NavigationKey } from "../../plugins/store/navigation/types";
 import Card from "../card";
@@ -25,6 +26,8 @@ const Topbar = () => {
     const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey);
     const profile = useSelector((store: Store) => store.profile.profile);
     const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile);
+    const isSignOutAttempting = useSelector((store: Store) => store.auth.isSignOutAttempting);
+    const isSignOutSuccessfull = useSelector((store: Store) => store.auth.isSignOutSuccessfull);
     const dispatch = useDispatch();
     const [isItemsActive, setIsItemsActive] = useState(false);
 
@@ -36,6 +39,10 @@ const Topbar = () => {
     const expand = () => {
         setIsItemsActive(!isItemsActive);
     };
+
+    useEffect(() => {
+        if (isSignOutSuccessfull) window.location.href = "/";
+    }, [isSignOutSuccessfull]);
 
     return (
         <Card className="w-full py-3 px-4 items-center flex flex-wrap">
@@ -52,9 +59,10 @@ const Topbar = () => {
                     {!isFetchingProfile && <span className="text-gray-600 font-bold ml-1">{profile.fullName?.split(" ")[0]}</span>}
                 </div>
 
-                <Link to="/logout" className="ml-4 lg:ml-auto cursor-pointer">
-                    <FontAwesomeIcon icon={faSignOutAlt} className="text-red-600 text-xl" />
-                </Link>
+                <div className="ml-4 lg:ml-auto cursor-pointer" onClick={() => dispatch(signOut())}>
+                    {!isSignOutAttempting && <FontAwesomeIcon icon={faSignOutAlt} className="text-red-600 text-xl" />}
+                    {isSignOutAttempting && <ProgressBar color="red-600" className="text-xl" />}
+                </div>
             </div>
 
             <div className={"mt-4 flex w-full flex-wrap mx-auto items-center block lg:hidden topbar-expand " + (isItemsActive && "active")}>

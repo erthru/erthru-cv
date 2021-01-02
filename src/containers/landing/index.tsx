@@ -1,5 +1,5 @@
 import { faFacebookF, faGithubAlt, faInstagram, faLinkedinIn, faMediumM } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
@@ -18,8 +18,10 @@ enum Navigation {
 
 const Landing = () => {
     const profile = useSelector((store: Store) => store.profile.profile);
+    const contact = useSelector((store: Store) => store.contact.contact);
     const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile);
     const [navigation, setNavigation] = useState<Navigation>(Navigation.overview);
+    const [isMobileNavigationShown, setIsMobileNavigationShown] = useState(false);
 
     const navigate = (navigation: Navigation) => {
         setNavigation(navigation);
@@ -87,7 +89,79 @@ const Landing = () => {
                                         </span>
                                     </div>
 
-                                    <FontAwesomeIcon icon={faBars} className="ml-auto md:hidden mr-6 text-xl mt-5 cursor-pointer text-white"/>
+                                    <div className="ml-auto md:hidden mr-6 mt-5 flex flex-wrap relative">
+                                        <FontAwesomeIcon
+                                            icon={faBars}
+                                            className="ml-auto text-xl cursor-pointer text-white"
+                                            onClick={() => setIsMobileNavigationShown(true)}
+                                        />
+
+                                        {isMobileNavigationShown && (
+                                            <div className="bg-white w-52 z-20 absolute top-0 -mt-1 right-0 rounded-xl flex flex-wrap">
+                                                <div className="w-full flex mr-3 mt-2">
+                                                    <FontAwesomeIcon
+                                                        icon={faTimes}
+                                                        className="text-gray-700 ml-auto"
+                                                        onClick={() => setIsMobileNavigationShown(false)}
+                                                    />
+                                                </div>
+
+                                                <div className="ml-3 mt-2 pb-4 flex flex-wrap">
+                                                    <span
+                                                        className={
+                                                            "w-full text-center " +
+                                                            (navigation === Navigation.overview ? "text-red-600 font-medium" : "text-gray-800")
+                                                        }
+                                                        onClick={() => {
+                                                            setNavigation(Navigation.overview);
+                                                            setIsMobileNavigationShown(false);
+                                                        }}
+                                                    >
+                                                        Overview
+                                                    </span>
+
+                                                    <span
+                                                        className={
+                                                            "w-full text-center mt-2 " +
+                                                            (navigation === Navigation.workExperiences ? "text-red-600 font-medium" : "text-gray-800")
+                                                        }
+                                                        onClick={() => {
+                                                            setNavigation(Navigation.workExperiences);
+                                                            setIsMobileNavigationShown(false);
+                                                        }}
+                                                    >
+                                                        Work Experiences
+                                                    </span>
+
+                                                    <span
+                                                        className={
+                                                            "w-full text-center mt-2 " +
+                                                            (navigation === Navigation.languages ? "text-red-600 font-medium" : "text-gray-800")
+                                                        }
+                                                        onClick={() => {
+                                                            setNavigation(Navigation.languages);
+                                                            setIsMobileNavigationShown(false);
+                                                        }}
+                                                    >
+                                                        Languages
+                                                    </span>
+
+                                                    <span
+                                                        className={
+                                                            "w-full text-center mt-2 " +
+                                                            (navigation === Navigation.portfolios ? "text-red-600 font-medium" : "text-gray-800")
+                                                        }
+                                                        onClick={() => {
+                                                            setNavigation(Navigation.portfolios);
+                                                            setIsMobileNavigationShown(false);
+                                                        }}
+                                                    >
+                                                        Portfolios
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
                                 </div>
 
                                 <div className="w-full flex flex-wrap mt-auto pb-16 md:pb-24">
@@ -103,27 +177,27 @@ const Landing = () => {
 
                         <div className="flex w-full mt-7">
                             <div className="mx-auto flex">
-                                <a href="#">
+                                <a href={"mailto:" + contact.email}>
                                     <FontAwesomeIcon icon={faEnvelope} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
                                 </a>
 
-                                <a href="#" className="ml-6">
+                                <a target="blank" href={contact.githubUrl} className="ml-6">
                                     <FontAwesomeIcon icon={faGithubAlt} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
                                 </a>
 
-                                <a href="#" className="ml-6">
+                                <a target="blank" href={contact.linkedinUrl} className="ml-6">
                                     <FontAwesomeIcon icon={faLinkedinIn} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
                                 </a>
 
-                                <a href="#" className="ml-6">
+                                <a target="blank" href={contact.mediumUrl} className="ml-6">
                                     <FontAwesomeIcon icon={faMediumM} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
                                 </a>
 
-                                <a href="#" className="ml-6">
+                                <a target="blank" href={contact.facebookUrl} className="ml-6">
                                     <FontAwesomeIcon icon={faFacebookF} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
                                 </a>
 
-                                <a href="#" className="ml-6">
+                                <a target="blank" href={contact.instagramUrl} className="ml-6">
                                     <FontAwesomeIcon icon={faInstagram} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
                                 </a>
                             </div>

@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Card from "../../components/card";
 import SignInForm from "../../components/sign-in-form";
+import { APP_TITLE } from "../../helpers/environments";
 import { Store } from "../../plugins/store";
 import { checkSignInState, signIn } from "../../plugins/store/auth/actions";
 
@@ -21,14 +23,18 @@ const SignIn = () => {
     }, [isSignAlready]);
 
     return (
-        <div className="flex w-full">
-            {isNotSignIn && (
-                <Card className="mx-auto p-6 mt-8">
-                    <span className="text-4xl">Sign In</span>
+        <div>
+            <Helmet title={"Sign In - " + APP_TITLE} />
 
-                    <SignInForm className="mt-4" />
-                </Card>
-            )}
+            <div className="flex w-full">
+                {isNotSignIn && (
+                    <Card className="mx-auto p-6 mt-8">
+                        <span className="text-4xl">Sign In</span>
+
+                        <SignInForm className="mt-4" />
+                    </Card>
+                )}
+            </div>
         </div>
     );
 };

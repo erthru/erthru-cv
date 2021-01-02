@@ -12,7 +12,7 @@ const Document = () => {
     const workExperiences = useSelector((store: Store) => store.workExperience.workExperiences);
 
     return (
-        <Card className="p-6 flex w-full">
+        <Card className="p-6 flex flex-wrap w-full">
             <div className="w-full flex overflow-y-hidden">
                 <div className="mx-auto flex bg-gray-50 area-to-print" style={{ width: "210mm", height: "297mm" }}>
                     <div className="w-72 h-full bg-gray-900 flex flex-wrap text-gray-300 px-6">

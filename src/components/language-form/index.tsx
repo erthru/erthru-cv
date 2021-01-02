@@ -2,7 +2,7 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Store } from "../../plugins/store";
 import { addLanguage, setLanguageToUpdate, updateLanguage } from "../../plugins/store/language/actions";
-import { Language, LanguageLevel } from "../../plugins/store/language/types";
+import { LanguageLevel } from "../../plugins/store/language/types";
 import Button from "../button";
 import Card from "../card";
 import Input from "../input";
@@ -10,11 +10,11 @@ import Select from "../select";
 
 const LanguageForm = () => {
     const dispatch = useDispatch();
-    const languageToUpdate = useSelector((store: Store) => store.language.languageToUpdate) as Language;
-    const isNewLanguageAdded = useSelector((store: Store) => store.language.isNewLanguageAdded) as boolean;
-    const isLanguageUpdated = useSelector((store: Store) => store.language.isLanguageUpdated) as boolean;
-    const isAddingLanguage = useSelector((store: Store) => store.language.isAddingLanguage) as boolean;
-    const isUpdatingLanguage = useSelector((store: Store) => store.language.isUpdatingLanguage) as boolean;
+    const languageToUpdate = useSelector((store: Store) => store.language.languageToUpdate);
+    const isNewLanguageAdded = useSelector((store: Store) => store.language.isNewLanguageAdded);
+    const isLanguageUpdated = useSelector((store: Store) => store.language.isLanguageUpdated);
+    const isAddingLanguage = useSelector((store: Store) => store.language.isAddingLanguage);
+    const isUpdatingLanguage = useSelector((store: Store) => store.language.isUpdatingLanguage);
     const [lang, setLang] = useState("");
     const [level, setLevel] = useState<LanguageLevel>(LanguageLevel.native);
 

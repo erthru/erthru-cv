@@ -13,9 +13,9 @@ import Table from "../table";
 
 const Portfolios = () => {
     const dispatch = useDispatch();
-    const portfolios = useSelector((store: Store) => store.portfolio.portfolios) as Portfolio[];
-    const isFetchingPortfolios = useSelector((store: Store) => store.portfolio.isFetchingPortfolios) as boolean;
-    const isRemovingPortfolio = useSelector((store: Store) => store.portfolio.isRemovingPortfolio) as boolean;
+    const portfolios = useSelector((store: Store) => store.portfolio.portfolios);
+    const isFetchingPortfolios = useSelector((store: Store) => store.portfolio.isFetchingPortfolios);
+    const isRemovingPortfolio = useSelector((store: Store) => store.portfolio.isRemovingPortfolio);
     const [search, setSearch] = useState("");
     const [_portfolios, _setPortfolios] = useState<Portfolio[]>([]);
 

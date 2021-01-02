@@ -5,7 +5,6 @@ import React, { FormEvent, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Store } from "../../plugins/store";
 import { updateContact } from "../../plugins/store/contact/actions";
-import { Contact } from "../../plugins/store/contact/types";
 import Button from "../button";
 import Card from "../card";
 import Input from "../input";
@@ -13,9 +12,9 @@ import ProgressBar from "../progress-bar";
 
 const Contacts = () => {
     const dispatch = useDispatch();
-    const contact = useSelector((store: Store) => store.contact.contact) as Contact;
-    const isFetchingContact = useSelector((store: Store) => store.contact.isFetchingContact) as boolean;
-    const isUpdatingContact = useSelector((store: Store) => store.contact.isUpdatingContact) as boolean;
+    const contact = useSelector((store: Store) => store.contact.contact);
+    const isFetchingContact = useSelector((store: Store) => store.contact.isFetchingContact);
+    const isUpdatingContact = useSelector((store: Store) => store.contact.isUpdatingContact);
     const [address, setAddress] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");

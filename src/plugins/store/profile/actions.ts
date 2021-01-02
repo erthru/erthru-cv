@@ -11,11 +11,11 @@ export const fetchProfile = () => async (dispatch: Dispatch<ProfileAction>) => {
 
         if (profilesSnapshots.docs.length === 0) {
             await db.collection(PROFILE_COL_NAME).add({
-                [ProfileField.fullName]: "Suprianto Djamalu",
+                [ProfileField.fullName]: "Moh Suprianto Djamalu",
                 [ProfileField.avatarUrl]: "https://i.ibb.co/5K3Nd8P/me.jpg",
                 [ProfileField.coverUrl]: "https://i.ibb.co/ftLQmtM/pexels-junior-teixeira-2047905-1.jpg",
                 [ProfileField.intro]:
-                    "Very enthusiastic in following technological developments such as web (front end / back end) development, mobile (android / ios) development and many more. Had 3 years of experience as a developer. Always using git version control for my repository. Since I’m a developer, I’m very interested in learning and moving forward into latest technologies required to work with it.",
+                    "Very enthusiastic in following technological developments such as web (front end / back end) development, mobile (android / ios) development and many more. Had 3 years of experience as a developer. Always using git version control for my repository. Since I’m a developer, I’m very interested in learning and moving forward into latest technologies required to work with it. Current used stacks is ReactJS and NodeJS for full stack web development and React Native for mobile development.",
                 [ProfileField.career]: "Software Developer",
                 [ProfileField.createdOn]: new Date(),
                 [ProfileField.updatedOn]: new Date(),

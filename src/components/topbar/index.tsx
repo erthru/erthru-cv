@@ -16,16 +16,15 @@ import { Link } from "react-router-dom";
 import { Store } from "../../plugins/store";
 import { setNavigationKey } from "../../plugins/store/navigation/actions";
 import { NavigationKey } from "../../plugins/store/navigation/types";
-import { Profile } from "../../plugins/store/profile/types";
 import Card from "../card";
 import ProgressBar from "../progress-bar";
 import TopbarItem from "../topbar-item";
 import "./index.css";
 
 const Topbar = () => {
-    const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey) as NavigationKey;
-    const profile = useSelector((store: Store) => store.profile.profile) as Profile;
-    const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile) as boolean;
+    const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey);
+    const profile = useSelector((store: Store) => store.profile.profile);
+    const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile);
     const dispatch = useDispatch();
     const [isItemsActive, setIsItemsActive] = useState(false);
 

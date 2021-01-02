@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Store } from "../../plugins/store";
 import { addWorkExperience, fetchWorkExperience, updateWorkExperience } from "../../plugins/store/work-experience/actions";
-import { WorkExperience } from "../../plugins/store/work-experience/types";
 import Alert, { AlertMode } from "../alert";
 import Button from "../button";
 import Card from "../card";
@@ -19,12 +18,12 @@ type Props = {
 const WorkExperienceForm = (props: Props) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const workExperience = useSelector((store: Store) => store.workExperience.workExperience) as WorkExperience;
-    const isNewWorkExperienceAdded = useSelector((store: Store) => store.workExperience.isNewWorkExperienceAdded) as boolean;
-    const isWorkExperienceUpdated = useSelector((store: Store) => store.workExperience.isWorkExperienceUpdated) as boolean;
-    const isFetchingWorkExperience = useSelector((store: Store) => store.workExperience.isFetchingWorkExperience) as boolean;
-    const isAddingWorkExperience = useSelector((store: Store) => store.workExperience.isAddingWorkExperience) as boolean;
-    const isUpdatingWorkExperience = useSelector((store: Store) => store.workExperience.isUpdatingWorkExperience) as boolean;
+    const workExperience = useSelector((store: Store) => store.workExperience.workExperience);
+    const isNewWorkExperienceAdded = useSelector((store: Store) => store.workExperience.isNewWorkExperienceAdded);
+    const isWorkExperienceUpdated = useSelector((store: Store) => store.workExperience.isWorkExperienceUpdated);
+    const isFetchingWorkExperience = useSelector((store: Store) => store.workExperience.isFetchingWorkExperience);
+    const isAddingWorkExperience = useSelector((store: Store) => store.workExperience.isAddingWorkExperience);
+    const isUpdatingWorkExperience = useSelector((store: Store) => store.workExperience.isUpdatingWorkExperience);
     const [timeframe, setTimeframe] = useState("");
     const [place, setPlace] = useState("");
     const [activity, setActivity] = useState("");

@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Store } from "../../plugins/store";
 import { removeLanguage, setLanguageToUpdate } from "../../plugins/store/language/actions";
-import { Language } from "../../plugins/store/language/types";
 import Card from "../card";
 import EditButton from "../edit-button";
 import ProgressBar from "../progress-bar";
@@ -15,9 +14,9 @@ type Props = {
 
 const Languages = (props: Props) => {
     const dispatch = useDispatch();
-    const languages = useSelector((store: Store) => store.language.languages) as Language[];
-    const isFetchingLanguages = useSelector((store: Store) => store.language.isFetchingLanguages) as boolean;
-    const isRemovingLanguage = useSelector((store: Store) => store.language.isRemovingLanguage) as boolean;
+    const languages = useSelector((store: Store) => store.language.languages);
+    const isFetchingLanguages = useSelector((store: Store) => store.language.isFetchingLanguages);
+    const isRemovingLanguage = useSelector((store: Store) => store.language.isRemovingLanguage);
 
     const remove = (id: string) => {
         dispatch(setLanguageToUpdate({}));

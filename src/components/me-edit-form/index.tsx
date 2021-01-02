@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Store } from "../../plugins/store";
 import { updateProfile } from "../../plugins/store/profile/actions";
-import { Profile } from "../../plugins/store/profile/types";
 import Button from "../button";
 import Input from "../input";
 
@@ -23,8 +22,8 @@ export enum ToEdit {
 
 const MeEditForm = (props: Props) => {
     const dispatch = useDispatch();
-    const profile = useSelector((store: Store) => store.profile.profile) as Profile;
-    const isUpdatingProfile = useSelector((store: Store) => store.profile.isUpdatingProfile) as boolean;
+    const profile = useSelector((store: Store) => store.profile.profile);
+    const isUpdatingProfile = useSelector((store: Store) => store.profile.isUpdatingProfile);
     const [avatarUrl, setAvatarUrl] = useState("");
     const [coverUrl, setCoverUrl] = useState("");
     const [fullName, setFullName] = useState("");

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Store } from "../../plugins/store";
 import { addPorfolio, fetchPortfolio, updatePorfolio } from "../../plugins/store/portfolio/actions";
-import { Portfolio } from "../../plugins/store/portfolio/types";
 import Button from "../button";
 import Card from "../card";
 import Input from "../input";
@@ -16,12 +15,12 @@ type Props = {
 const PortfolioForm = (props: Props) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const portfolio = useSelector((store: Store) => store.portfolio.portfolio) as Portfolio;
-    const isFetchingPortfolio = useSelector((store: Store) => store.portfolio.isFetchingPortfolio) as boolean;
-    const isNewPortfolioAdded = useSelector((store: Store) => store.portfolio.isNewPortfolioAdded) as boolean;
-    const isPortfolioUpdated = useSelector((store: Store) => store.portfolio.isPortfolioUpdated) as boolean;
-    const isAddingPortfolio = useSelector((store: Store) => store.portfolio.isAddingPortfolio) as boolean;
-    const isUpdatingPortfolio = useSelector((store: Store) => store.portfolio.isUpdatingPortfolio) as boolean;
+    const portfolio = useSelector((store: Store) => store.portfolio.portfolio);
+    const isFetchingPortfolio = useSelector((store: Store) => store.portfolio.isFetchingPortfolio);
+    const isNewPortfolioAdded = useSelector((store: Store) => store.portfolio.isNewPortfolioAdded);
+    const isPortfolioUpdated = useSelector((store: Store) => store.portfolio.isPortfolioUpdated);
+    const isAddingPortfolio = useSelector((store: Store) => store.portfolio.isAddingPortfolio);
+    const isUpdatingPortfolio = useSelector((store: Store) => store.portfolio.isUpdatingPortfolio);
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [previewOneUrl, setPreviewOneUrl] = useState("");

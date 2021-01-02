@@ -6,13 +6,12 @@ import Modal from "../modal";
 import { Store } from "../../plugins/store";
 import { useSelector } from "react-redux";
 import MeEditForm, { ToEdit } from "../me-edit-form";
-import { Profile } from "../../plugins/store/profile/types";
 import Card from "../card";
 
 const Me = () => {
-    const profile = useSelector((store: Store) => store.profile.profile) as Profile;
-    const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile) as boolean;
-    const isProfileUpdated = useSelector((store: Store) => store.profile.isProfileUpdated) as boolean;
+    const profile = useSelector((store: Store) => store.profile.profile);
+    const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile);
+    const isProfileUpdated = useSelector((store: Store) => store.profile.isProfileUpdated);
     const [isEditModalShown, setIsEditModalShown] = useState(false);
     const [toEdit, setToEdit] = useState<ToEdit>(ToEdit.avatar);
     const [toEditTitle, setToEditTitle] = useState("");

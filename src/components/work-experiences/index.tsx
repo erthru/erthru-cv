@@ -13,9 +13,9 @@ import Table from "../table";
 
 const WorkExperiences = () => {
     const dispatch = useDispatch();
-    const workExperiences = useSelector((store: Store) => store.workExperience.workExperiences) as WorkExperience[];
-    const isFetchingWorkExperiences = useSelector((store: Store) => store.workExperience.isFetchingWorkExperiences) as boolean;
-    const isRemovingWorkExperience = useSelector((store: Store) => store.workExperience.isRemovingWorkExperience) as boolean;
+    const workExperiences = useSelector((store: Store) => store.workExperience.workExperiences);
+    const isFetchingWorkExperiences = useSelector((store: Store) => store.workExperience.isFetchingWorkExperiences);
+    const isRemovingWorkExperience = useSelector((store: Store) => store.workExperience.isRemovingWorkExperience);
     const [search, setSearch] = useState("");
     const [_workExperiences, _setWorkExperiences] = useState<WorkExperience[]>([]);
 

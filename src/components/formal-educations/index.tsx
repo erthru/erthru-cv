@@ -13,9 +13,9 @@ import Table from "../table";
 
 const FormalEducations = () => {
     const dispatch = useDispatch();
-    const formalEducations = useSelector((store: Store) => store.formalEducation.formalEducations) as FormalEducation[];
-    const isFetchingFormalEducations = useSelector((store: Store) => store.formalEducation.isFetchingFormalEducations) as boolean;
-    const isRemovingFormalEducation = useSelector((store: Store) => store.formalEducation.isRemovingFormalEducation) as boolean;
+    const formalEducations = useSelector((store: Store) => store.formalEducation.formalEducations);
+    const isFetchingFormalEducations = useSelector((store: Store) => store.formalEducation.isFetchingFormalEducations);
+    const isRemovingFormalEducation = useSelector((store: Store) => store.formalEducation.isRemovingFormalEducation);
     const [search, setSearch] = useState("");
     const [_formalEducations, _setFormalEducations] = useState<FormalEducation[]>([]);
 

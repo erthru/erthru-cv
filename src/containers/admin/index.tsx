@@ -27,20 +27,20 @@ import WorkExperiences from "./work-experiences";
 
 const Admin = () => {
     const dispatch = useDispatch();
-    const isProfileUpdated = useSelector((store: Store) => store.profile.isProfileUpdated) as boolean;
-    const isNewWorkExperienceAdded = useSelector((store: Store) => store.workExperience.isNewWorkExperienceAdded) as boolean;
-    const isWorkExperienceUpdated = useSelector((store: Store) => store.workExperience.isWorkExperienceUpdated) as boolean;
-    const isWorkExperienceRemoved = useSelector((store: Store) => store.workExperience.isWorkExperienceRemoved) as boolean;
-    const isNewFormalEducationAdded = useSelector((store: Store) => store.formalEducation.isNewFormalEducationAdded) as boolean;
-    const isFormalEducationUpdated = useSelector((store: Store) => store.formalEducation.isFormalEducationUpdated) as boolean;
-    const isFormalEducationRemoved = useSelector((store: Store) => store.formalEducation.isFormalEducationRemoved) as boolean;
-    const isNewLanguageAdded = useSelector((store: Store) => store.language.isNewLanguageAdded) as boolean;
-    const isLanguageUpdated = useSelector((store: Store) => store.language.isLanguageUpdated) as boolean;
-    const isLanguageRemoved = useSelector((store: Store) => store.language.isLanguageRemoved) as boolean;
-    const isNewPortfolioAdded = useSelector((store: Store) => store.portfolio.isNewPortfolioAdded) as boolean;
-    const isPortfolioUpdated = useSelector((store: Store) => store.portfolio.isPortfolioUpdated) as boolean;
-    const isPortfolioRemoved = useSelector((store: Store) => store.portfolio.isPortfolioRemoved) as boolean;
-    const isContactUpdated = useSelector((store: Store) => store.contact.isContactUpdated) as boolean;
+    const isProfileUpdated = useSelector((store: Store) => store.profile.isProfileUpdated);
+    const isNewWorkExperienceAdded = useSelector((store: Store) => store.workExperience.isNewWorkExperienceAdded);
+    const isWorkExperienceUpdated = useSelector((store: Store) => store.workExperience.isWorkExperienceUpdated);
+    const isWorkExperienceRemoved = useSelector((store: Store) => store.workExperience.isWorkExperienceRemoved);
+    const isNewFormalEducationAdded = useSelector((store: Store) => store.formalEducation.isNewFormalEducationAdded);
+    const isFormalEducationUpdated = useSelector((store: Store) => store.formalEducation.isFormalEducationUpdated);
+    const isFormalEducationRemoved = useSelector((store: Store) => store.formalEducation.isFormalEducationRemoved);
+    const isNewLanguageAdded = useSelector((store: Store) => store.language.isNewLanguageAdded);
+    const isLanguageUpdated = useSelector((store: Store) => store.language.isLanguageUpdated);
+    const isLanguageRemoved = useSelector((store: Store) => store.language.isLanguageRemoved);
+    const isNewPortfolioAdded = useSelector((store: Store) => store.portfolio.isNewPortfolioAdded);
+    const isPortfolioUpdated = useSelector((store: Store) => store.portfolio.isPortfolioUpdated);
+    const isPortfolioRemoved = useSelector((store: Store) => store.portfolio.isPortfolioRemoved);
+    const isContactUpdated = useSelector((store: Store) => store.contact.isContactUpdated);
 
     useEffect(() => {
         dispatch(fetchProfile());

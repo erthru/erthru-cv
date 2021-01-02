@@ -1,4 +1,4 @@
-import { faBriefcase, faFileCode, faIdCard, faLanguage, faLayerGroup, faThLarge, faTools, faUniversity } from "@fortawesome/free-solid-svg-icons";
+import { faBriefcase, faFileCode, faIdCard, faLanguage, faLayerGroup, faThLarge, faUniversity } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { APP_TITLE } from "../../helpers/environments";
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const Sidebar = (props: Props) => {
-    const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey) as NavigationKey;
+    const currentActiveKey = useSelector((store: Store) => store.navigation.currentActiveKey);
     const dispatch = useDispatch();
 
     return (

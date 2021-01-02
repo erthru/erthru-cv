@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { Store } from "../../plugins/store";
 import { addFormalEducation, fetchFormalEducation, updateFormalEducation } from "../../plugins/store/formal-education/actions";
-import { FormalEducation } from "../../plugins/store/formal-education/types";
 import Button from "../button";
 import Card from "../card";
 import Input from "../input";
@@ -16,12 +15,12 @@ type Props = {
 const FormalEducationForm = (props: Props) => {
     const dispatch = useDispatch();
     const history = useHistory();
-    const formalEducation = useSelector((store: Store) => store.formalEducation.formalEducation) as FormalEducation;
-    const isFetchingFormalEducation = useSelector((store: Store) => store.formalEducation.isFetchingFormalEducation) as boolean;
-    const isNewFormalEducationAdded = useSelector((store: Store) => store.formalEducation.isNewFormalEducationAdded) as boolean;
-    const isFormalEducationUpdated = useSelector((store: Store) => store.formalEducation.isFormalEducationUpdated) as boolean;
-    const isAddingFormalEducation = useSelector((store: Store) => store.formalEducation.isAddingFormalEducation) as boolean;
-    const isUpdatingFormalEducation = useSelector((store: Store) => store.formalEducation.isUpdatingFormalEducation) as boolean;
+    const formalEducation = useSelector((store: Store) => store.formalEducation.formalEducation);
+    const isFetchingFormalEducation = useSelector((store: Store) => store.formalEducation.isFetchingFormalEducation);
+    const isNewFormalEducationAdded = useSelector((store: Store) => store.formalEducation.isNewFormalEducationAdded);
+    const isFormalEducationUpdated = useSelector((store: Store) => store.formalEducation.isFormalEducationUpdated);
+    const isAddingFormalEducation = useSelector((store: Store) => store.formalEducation.isAddingFormalEducation);
+    const isUpdatingFormalEducation = useSelector((store: Store) => store.formalEducation.isUpdatingFormalEducation);
     const [timeframe, setTimeframe] = useState("");
     const [place, setPlace] = useState("");
     const [majors, setMajors] = useState("");

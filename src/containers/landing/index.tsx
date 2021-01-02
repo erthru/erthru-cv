@@ -38,7 +38,7 @@ const Landing = () => {
             )}
 
             {!isFetchingProfile && (
-                <div className="flex flex-wrap w-full p-6 container mx-auto" style={{ maxWidth: "1150px" }}>
+                <div className="flex flex-wrap w-full p-6 container mx-auto" style={{ maxWidth: "1150px", transform: "translate(0, 0)" }}>
                     <Card className="w-full pb-10">
                         <div className="rounded-t-xl relative h-48 md:h-64 w-full flex flex-wrap">
                             <img src={profile.coverUrl} alt="cover" className="w-full h-full rounded-t-xl" style={{ objectFit: "cover" }} />
@@ -46,12 +46,14 @@ const Landing = () => {
 
                             <div className="absolute w-full h-full flex flex-wrap">
                                 <div className="w-full flex">
-                                    <span className="text-white font-bold text-lg md:text-2xl ml-6 mt-4">{APP_TITLE}</span>
+                                    <span className="text-white font-bold text-lg md:text-2xl ml-6 mt-4">{APP_TITLE.split(" ")[0]}</span>
+                                    <span className="text-gray-300 font-bold text-lg md:text-2xl ml-1 mt-4">{APP_TITLE.split(" ")[1]}</span>
 
-                                    <div className="ml-auto text-white mt-4 mr-6 font-medium hidden md:block">
+                                    <div className="ml-auto text-gray-200 mt-4 mr-6 font-medium hidden md:block">
                                         <span
                                             className={
-                                                "cursor-pointer " + (navigation === Navigation.overview ? "border-b-2 px-1 pb-1 border-white" : "")
+                                                "cursor-pointer " +
+                                                (navigation === Navigation.overview ? "border-b-2 px-1 pb-1 border-white text-white" : "")
                                             }
                                             onClick={() => navigate(Navigation.overview)}
                                         >
@@ -61,7 +63,7 @@ const Landing = () => {
                                         <span
                                             className={
                                                 "ml-6 cursor-pointer " +
-                                                (navigation === Navigation.workExperiences ? "border-b-2 px-1 pb-1 border-white" : "")
+                                                (navigation === Navigation.workExperiences ? "border-b-2 px-1 pb-1 border-white text-white" : "")
                                             }
                                             onClick={() => navigate(Navigation.workExperiences)}
                                         >
@@ -71,7 +73,7 @@ const Landing = () => {
                                         <span
                                             className={
                                                 "ml-6 cursor-pointer " +
-                                                (navigation === Navigation.languages ? "border-b-2 px-1 pb-1 border-white" : "")
+                                                (navigation === Navigation.languages ? "border-b-2 px-1 pb-1 border-white text-white" : "")
                                             }
                                             onClick={() => navigate(Navigation.languages)}
                                         >
@@ -81,7 +83,7 @@ const Landing = () => {
                                         <span
                                             className={
                                                 "ml-6 cursor-pointer " +
-                                                (navigation === Navigation.portfolios ? "border-b-2 px-1 pb-1 border-white" : "")
+                                                (navigation === Navigation.portfolios ? "border-b-2 px-1 pb-1 border-white text-white" : "")
                                             }
                                             onClick={() => navigate(Navigation.portfolios)}
                                         >
@@ -110,7 +112,7 @@ const Landing = () => {
                                                     <span
                                                         className={
                                                             "w-full text-center " +
-                                                            (navigation === Navigation.overview ? "text-red-600 font-medium" : "text-gray-800")
+                                                            (navigation === Navigation.overview ? "text-red-600 font-medium" : "text-gray-500")
                                                         }
                                                         onClick={() => {
                                                             setNavigation(Navigation.overview);
@@ -123,7 +125,7 @@ const Landing = () => {
                                                     <span
                                                         className={
                                                             "w-full text-center mt-2 " +
-                                                            (navigation === Navigation.workExperiences ? "text-red-600 font-medium" : "text-gray-800")
+                                                            (navigation === Navigation.workExperiences ? "text-red-600 font-medium" : "text-gray-500")
                                                         }
                                                         onClick={() => {
                                                             setNavigation(Navigation.workExperiences);
@@ -136,7 +138,7 @@ const Landing = () => {
                                                     <span
                                                         className={
                                                             "w-full text-center mt-2 " +
-                                                            (navigation === Navigation.languages ? "text-red-600 font-medium" : "text-gray-800")
+                                                            (navigation === Navigation.languages ? "text-red-600 font-medium" : "text-gray-500")
                                                         }
                                                         onClick={() => {
                                                             setNavigation(Navigation.languages);
@@ -149,7 +151,7 @@ const Landing = () => {
                                                     <span
                                                         className={
                                                             "w-full text-center mt-2 " +
-                                                            (navigation === Navigation.portfolios ? "text-red-600 font-medium" : "text-gray-800")
+                                                            (navigation === Navigation.portfolios ? "text-red-600 font-medium" : "text-gray-500")
                                                         }
                                                         onClick={() => {
                                                             setNavigation(Navigation.portfolios);
@@ -206,6 +208,10 @@ const Landing = () => {
                         <div className="flex w-full px-6 md:px-16 mt-7">
                             <span className="w-full text-center text-sm md:text-base text-gray-800">{profile.intro}</span>
                         </div>
+                    </Card>
+
+                    <Card className="mt-6 p-6 w-full">
+                        <span className="pt-32">asfa</span>
                     </Card>
                 </div>
             )}

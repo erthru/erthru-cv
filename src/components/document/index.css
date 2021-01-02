@@ -8,12 +8,14 @@
     body {
         background-color: #ffffff;
         visibility: hidden;
-        margin-top: -54px;
         height: 100%;
         overflow: hidden;
     }
 
     .area-to-print {
         visibility: visible;
+        position: fixed;
+        left: 0;
+        top: 0;
     }
 }

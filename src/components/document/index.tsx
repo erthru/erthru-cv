@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Store } from "../../plugins/store";
 import Card from "../card";
@@ -10,10 +10,28 @@ const Document = () => {
     const formalEducations = useSelector((store: Store) => store.formalEducation.formalEducations);
     const languages = useSelector((store: Store) => store.language.languages);
     const workExperiences = useSelector((store: Store) => store.workExperience.workExperiences);
+    const [isDocumentHovered, setIsDocumentHovered] = useState(false);
 
     return (
         <Card className="p-6 flex flex-wrap w-full">
-            <div className="mx-auto overflow-y-hidden flex bg-gray-50 area-to-print" style={{ width: "210mm", height: "297mm" }}>
+            <div
+                className="mx-auto flex relative overflow-y-hidden overflow-y-auto bg-gray-50 area-to-print"
+                onMouseEnter={() => setIsDocumentHovered(true)}
+                onMouseLeave={() => setIsDocumentHovered(false)}
+                style={{ width: "210mm", height: "297mm" }}
+            >
+                {isDocumentHovered && (
+                    <div
+                        className="h-full w-full flex items-center absolute cursor-pointer not-to-print"
+                        style={{ backgroundColor: "rgba(0,0,0,0.3)" }}
+                        onClick={() => window.print()}
+                    >
+                        <div className="bg-white w-32 h-10 rounded-xl mx-auto flex items-center">
+                            <span className="mx-auto font-bold">PRINT</span>
+                        </div>
+                    </div>
+                )}
+
                 <div className="w-72 h-full bg-gray-900 flex flex-wrap text-gray-300 px-6">
                     <span className="w-full text-center mt-10 text-xl font-medium uppercase">{profile.fullName}</span>
 

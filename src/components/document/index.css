@@ -18,4 +18,8 @@
         left: 0;
         top: 0;
     }
+
+    .not-to-print {
+        visibility: hidden;
+    }
 }

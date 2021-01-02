@@ -1,0 +1,19 @@
+@media print {
+    @page {
+        margin: 0;
+        size: A4;
+    }
+
+    html,
+    body {
+        background-color: #ffffff;
+        visibility: hidden;
+        margin-top: -54px;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .area-to-print {
+        visibility: visible;
+    }
+}

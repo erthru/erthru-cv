@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Store } from "../../plugins/store";
 import Card from "../card";
+import "./index.css";
 
 const Document = () => {
     const profile = useSelector((store: Store) => store.profile.profile);
@@ -12,8 +13,8 @@ const Document = () => {
 
     return (
         <Card className="p-6 flex w-full">
-            <div className="w-full flex">
-                <div className="mx-auto flex bg-gray-100 overflow-y-hidden" style={{ width: "210mm", height: "297mm" }}>
+            <div className="w-full flex overflow-y-hidden">
+                <div className="mx-auto flex bg-gray-50 area-to-print" style={{ width: "210mm", height: "297mm" }}>
                     <div className="w-72 h-full bg-gray-900 flex flex-wrap text-gray-300 px-6">
                         <span className="w-full text-center mt-10 text-xl font-medium uppercase">{profile.fullName}</span>
 

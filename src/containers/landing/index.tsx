@@ -1,5 +1,5 @@
 import { faFacebookF, faGithubAlt, faInstagram, faLinkedinIn, faMediumM } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCircle, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
@@ -12,13 +12,13 @@ import { Store } from "../../plugins/store";
 enum Navigation {
     overview = "overview",
     workExperiences = "workExperiences",
-    languages = "languages",
     portfolios = "portfolios",
 }
 
 const Landing = () => {
     const profile = useSelector((store: Store) => store.profile.profile);
     const contact = useSelector((store: Store) => store.contact.contact);
+    const languages = useSelector((store: Store) => store.language.languages);
     const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile);
     const [navigation, setNavigation] = useState<Navigation>(Navigation.overview);
     const [isMobileNavigationShown, setIsMobileNavigationShown] = useState(false);
@@ -68,16 +68,6 @@ const Landing = () => {
                                             onClick={() => navigate(Navigation.workExperiences)}
                                         >
                                             Work Experiences
-                                        </span>
-
-                                        <span
-                                            className={
-                                                "ml-6 cursor-pointer " +
-                                                (navigation === Navigation.languages ? "border-b-2 px-1 pb-1 border-white text-white" : "")
-                                            }
-                                            onClick={() => navigate(Navigation.languages)}
-                                        >
-                                            Languages
                                         </span>
 
                                         <span
@@ -138,19 +128,6 @@ const Landing = () => {
                                                     <span
                                                         className={
                                                             "w-full text-center mt-2 " +
-                                                            (navigation === Navigation.languages ? "text-red-600 font-medium" : "text-gray-500")
-                                                        }
-                                                        onClick={() => {
-                                                            setNavigation(Navigation.languages);
-                                                            setIsMobileNavigationShown(false);
-                                                        }}
-                                                    >
-                                                        Languages
-                                                    </span>
-
-                                                    <span
-                                                        className={
-                                                            "w-full text-center mt-2 " +
                                                             (navigation === Navigation.portfolios ? "text-red-600 font-medium" : "text-gray-500")
                                                         }
                                                         onClick={() => {
@@ -177,36 +154,52 @@ const Landing = () => {
                             <img src={profile.avatarUrl} alt="avatar" className="w-full h-full rounded-full" style={{ objectFit: "cover" }} />
                         </div>
 
-                        <div className="flex w-full mt-7">
+                        <div className="flex w-full mt-4 md:mt-8">
                             <div className="mx-auto flex">
                                 <a href={"mailto:" + contact.email}>
-                                    <FontAwesomeIcon icon={faEnvelope} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
+                                    <FontAwesomeIcon icon={faEnvelope} className="text-gray-400 text-lg md:text-3xl cursor-pointer" />
                                 </a>
 
                                 <a target="blank" href={contact.githubUrl} className="ml-6">
-                                    <FontAwesomeIcon icon={faGithubAlt} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
+                                    <FontAwesomeIcon icon={faGithubAlt} className="text-gray-400 text-lg md:text-3xl cursor-pointer" />
                                 </a>
 
                                 <a target="blank" href={contact.linkedinUrl} className="ml-6">
-                                    <FontAwesomeIcon icon={faLinkedinIn} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
+                                    <FontAwesomeIcon icon={faLinkedinIn} className="text-gray-400 text-lg md:text-3xl cursor-pointer" />
                                 </a>
 
                                 <a target="blank" href={contact.mediumUrl} className="ml-6">
-                                    <FontAwesomeIcon icon={faMediumM} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
+                                    <FontAwesomeIcon icon={faMediumM} className="text-gray-400 text-lg md:text-3xl cursor-pointer" />
                                 </a>
 
                                 <a target="blank" href={contact.facebookUrl} className="ml-6">
-                                    <FontAwesomeIcon icon={faFacebookF} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
+                                    <FontAwesomeIcon icon={faFacebookF} className="text-gray-400 text-lg md:text-3xl cursor-pointer" />
                                 </a>
 
                                 <a target="blank" href={contact.instagramUrl} className="ml-6">
-                                    <FontAwesomeIcon icon={faInstagram} className="text-gray-400 text-lg md:text-2xl cursor-pointer" />
+                                    <FontAwesomeIcon icon={faInstagram} className="text-gray-400 text-lg md:text-3xl cursor-pointer" />
                                 </a>
                             </div>
                         </div>
 
-                        <div className="flex w-full px-6 md:px-16 mt-7">
+                        <div className="flex w-full px-6 md:px-16 mt-4 md:mt-8">
                             <span className="w-full text-center text-sm md:text-base text-gray-800">{profile.intro}</span>
+                        </div>
+
+                        <div className="flex w-full px-6 md:px-16 mt-2 md:mt-4">
+                            <div className="mx-auto flex flex-wrap">
+                                {languages.map((language, index) => (
+                                    <div className="w-full md:w-auto flex items-center text-sm md:text-base text-gray-800" key={language.id}>
+                                        <span className="text-center mx-auto md:mx-0">
+                                            {language.lang} ({language.level})
+                                        </span>
+
+                                        {index < languages.length - 1 && (
+                                            <FontAwesomeIcon icon={faCircle} className="ml-2 mr-2 hidden md:block" style={{ fontSize: "5px" }} />
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </Card>
 

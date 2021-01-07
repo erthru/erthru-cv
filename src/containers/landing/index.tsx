@@ -1,5 +1,5 @@
 import { faFacebookF, faGithubAlt, faInstagram, faLinkedinIn, faMediumM } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faCircle, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCircle, faEllipsisH, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
@@ -19,6 +19,7 @@ const Landing = () => {
     const profile = useSelector((store: Store) => store.profile.profile);
     const contact = useSelector((store: Store) => store.contact.contact);
     const languages = useSelector((store: Store) => store.language.languages);
+    const workExperiences = useSelector((store: Store) => store.workExperience.workExperiences);
     const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile);
     const [navigation, setNavigation] = useState<Navigation>(Navigation.overview);
     const [isMobileNavigationShown, setIsMobileNavigationShown] = useState(false);
@@ -203,9 +204,125 @@ const Landing = () => {
                         </div>
                     </Card>
 
-                    <Card className="mt-6 p-6 w-full">
-                        <span className="pt-32">asfa</span>
+                    <Card className="mt-6 p-6 w-full flex flex-wrap">
+                        <div className="w-full flex">
+                            <div className="flex mx-auto text-gray-600 md:text-xl items-center">
+                                <FontAwesomeIcon icon={faEllipsisH} className="mr-4" />
+                                <span className="font-bold text-center">WORK EXPERIENCES</span>
+                                <FontAwesomeIcon icon={faEllipsisH} className="ml-4" />
+                            </div>
+                        </div>
+
+                        <div className="w-full mt-4 md:mt-8 pb-4 flex flex-wrap">
+                            {workExperiences.map((workExperience, index) => (
+                                <div className="mx-auto items-center w-full hidden md:flex">
+                                    <div
+                                        className={
+                                            "flex text-right flex-wrap mr-6 relative w-full " +
+                                            (index === workExperiences.length - 1 ? "mb-10 " : " ") +
+                                            (index === 0 ? "mt-6" : "mt-8")
+                                        }
+                                        key={index}
+                                    >
+                                        <div
+                                            className={
+                                                "bg-gray-100 rounded-xl p-4 w-full mt-2 flex flex-wrap " + (index % 2 === 0 ? "invisible" : "visible")
+                                            }
+                                        >
+                                            <span className="w-full font-bold text-lg text-gray-800">{workExperience.place}</span>
+
+                                            <ul className="list-disc w-full mr-4 text-gray-800" style={{ direction: "rtl" }}>
+                                                {workExperience.activities?.map((activity, _index) => (
+                                                    <li key={_index}>{activity}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className={"w-full h-full absolute top-0 flex " + (index % 2 !== 0 ? "invisible" : "visible")}>
+                                            <span className="font-medium w-full mr-2 text-gray-700 text-2xl ml-auto my-auto">
+                                                {workExperience.timeframe}
+                                            </span>
+
+                                            <div className="w-3 h-3 ml-auto my-auto rounded-full bg-red-600 -mr-8" />
+                                        </div>
+                                    </div>
+
+                                    <div className="w-2 bg-red-400 h-full" />
+
+                                    <div
+                                        className={
+                                            "flex flex-wrap ml-6 w-full relative " +
+                                            (index === workExperiences.length - 1 ? "mb-10 " : " ") +
+                                            (index === 0 ? "mt-6" : "mt-8")
+                                        }
+                                        key={index}
+                                    >
+                                        <div
+                                            className={
+                                                "bg-gray-100 rounded-xl p-4 w-full mt-2 flex flex-wrap " + (index % 2 !== 0 ? "invisible" : "visible")
+                                            }
+                                        >
+                                            <span className="w-full font-bold text-lg text-gray-800">{workExperience.place}</span>
+
+                                            <ul className="list-disc ml-4 text-gray-800">
+                                                {workExperience.activities?.map((activity, _index) => (
+                                                    <li key={_index}>{activity}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+
+                                        <div className={"w-full h-full absolute top-0 flex " + (index % 2 === 0 ? "invisible" : "visible")}>
+                                            <div className="w-3 h-3 mr-auto my-auto rounded-full bg-red-600 -ml-8" />
+
+                                            <span className="font-medium w-full text-gray-700 ml-2 text-2xl mr-auto my-auto">
+                                                {workExperience.timeframe}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+
+                            <div className="flex flex-wrap w-full md:hidden">
+                                {workExperiences.map((workExperience, index) => (
+                                    <div className="flex items-center w-full" key={index}>
+                                        <div className="h-full w-1 bg-red-400" />
+
+                                        <div className="w-3 h-3 rounded-full bg-red-500" style={{ marginLeft: "-7px" }} />
+
+                                        <div
+                                            className={
+                                                "rounded-xl ml-3 flex flex-wrap mt-4 bg-gray-100 w-full p-4 " +
+                                                (index === workExperiences.length - 1 ? "mb-4" : "")
+                                            }
+                                        >
+                                            <span className="w-full text-gray-800">{workExperience.timeframe}</span>
+                                            <span className="w-full font-medium text-gray-700">{workExperience.place}</span>
+
+                                            <ul className="w-full list-disc ml-4 mt-2 text-gray-800">
+                                                {workExperience.activities?.map((activity, _index) => (
+                                                    <li key={_index}>{activity}</li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </Card>
+
+                    <Card className="mt-6 p-6 w-full flex flex-wrap">
+                        <div className="w-full flex">
+                            <div className="flex mx-auto text-gray-600 md:text-xl items-center">
+                                <FontAwesomeIcon icon={faEllipsisH} className="mr-4" />
+                                <span className="font-bold text-center">PORTFOLIOS</span>
+                                <FontAwesomeIcon icon={faEllipsisH} className="ml-4" />
+                            </div>
+                        </div>
+
+                        <div className="mx-auto flex flex-wrap mt-4"></div>
+                    </Card>
+
+                    <Card className="mt-6 p-6 w-full flex flex-wrap bg-gray-800"></Card>
                 </div>
             )}
         </div>

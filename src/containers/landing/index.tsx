@@ -21,7 +21,10 @@ const Progress = () => (
     </div>
 );
 
-const Nav = () => {
+const Overview = () => {
+    const profile = useSelector((store: Store) => store.profile.profile);
+    const languages = useSelector((store: Store) => store.language.languages);
+    const contact = useSelector((store: Store) => store.contact.contact);
     const [navigation, setNavigation] = useState<Navigation>(Navigation.overview);
     const [isMobileNavigationShown, setIsMobileNavigationShown] = useState(false);
 
@@ -30,110 +33,109 @@ const Nav = () => {
     };
 
     return (
-        <div className="absolute w-full h-full flex flex-wrap">
-            <div className="w-full flex">
-                <span className="text-white font-bold text-lg md:text-2xl ml-6 mt-4">{APP_TITLE.split(" ")[0]}</span>
-                <span className="text-gray-300 font-bold text-lg md:text-2xl ml-1 mt-4">{APP_TITLE.split(" ")[1]}</span>
-
-                <div className="ml-auto text-gray-200 mt-4 mr-6 font-medium hidden md:block">
-                    <span
-                        className={"cursor-pointer " + (navigation === Navigation.overview ? "border-b-2 px-1 pb-1 border-white text-white" : "")}
-                        onClick={() => navigate(Navigation.overview)}
-                    >
-                        Overview
-                    </span>
-
-                    <span
-                        className={
-                            "ml-6 cursor-pointer " + (navigation === Navigation.workExperiences ? "border-b-2 px-1 pb-1 border-white text-white" : "")
-                        }
-                        onClick={() => navigate(Navigation.workExperiences)}
-                    >
-                        Work Experiences
-                    </span>
-
-                    <span
-                        className={
-                            "ml-6 cursor-pointer " + (navigation === Navigation.portfolios ? "border-b-2 px-1 pb-1 border-white text-white" : "")
-                        }
-                        onClick={() => navigate(Navigation.portfolios)}
-                    >
-                        Portfolios
-                    </span>
-                </div>
-
-                <div className="ml-auto md:hidden mr-6 mt-5 flex flex-wrap relative">
-                    <FontAwesomeIcon
-                        icon={faBars}
-                        className="ml-auto text-xl cursor-pointer text-white"
-                        onClick={() => setIsMobileNavigationShown(true)}
-                    />
-
-                    {isMobileNavigationShown && (
-                        <div className="bg-white w-52 z-20 absolute top-0 -mt-1 right-0 rounded-xl flex flex-wrap">
-                            <div className="w-full flex mr-3 mt-2">
-                                <FontAwesomeIcon icon={faTimes} className="text-gray-700 ml-auto" onClick={() => setIsMobileNavigationShown(false)} />
-                            </div>
-
-                            <div className="ml-3 mt-2 pb-4 flex flex-wrap">
-                                <span
-                                    className={
-                                        "w-full text-center " + (navigation === Navigation.overview ? "text-red-600 font-medium" : "text-gray-500")
-                                    }
-                                    onClick={() => {
-                                        setNavigation(Navigation.overview);
-                                        setIsMobileNavigationShown(false);
-                                    }}
-                                >
-                                    Overview
-                                </span>
-
-                                <span
-                                    className={
-                                        "w-full text-center mt-2 " +
-                                        (navigation === Navigation.workExperiences ? "text-red-600 font-medium" : "text-gray-500")
-                                    }
-                                    onClick={() => {
-                                        setNavigation(Navigation.workExperiences);
-                                        setIsMobileNavigationShown(false);
-                                    }}
-                                >
-                                    Work Experiences
-                                </span>
-
-                                <span
-                                    className={
-                                        "w-full text-center mt-2 " +
-                                        (navigation === Navigation.portfolios ? "text-red-600 font-medium" : "text-gray-500")
-                                    }
-                                    onClick={() => {
-                                        setNavigation(Navigation.portfolios);
-                                        setIsMobileNavigationShown(false);
-                                    }}
-                                >
-                                    Portfolios
-                                </span>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const Overview = () => {
-    const profile = useSelector((store: Store) => store.profile.profile);
-    const languages = useSelector((store: Store) => store.language.languages);
-    const contact = useSelector((store: Store) => store.contact.contact);
-
-    return (
         <Card className="w-full pb-10">
             <div className="rounded-t-xl relative h-48 md:h-64 w-full flex flex-wrap">
                 <img src={profile.coverUrl} alt="cover" className="w-full h-full rounded-t-xl" style={{ objectFit: "cover" }} />
-                <div className="w-full h-full absolute top-0 rounded-t-xl" style={{ backgroundColor: "rgba(209, 88, 88, 0.91)" }}></div>
+                <div className="w-full h-full absolute top-0 rounded-t-xl" style={{ backgroundColor: "rgba(209, 88, 88, 0.91)" }} />
 
-                <Nav />
+                <div className="absolute w-full h-full flex flex-wrap">
+                    <div className="w-full flex">
+                        <span className="text-white font-bold text-lg md:text-2xl ml-6 mt-4">{APP_TITLE.split(" ")[0]}</span>
+                        <span className="text-gray-300 font-bold text-lg md:text-2xl ml-1 mt-4">{APP_TITLE.split(" ")[1]}</span>
+
+                        <div className="ml-auto text-gray-200 mt-4 mr-6 font-medium hidden md:block">
+                            <span
+                                className={
+                                    "cursor-pointer " + (navigation === Navigation.overview ? "border-b-2 px-1 pb-1 border-white text-white" : "")
+                                }
+                                onClick={() => navigate(Navigation.overview)}
+                            >
+                                Overview
+                            </span>
+
+                            <span
+                                className={
+                                    "ml-6 cursor-pointer " +
+                                    (navigation === Navigation.workExperiences ? "border-b-2 px-1 pb-1 border-white text-white" : "")
+                                }
+                                onClick={() => navigate(Navigation.workExperiences)}
+                            >
+                                Work Experiences
+                            </span>
+
+                            <span
+                                className={
+                                    "ml-6 cursor-pointer " +
+                                    (navigation === Navigation.portfolios ? "border-b-2 px-1 pb-1 border-white text-white" : "")
+                                }
+                                onClick={() => navigate(Navigation.portfolios)}
+                            >
+                                Portfolios
+                            </span>
+                        </div>
+
+                        <div className="ml-auto md:hidden mr-6 mt-5 flex flex-wrap relative">
+                            <FontAwesomeIcon
+                                icon={faBars}
+                                className="ml-auto text-xl cursor-pointer text-white"
+                                onClick={() => setIsMobileNavigationShown(true)}
+                            />
+
+                            {isMobileNavigationShown && (
+                                <div className="bg-white w-52 z-20 absolute top-0 -mt-1 right-0 rounded-xl flex flex-wrap">
+                                    <div className="w-full flex mr-3 mt-2">
+                                        <FontAwesomeIcon
+                                            icon={faTimes}
+                                            className="text-gray-700 ml-auto"
+                                            onClick={() => setIsMobileNavigationShown(false)}
+                                        />
+                                    </div>
+
+                                    <div className="ml-3 mt-2 pb-4 flex flex-wrap">
+                                        <span
+                                            className={
+                                                "w-full text-center " +
+                                                (navigation === Navigation.overview ? "text-red-600 font-medium" : "text-gray-500")
+                                            }
+                                            onClick={() => {
+                                                setNavigation(Navigation.overview);
+                                                setIsMobileNavigationShown(false);
+                                            }}
+                                        >
+                                            Overview
+                                        </span>
+
+                                        <span
+                                            className={
+                                                "w-full text-center mt-2 " +
+                                                (navigation === Navigation.workExperiences ? "text-red-600 font-medium" : "text-gray-500")
+                                            }
+                                            onClick={() => {
+                                                setNavigation(Navigation.workExperiences);
+                                                setIsMobileNavigationShown(false);
+                                            }}
+                                        >
+                                            Work Experiences
+                                        </span>
+
+                                        <span
+                                            className={
+                                                "w-full text-center mt-2 " +
+                                                (navigation === Navigation.portfolios ? "text-red-600 font-medium" : "text-gray-500")
+                                            }
+                                            onClick={() => {
+                                                setNavigation(Navigation.portfolios);
+                                                setIsMobileNavigationShown(false);
+                                            }}
+                                        >
+                                            Portfolios
+                                        </span>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
 
                 <div className="w-full flex flex-wrap -mt-28 md:-mt-40 z-index-20 relative">
                     <div className="w-full flex flex-wrap -mt-2 md:mt-0">
@@ -311,7 +313,19 @@ const Portfolios = () => {
                 </div>
             </div>
 
-            <div className="mx-auto flex flex-wrap mt-4"></div>
+            <div className="mx-auto flex flex-wrap mt-4">
+                <div className="w-1/3">
+                    <div className="rounded-xl relative bg-red-400 w-full">
+                        <img
+                            src="https://i.ibb.co/M9nTyN8/lb-ZJdtxt-LQ54-UK7y0-ZOvzs8-OQf7-Dm1zl-Xib-Ubws-Ecqg.jpg"
+                            className="w-full h-32 rounded-xl"
+                            style={{ objectFit: "cover" }}
+                        />
+
+                        <div className="w-full h-full absolute top-0 rounded-xl" style={{ backgroundColor: "rgba(209, 88, 88, 0.5)" }} />
+                    </div>
+                </div>
+            </div>
         </Card>
     );
 };

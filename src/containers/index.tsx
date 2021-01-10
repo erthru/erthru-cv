@@ -10,6 +10,7 @@ import { fetchProfile } from "../plugins/store/profile/actions";
 import { fetchWorkExperiences } from "../plugins/store/work-experience/actions";
 import Admin from "./admin";
 import Landing from "./landing";
+import PortfolioDetail from "./portfolio-detail";
 import SignIn from "./sign-in";
 
 const Containers = () => {
@@ -65,6 +66,7 @@ const Containers = () => {
     return (
         <Switch>
             <Route exact path="/" component={Landing} />
+            <Route exact path="/portfolio/:id" component={PortfolioDetail} />
             <Route path="/sign-in" component={SignIn} />
             <Route path="/admin" component={Admin} />
         </Switch>

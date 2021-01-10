@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import Card from "../../components/card";
 import ProgressBar from "../../components/progress-bar";
 import { APP_TITLE } from "../../helpers/environments";
@@ -276,6 +277,7 @@ const WorkExperiences = () => {
 
 const Portfolios = () => {
     const portfolios = useSelector((store: Store) => store.portfolio.portfolios);
+    const history = useHistory();
 
     return (
         <Card className="mt-6 p-6 w-full flex flex-wrap" id="portfolios">
@@ -290,7 +292,7 @@ const Portfolios = () => {
             <div className="mx-auto flex flex-wrap w-full">
                 {portfolios.map((portfolio, index) => (
                     <div className={"w-full md:w-1/3 flex mt-4 md:px-2"} key={index}>
-                        <div className="rounded-xl bg-red-400 w-full flex cursor-pointer">
+                        <Link className="rounded-xl bg-red-400 w-full flex cursor-pointer" to={"/portfolio/" + portfolio.id}>
                             <div
                                 className="rounded-xl w-full h-52 relative"
                                 style={{
@@ -305,7 +307,7 @@ const Portfolios = () => {
                                     <span className="w-full text-gray-300 text-sm w-full truncate">{portfolio.description}</span>
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 ))}
             </div>

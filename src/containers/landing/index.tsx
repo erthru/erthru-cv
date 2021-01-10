@@ -1,7 +1,7 @@
 import { faFacebookF, faGithubAlt, faInstagram, faLinkedinIn, faMediumM } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faChevronUp, faCircle, faEllipsisH, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import Card from "../../components/card";
@@ -31,6 +31,27 @@ const Overview = () => {
     const navigate = (navigation: Navigation) => {
         setNavigation(navigation);
     };
+
+    useEffect(() => {
+        let elemToView: HTMLElement | null = null;
+
+        switch (navigation) {
+            case Navigation.workExperiences:
+                elemToView = document.getElementById("workExperiences");
+                break;
+
+            case Navigation.portfolios:
+                elemToView = document.getElementById("portfolios");
+                break;
+
+            default:
+                break;
+        }
+
+        elemToView?.scrollIntoView({
+            behavior: "smooth",
+        });
+    }, [navigation]);
 
     return (
         <Card className="w-full pb-10">
@@ -206,7 +227,7 @@ const WorkExperiences = () => {
     const workExperiences = useSelector((store: Store) => store.workExperience.workExperiences);
 
     return (
-        <Card className="mt-6 p-6 w-full flex flex-wrap">
+        <Card className="mt-6 p-6 w-full flex flex-wrap" id="workExperiences">
             <div className="w-full flex">
                 <div className="flex mx-auto text-gray-600 md:text-xl items-center">
                     <FontAwesomeIcon icon={faEllipsisH} className="mr-4" />
@@ -306,7 +327,7 @@ const Portfolios = () => {
     const portfolios = useSelector((store: Store) => store.portfolio.portfolios);
 
     return (
-        <Card className="mt-6 p-6 w-full flex flex-wrap">
+        <Card className="mt-6 p-6 w-full flex flex-wrap" id="portfolios">
             <div className="w-full flex">
                 <div className="flex mx-auto text-gray-600 md:text-xl items-center">
                     <FontAwesomeIcon icon={faEllipsisH} className="mr-4" />

@@ -294,7 +294,7 @@ const Portfolios = () => {
                             <div
                                 className="rounded-xl w-full h-52 relative"
                                 style={{
-                                    backgroundImage: "linear-gradient(to bottom, transparent 0%, #1a0000 180%), url(" + portfolio.previewOneUrl + ")",
+                                    backgroundImage: "linear-gradient(to bottom, transparent 0%, #1a0000 140%), url(" + portfolio.previewOneUrl + ")",
                                     backgroundSize: "cover",
                                     backgroundRepeat: "no-repeat",
                                     backgroundPosition: "center center",

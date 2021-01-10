@@ -1,5 +1,5 @@
 import { faFacebookF, faGithubAlt, faInstagram, faLinkedinIn, faMediumM } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faChevronUp, faCircle, faEllipsisH, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleDown, faBars, faChevronUp, faCircle, faEllipsisH, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
@@ -10,7 +10,6 @@ import { APP_TITLE } from "../../helpers/environments";
 import { Store } from "../../plugins/store";
 
 enum Navigation {
-    overview = "overview",
     workExperiences = "workExperiences",
     portfolios = "portfolios",
 }
@@ -25,10 +24,11 @@ const Overview = () => {
     const profile = useSelector((store: Store) => store.profile.profile);
     const languages = useSelector((store: Store) => store.language.languages);
     const contact = useSelector((store: Store) => store.contact.contact);
-    const [navigation, setNavigation] = useState<Navigation>(Navigation.overview);
-    const [isMobileNavigationShown, setIsMobileNavigationShown] = useState(false);
+    const [navigation, setNavigation] = useState<Navigation | null>(null);
+    const [isToggled, setIsToggled] = useState(false);
 
     const navigate = (navigation: Navigation) => {
+        setIsToggled(false);
         setNavigation(navigation);
     };
 
@@ -51,6 +51,8 @@ const Overview = () => {
         elemToView?.scrollIntoView({
             behavior: "smooth",
         });
+
+        setNavigation(null);
     }, [navigation]);
 
     return (
@@ -64,93 +66,42 @@ const Overview = () => {
                         <span className="text-white font-bold text-lg md:text-2xl ml-6 mt-4">{APP_TITLE.split(" ")[0]}</span>
                         <span className="text-gray-300 font-bold text-lg md:text-2xl ml-1 mt-4">{APP_TITLE.split(" ")[1]}</span>
 
-                        <div className="ml-auto text-gray-200 mt-4 mr-6 font-medium hidden md:block">
-                            <span
-                                className={
-                                    "cursor-pointer " + (navigation === Navigation.overview ? "border-b-2 px-1 pb-1 border-white text-white" : "")
-                                }
-                                onClick={() => navigate(Navigation.overview)}
-                            >
-                                Overview
-                            </span>
+                        <div className="ml-auto flex mr-6 mt-4 relative">
+                            {!isToggled && (
+                                <FontAwesomeIcon
+                                    icon={faBars}
+                                    className="text-white text-lg mt-1 md:mt-0 md:text-2xl cursor-pointer"
+                                    onClick={() => setIsToggled(true)}
+                                />
+                            )}
 
-                            <span
-                                className={
-                                    "ml-6 cursor-pointer " +
-                                    (navigation === Navigation.workExperiences ? "border-b-2 px-1 pb-1 border-white text-white" : "")
-                                }
-                                onClick={() => navigate(Navigation.workExperiences)}
-                            >
-                                Work Experiences
-                            </span>
+                            {isToggled && (
+                                <FontAwesomeIcon
+                                    icon={faTimes}
+                                    className="text-white text-lg mt-1 md:mt-0 md:text-2xl cursor-pointer"
+                                    onClick={() => setIsToggled(false)}
+                                />
+                            )}
 
-                            <span
-                                className={
-                                    "ml-6 cursor-pointer " +
-                                    (navigation === Navigation.portfolios ? "border-b-2 px-1 pb-1 border-white text-white" : "")
-                                }
-                                onClick={() => navigate(Navigation.portfolios)}
-                            >
-                                Portfolios
-                            </span>
-                        </div>
-
-                        <div className="ml-auto md:hidden mr-6 mt-5 flex flex-wrap relative">
-                            <FontAwesomeIcon
-                                icon={faBars}
-                                className="ml-auto text-xl cursor-pointer text-white"
-                                onClick={() => setIsMobileNavigationShown(true)}
-                            />
-
-                            {isMobileNavigationShown && (
-                                <div className="bg-white w-52 z-20 absolute top-0 -mt-1 right-0 rounded-xl flex flex-wrap">
-                                    <div className="w-full flex mr-3 mt-2">
-                                        <FontAwesomeIcon
-                                            icon={faTimes}
-                                            className="text-gray-700 ml-auto"
-                                            onClick={() => setIsMobileNavigationShown(false)}
-                                        />
-                                    </div>
-
-                                    <div className="ml-3 mt-2 pb-4 flex flex-wrap">
-                                        <span
-                                            className={
-                                                "w-full text-center " +
-                                                (navigation === Navigation.overview ? "text-red-600 font-medium" : "text-gray-500")
-                                            }
-                                            onClick={() => {
-                                                setNavigation(Navigation.overview);
-                                                setIsMobileNavigationShown(false);
-                                            }}
-                                        >
-                                            Overview
-                                        </span>
-
-                                        <span
-                                            className={
-                                                "w-full text-center mt-2 " +
-                                                (navigation === Navigation.workExperiences ? "text-red-600 font-medium" : "text-gray-500")
-                                            }
-                                            onClick={() => {
-                                                setNavigation(Navigation.workExperiences);
-                                                setIsMobileNavigationShown(false);
-                                            }}
-                                        >
+                            {isToggled && (
+                                <div
+                                    className="z-20 text-gray-100 border border-gray-300 text-white flex flex-wrap w-52 absolute right-0 top-0 mr-8 rounded-xl p-4"
+                                    style={{ backgroundColor: "#C55252" }}
+                                >
+                                    <div className="flex w-full items-center">
+                                        <span className="w-full font-medium cursor-pointer" onClick={() => navigate(Navigation.workExperiences)}>
                                             Work Experiences
                                         </span>
 
-                                        <span
-                                            className={
-                                                "w-full text-center mt-2 " +
-                                                (navigation === Navigation.portfolios ? "text-red-600 font-medium" : "text-gray-500")
-                                            }
-                                            onClick={() => {
-                                                setNavigation(Navigation.portfolios);
-                                                setIsMobileNavigationShown(false);
-                                            }}
-                                        >
-                                            Portfolios
+                                        <FontAwesomeIcon icon={faAngleDoubleDown} />
+                                    </div>
+
+                                    <div className="w-full flex items-center mt-4">
+                                        <span className="w-full font-medium cursor-pointer" onClick={() => navigate(Navigation.portfolios)}>
+                                            Porfolios
                                         </span>
+
+                                        <FontAwesomeIcon icon={faAngleDoubleDown} />
                                     </div>
                                 </div>
                             )}

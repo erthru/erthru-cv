@@ -1,5 +1,5 @@
 import { faFacebookF, faGithubAlt, faInstagram, faLinkedinIn, faMediumM } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faCircle, faEllipsisH, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faChevronUp, faCircle, faEllipsisH, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
@@ -303,6 +303,8 @@ const WorkExperiences = () => {
 };
 
 const Portfolios = () => {
+    const portfolios = useSelector((store: Store) => store.portfolio.portfolios);
+
     return (
         <Card className="mt-6 p-6 w-full flex flex-wrap">
             <div className="w-full flex">
@@ -313,24 +315,67 @@ const Portfolios = () => {
                 </div>
             </div>
 
-            <div className="mx-auto flex flex-wrap mt-4">
-                <div className="w-1/3">
-                    <div className="rounded-xl relative bg-red-400 w-full">
-                        <img
-                            src="https://i.ibb.co/M9nTyN8/lb-ZJdtxt-LQ54-UK7y0-ZOvzs8-OQf7-Dm1zl-Xib-Ubws-Ecqg.jpg"
-                            className="w-full h-32 rounded-xl"
-                            style={{ objectFit: "cover" }}
-                        />
-
-                        <div className="w-full h-full absolute top-0 rounded-xl" style={{ backgroundColor: "rgba(209, 88, 88, 0.5)" }} />
+            <div className="mx-auto flex flex-wrap w-full">
+                {portfolios.map((portfolio, index) => (
+                    <div className={"w-full md:w-1/3 flex mt-4 md:px-2"} key={index}>
+                        <div className="rounded-xl bg-red-400 w-full flex cursor-pointer">
+                            <div
+                                className="rounded-xl w-full h-52 relative"
+                                style={{
+                                    backgroundImage: "linear-gradient(to bottom, transparent 0%, black 120%), url(" + portfolio.previewOneUrl + ")",
+                                    backgroundSize: "cover",
+                                    backgroundRepeat: "no-repeat",
+                                    backgroundPosition: "center center",
+                                }}
+                            >
+                                <div className="absolute bottom-0 left-0 w-full flex flex-wrap px-4 pb-4">
+                                    <span className="text-white font-medium text-2xl w-full">{portfolio.title}</span>
+                                    <span className="w-full text-gray-300 text-sm w-full truncate">{portfolio.description}</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                ))}
             </div>
         </Card>
     );
 };
 
-const Footer = () => <Card className="mt-6 p-6 w-full flex flex-wrap bg-gray-800"></Card>;
+const Footer = () => (
+    <Card className="mt-6 p-6 w-full flex flex-wrap bg-gray-800">
+        <div className="w-full flex flex-wrap md:flex-nowrap items-center">
+            <div className="w-full flex md:hidden">
+                <div className="bg-red-500 rounded-full w-8 h-8 mx-auto flex items-center cursor-pointer">
+                    <FontAwesomeIcon icon={faChevronUp} className="mx-auto text-white" />
+                </div>
+            </div>
+
+            <div className="w-full flex mt-4 md:mt-0">
+                <div className="mx-auto md:mx-0">
+                    <span className="text-red-500 font-bold text-lg md:text-2xl">{APP_TITLE.split(" ")[0]}</span>
+                    <span className="text-gray-300 font-bold text-lg md:text-2xl ml-1">{APP_TITLE.split(" ")[1]}</span>
+                </div>
+            </div>
+
+            <div className="w-full md:flex hidden">
+                <div className="bg-red-500 rounded-full w-12 h-12 mx-auto flex items-center cursor-pointer">
+                    <FontAwesomeIcon icon={faChevronUp} className="mx-auto text-white text-xl" />
+                </div>
+            </div>
+
+            <div className="w-full flex flex-wrap text-xs md:text-sm mt-2 md:mt-0">
+                <span className="text-gray-400 w-full text-center md:text-right">All created with ♥</span>
+
+                <span className="text-gray-400 w-full text-center md:text-right">
+                    Clone this on{" "}
+                    <a className="text-red-400" href="https://github.com/erthru/erthru-cv" target="_blank">
+                        Github
+                    </a>
+                </span>
+            </div>
+        </div>
+    </Card>
+);
 
 const Landing = () => {
     const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile);

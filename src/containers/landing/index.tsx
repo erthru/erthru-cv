@@ -341,41 +341,52 @@ const Portfolios = () => {
     );
 };
 
-const Footer = () => (
-    <Card className="mt-6 p-6 w-full flex flex-wrap bg-gray-800">
-        <div className="w-full flex flex-wrap md:flex-nowrap items-center">
-            <div className="w-full flex md:hidden">
-                <div className="bg-red-500 rounded-full w-8 h-8 mx-auto flex items-center cursor-pointer">
-                    <FontAwesomeIcon icon={faChevronUp} className="mx-auto text-white" />
+const Footer = () => {
+    const scrollToTop = () => {
+        const c = document.documentElement.scrollTop || document.body.scrollTop;
+
+        if (c > 0) {
+            window.requestAnimationFrame(scrollToTop);
+            window.scrollTo(0, c - c / 8);
+        }
+    };
+
+    return (
+        <Card className="mt-6 p-6 w-full flex flex-wrap bg-gray-800">
+            <div className="w-full flex flex-wrap md:flex-nowrap items-center">
+                <div className="w-full flex md:hidden">
+                    <div className="bg-red-500 rounded-full w-8 h-8 mx-auto flex items-center cursor-pointer" onClick={scrollToTop}>
+                        <FontAwesomeIcon icon={faChevronUp} className="mx-auto text-white" />
+                    </div>
+                </div>
+
+                <div className="w-full flex mt-4 md:mt-0">
+                    <div className="mx-auto md:mx-0">
+                        <span className="text-red-500 font-bold text-lg md:text-2xl">{APP_TITLE.split(" ")[0]}</span>
+                        <span className="text-gray-300 font-bold text-lg md:text-2xl ml-1">{APP_TITLE.split(" ")[1]}</span>
+                    </div>
+                </div>
+
+                <div className="w-full md:flex hidden">
+                    <div className="bg-red-500 rounded-full w-12 h-12 mx-auto flex items-center cursor-pointer" onClick={scrollToTop}>
+                        <FontAwesomeIcon icon={faChevronUp} className="mx-auto text-white text-xl" />
+                    </div>
+                </div>
+
+                <div className="w-full flex flex-wrap text-xs md:text-sm mt-2 md:mt-0">
+                    <span className="text-gray-400 w-full text-center md:text-right">All created with ♥</span>
+
+                    <span className="text-gray-400 w-full text-center md:text-right">
+                        Clone this on{" "}
+                        <a className="text-red-400" href="https://github.com/erthru/erthru-cv" target="_blank">
+                            Github
+                        </a>
+                    </span>
                 </div>
             </div>
-
-            <div className="w-full flex mt-4 md:mt-0">
-                <div className="mx-auto md:mx-0">
-                    <span className="text-red-500 font-bold text-lg md:text-2xl">{APP_TITLE.split(" ")[0]}</span>
-                    <span className="text-gray-300 font-bold text-lg md:text-2xl ml-1">{APP_TITLE.split(" ")[1]}</span>
-                </div>
-            </div>
-
-            <div className="w-full md:flex hidden">
-                <div className="bg-red-500 rounded-full w-12 h-12 mx-auto flex items-center cursor-pointer">
-                    <FontAwesomeIcon icon={faChevronUp} className="mx-auto text-white text-xl" />
-                </div>
-            </div>
-
-            <div className="w-full flex flex-wrap text-xs md:text-sm mt-2 md:mt-0">
-                <span className="text-gray-400 w-full text-center md:text-right">All created with ♥</span>
-
-                <span className="text-gray-400 w-full text-center md:text-right">
-                    Clone this on{" "}
-                    <a className="text-red-400" href="https://github.com/erthru/erthru-cv" target="_blank">
-                        Github
-                    </a>
-                </span>
-            </div>
-        </div>
-    </Card>
-);
+        </Card>
+    );
+};
 
 const Landing = () => {
     const isFetchingProfile = useSelector((store: Store) => store.profile.isFetchingProfile);

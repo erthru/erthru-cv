@@ -317,12 +317,11 @@ const Portfolios = () => {
 
 const Footer = () => {
     const scrollToTop = () => {
-        const c = document.documentElement.scrollTop || document.body.scrollTop;
+        const elemtToView = document.querySelector("html");
 
-        if (c > 0) {
-            window.requestAnimationFrame(scrollToTop);
-            window.scrollTo(0, c - c / 8);
-        }
+        elemtToView?.scrollIntoView({
+            behavior: "smooth",
+        });
     };
 
     return (

@@ -9,18 +9,6 @@ export const fetchFormalEducations = () => async (dispatch: Dispatch<FormalEduca
         const formalEducations: any[] = [];
         let formalEducationsSnapshots = await db.collection(FORMAL_EDUCATION_COL_NAME).orderBy(FormalEducationField.createdOn, "desc").get();
 
-        if (formalEducationsSnapshots.docs.length === 0) {
-            await db.collection(FORMAL_EDUCATION_COL_NAME).add({
-                [FormalEducationField.timeframe]: "2011 - 2014",
-                [FormalEducationField.place]: "SMKN 1 Gorontalo",
-                [FormalEducationField.majors]: "Computer and Network Enginering",
-                [FormalEducationField.createdOn]: new Date(),
-                [FormalEducationField.updatedOn]: new Date(),
-            });
-
-            formalEducationsSnapshots = await db.collection(FORMAL_EDUCATION_COL_NAME).orderBy(FormalEducationField.createdOn, "desc").get();
-        }
-
         formalEducationsSnapshots.docs.map((doc) => {
             formalEducations.push({
                 id: doc.id,

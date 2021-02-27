@@ -11,14 +11,14 @@ export const fetchContact = () => async (dispatch: Dispatch<ContactAction>) => {
 
         if (contactsSnapshots.docs.length === 0) {
             await db.collection(CONTACT_COL_NAME).add({
-                [ContactField.address]: "Jl. Something, Gorontalo",
-                [ContactField.phone]: "081144431122",
-                [ContactField.email]: "ersaka96@gmail.com",
-                [ContactField.githubUrl]: "https://github.com/erthru",
-                [ContactField.linkedinUrl]: "https://linkedin.com/in/erthru",
-                [ContactField.mediumUrl]: "https://erthru.medium.com",
-                [ContactField.facebookUrl]: "https://facebook.com/erthru",
-                [ContactField.instagramUrl]: "https://instagram.com/_erthru",
+                [ContactField.address]: "Your Address",
+                [ContactField.phone]: "Your Phone Number",
+                [ContactField.email]: "your@mail.com",
+                [ContactField.githubUrl]: "https://github.com/your_username",
+                [ContactField.linkedinUrl]: "https://linkedin.com/in/your_username",
+                [ContactField.mediumUrl]: "https://your_username.medium.com",
+                [ContactField.facebookUrl]: "https://facebook.com/your_username",
+                [ContactField.instagramUrl]: "https://instagram.com/your_username",
                 [ContactField.createdOn]: new Date(),
                 [ContactField.updatedOn]: new Date(),
             });

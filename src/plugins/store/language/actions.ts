@@ -9,31 +9,6 @@ export const fetchLanguages = () => async (dispatch: Dispatch<LanguageAction>) =
         const languages: any[] = [];
         let languagesSnapshots = await db.collection(LANGUAGE_COL_NAME).orderBy(LanguageField.createdOn, "desc").get();
 
-        if (languagesSnapshots.docs.length === 0) {
-            await db.collection(LANGUAGE_COL_NAME).add({
-                [LanguageField.lang]: "日本語",
-                [LanguageField.level]: LanguageLevel.passive,
-                [LanguageField.createdOn]: new Date(),
-                [LanguageField.updatedOn]: new Date(),
-            });
-
-            await db.collection(LANGUAGE_COL_NAME).add({
-                [LanguageField.lang]: "English",
-                [LanguageField.level]: LanguageLevel.passive,
-                [LanguageField.createdOn]: new Date(),
-                [LanguageField.updatedOn]: new Date(),
-            });
-
-            await db.collection(LANGUAGE_COL_NAME).add({
-                [LanguageField.lang]: "Indonesian",
-                [LanguageField.level]: LanguageLevel.native,
-                [LanguageField.createdOn]: new Date(),
-                [LanguageField.updatedOn]: new Date(),
-            });
-
-            languagesSnapshots = await db.collection(LANGUAGE_COL_NAME).orderBy(LanguageField.createdOn, "desc").get();
-        }
-
         languagesSnapshots.docs.map((doc) => {
             languages.push({
                 id: doc.id,

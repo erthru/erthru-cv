@@ -1,3 +1,4 @@
+import { faSlackHash } from "@fortawesome/free-brands-svg-icons";
 import { faBriefcase, faFileCode, faIdCard, faLanguage, faLayerGroup, faThLarge, faUniversity } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -57,6 +58,15 @@ const Sidebar = (props: Props) => {
                 isActive={currentActiveKey === NavigationKey.languages}
                 to="/admin/languages"
                 onClick={() => dispatch(setNavigationKey(NavigationKey.languages))}
+            />
+
+            <SidebarItem
+                icon={faSlackHash}
+                title="STACKS"
+                className="mt-2"
+                isActive={currentActiveKey === NavigationKey.stacks}
+                to="/admin/stacks"
+                onClick={() => dispatch(setNavigationKey(NavigationKey.stacks))}
             />
 
             <SidebarItem

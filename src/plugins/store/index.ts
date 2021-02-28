@@ -8,6 +8,7 @@ import languageReducer from "./language/reducers";
 import portfolioReducer from "./portfolio/reducers";
 import contactReducer from "./contact/reducers";
 import authReducer from "./auth/reducers";
+import stackReducer from "./stack/reducers";
 
 const combinedReducers = combineReducers({
     navigation: navigationReducer,
@@ -15,6 +16,7 @@ const combinedReducers = combineReducers({
     workExperience: workExperienceReducer,
     formalEducation: formalEducationReducer,
     language: languageReducer,
+    stack: stackReducer,
     portfolio: portfolioReducer,
     contact: contactReducer,
     auth: authReducer,

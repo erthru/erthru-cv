@@ -2,11 +2,15 @@ import { StackState, StackAction, STACK_TYPES } from "./types";
 
 const initalState: StackState = {
     stacks: [],
+    stack: {},
     isFetchingStacks: false,
-    isUpdatingStacks: false,
-    isDeletingStacks: false,
+    isFetchingStack: false,
+    isAddingStack: false,
+    isUpdatingStack: false,
+    isRemovingStack: false,
+    isNewStackAdded: false,
     isStackUpdated: false,
-    isStackDeleted: false,
+    isStackRemoved: false,
 };
 
 const reducers = (state = initalState, { type, payload }: StackAction): StackState => {
@@ -25,32 +29,60 @@ const reducers = (state = initalState, { type, payload }: StackAction): StackSta
                 stacks: payload?.stacks!!,
             };
 
+        case STACK_TYPES.FETCH_STACK_PREPARE:
+            return {
+                ...state,
+                isFetchingStack: true,
+                stack: {},
+            };
+
+        case STACK_TYPES.FETCH_STACK_COMPLETED:
+            return {
+                ...state,
+                isFetchingStack: false,
+                stack: payload?.stack!!,
+            };
+
+        case STACK_TYPES.ADD_STACK_PREPARE:
+            return {
+                ...state,
+                isAddingStack: true,
+                isNewStackAdded: false,
+            };
+
+        case STACK_TYPES.ADD_STACK_COMPLETED:
+            return {
+                ...state,
+                isAddingStack: false,
+                isNewStackAdded: true,
+            };
+
         case STACK_TYPES.UPDATE_STACK_PREPARE:
             return {
                 ...state,
-                isUpdatingStacks: true,
+                isUpdatingStack: true,
                 isStackUpdated: false,
             };
 
         case STACK_TYPES.UPDATE_STACK_COMPLETED:
             return {
                 ...state,
-                isUpdatingStacks: false,
+                isUpdatingStack: false,
                 isStackUpdated: true,
             };
 
-        case STACK_TYPES.DELETE_STACK_PREPARE:
+        case STACK_TYPES.REMOVE_STACK_PREPARE:
             return {
                 ...state,
-                isDeletingStacks: true,
-                isStackDeleted: false,
+                isRemovingStack: true,
+                isStackRemoved: false,
             };
 
-        case STACK_TYPES.DELETE_STACK_COMPLETED:
+        case STACK_TYPES.REMOVE_STACK_COMPLETED:
             return {
                 ...state,
-                isDeletingStacks: false,
-                isStackDeleted: true,
+                isRemovingStack: false,
+                isStackRemoved: true,
             };
 
         default:

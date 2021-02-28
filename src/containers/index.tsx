@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { Store } from "../plugins/store";
 import { fetchContact } from "../plugins/store/contact/actions";
 import { fetchFormalEducations } from "../plugins/store/formal-education/actions";
 import { fetchLanguages } from "../plugins/store/language/actions";
 import { fetchPortfolios } from "../plugins/store/portfolio/actions";
 import { fetchProfile } from "../plugins/store/profile/actions";
+import { fetchStacks } from "../plugins/store/stack/actions";
 import { fetchWorkExperiences } from "../plugins/store/work-experience/actions";
 import Admin from "./admin";
 import Landing from "./landing";
@@ -29,6 +30,9 @@ const Containers = () => {
     const isPortfolioUpdated = useSelector((store: Store) => store.portfolio.isPortfolioUpdated);
     const isPortfolioRemoved = useSelector((store: Store) => store.portfolio.isPortfolioRemoved);
     const isContactUpdated = useSelector((store: Store) => store.contact.isContactUpdated);
+    const isNewStackAdded = useSelector((store: Store) => store.stack.isNewStackAdded);
+    const isStackUpdated = useSelector((store: Store) => store.stack.isStackUpdated);
+    const isStackRemoved = useSelector((store: Store) => store.stack.isStackRemoved);
 
     useEffect(() => {
         dispatch(fetchProfile());
@@ -37,6 +41,7 @@ const Containers = () => {
         dispatch(fetchLanguages());
         dispatch(fetchPortfolios());
         dispatch(fetchContact());
+        dispatch(fetchStacks());
     }, []);
 
     useEffect(() => {
@@ -61,6 +66,9 @@ const Containers = () => {
         isPortfolioUpdated,
         isPortfolioRemoved,
         isContactUpdated,
+        isNewStackAdded,
+        isStackUpdated,
+        isStackRemoved,
     ]);
 
     return (

@@ -7,6 +7,7 @@ export enum NavigationKey {
     workExperiences = "workExperiences",
     formalEducations = "formalEducations",
     languages = "languages",
+    stacks = "stacks",
     portfolios = "portfolios",
     contacts = "contacts",
     document = "document",

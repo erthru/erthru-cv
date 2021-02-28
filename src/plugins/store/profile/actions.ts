@@ -12,11 +12,11 @@ export const fetchProfile = () => async (dispatch: Dispatch<ProfileAction>) => {
         if (profilesSnapshots.docs.length === 0) {
             await db.collection(PROFILE_COL_NAME).add({
                 [ProfileField.fullName]: "Your Name",
-                [ProfileField.avatarUrl]: "https://pixabay.com/get/g0b5bb4351641efb289b91c539a2ca1f5ff03ef27d94cec09cb7f70b9b94b7ec1599411609e44886b346f5be873714ff7_640.jpg",
+                [ProfileField.avatarUrl]:
+                    "https://pixabay.com/get/g0b5bb4351641efb289b91c539a2ca1f5ff03ef27d94cec09cb7f70b9b94b7ec1599411609e44886b346f5be873714ff7_640.jpg",
                 [ProfileField.coverUrl]: "https://i.ibb.co/ftLQmtM/pexels-junior-teixeira-2047905-1.jpg",
-                [ProfileField.intro]:
-                    "Example intro belong here, write all about you here",
-                [ProfileField.career]: "Your Career",
+                [ProfileField.intro]: "Example intro belong here, write all about you here",
+                [ProfileField.career]: "Web Developers",
                 [ProfileField.createdOn]: new Date(),
                 [ProfileField.updatedOn]: new Date(),
             });

@@ -8,6 +8,7 @@ import { checkSignInState } from "../../plugins/store/auth/actions";
 import AddFormalEducation from "./add-formal-education";
 import AddPortfolio from "./add-portfolio";
 import AddWorkExperience from "./add-work-experience";
+import AddStack from "./add-stack";
 import Contacts from "./contacts";
 import Document from "./document";
 import EditFormalEducation from "./edit-formal-education";
@@ -18,7 +19,9 @@ import Languages from "./languages";
 import Overview from "./overview";
 import Portfolios from "./portfolios";
 import Settings from "./settings";
+import Stacks from "./stacks";
 import WorkExperiences from "./work-experiences";
+import EditStack from "./edit-stack";
 
 const Admin = () => {
     const dispatch = useDispatch();
@@ -52,6 +55,9 @@ const Admin = () => {
                             <Route exact path="/admin/formal-education/add" component={AddFormalEducation} />
                             <Route exact path="/admin/formal-education/edit/:id" component={EditFormalEducation} />
                             <Route exact path="/admin/languages" component={Languages} />
+                            <Route exact path="/admin/stacks" component={Stacks} />
+                            <Route exact path="/admin/stack/add" component={AddStack} />
+                            <Route exact path="/admin/stack/edit/:id" component={EditStack} />
                             <Route exact path="/admin/portfolios" component={Portfolios} />
                             <Route exact path="/admin/portfolio/add" component={AddPortfolio} />
                             <Route exact path="/admin/portfolio/edit/:id" component={EditPortfolio} />

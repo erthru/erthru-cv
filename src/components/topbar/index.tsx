@@ -1,3 +1,4 @@
+import { faSlackHash } from "@fortawesome/free-brands-svg-icons";
 import {
     faBars,
     faBriefcase,
@@ -99,6 +100,15 @@ const Topbar = () => {
                     icon={faLanguage}
                     isActive={currentActiveKey === NavigationKey.languages}
                     onClick={() => onItemClicked(NavigationKey.languages)}
+                />
+
+                <TopbarItem
+                    title="STACKS"
+                    to="/admin/stacks"
+                    className="mt-2"
+                    icon={faSlackHash}
+                    isActive={currentActiveKey === NavigationKey.stacks}
+                    onClick={() => onItemClicked(NavigationKey.stacks)}
                 />
 
                 <TopbarItem

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import Alert, { AlertMode } from "../../components/alert";
 import Card from "../../components/card";
 import ProgressBar from "../../components/progress-bar";
 import { APP_TITLE } from "../../helpers/environments";
@@ -275,9 +276,27 @@ const WorkExperiences = () => {
     );
 };
 
+const Stacks = () => {
+    return (
+        <Card className="mt-6 p-6 w-full flex flex-wrap" id="portfolios">
+            <div className="w-full flex">
+                <div className="flex mx-auto text-gray-600 md:text-xl items-center">
+                    <FontAwesomeIcon icon={faEllipsisH} className="mr-4" />
+                    <span className="font-bold text-center">STACKS</span>
+                    <FontAwesomeIcon icon={faEllipsisH} className="ml-4" />
+                </div>
+            </div>
+
+            <Alert className="mt-4" mode={AlertMode.success}>
+                Had used these stacks until production stage :)
+            </Alert>
+        </Card>
+    );
+};
+
 const Portfolios = () => {
     const portfolios = useSelector((store: Store) => store.portfolio.portfolios);
-    const history = useHistory();
+    const contact = useSelector((store: Store) => store.contact.contact);
 
     return (
         <Card className="mt-6 p-6 w-full flex flex-wrap" id="portfolios">
@@ -289,7 +308,16 @@ const Portfolios = () => {
                 </div>
             </div>
 
-            <div className="mx-auto flex flex-wrap w-full">
+            <Alert className="mt-4" mode={AlertMode.warning}>
+                Some portfolios cannot be shown due to privacy from client, but i can show it via private message.
+                <br />
+                Also check some my awosome open source projects in{" "}
+                <a className="underline" target="blank" href={contact.githubUrl}>
+                    Github
+                </a>
+            </Alert>
+
+            <div className="mx-auto mt-2 flex flex-wrap w-full">
                 {portfolios.map((portfolio, index) => (
                     <div className={"w-full md:w-1/3 flex mt-4 md:px-2"} key={index}>
                         <Link className="rounded-xl bg-red-400 w-full flex cursor-pointer" to={"/portfolio/" + portfolio.id}>
@@ -374,6 +402,7 @@ const Landing = () => {
                 <div className="flex flex-wrap w-full p-6 container mx-auto" style={{ maxWidth: "1150px", transform: "translate(0, 0)" }}>
                     <Overview />
                     <WorkExperiences />
+                    <Stacks />
                     <Portfolios />
                     <Footer />
                 </div>

@@ -10,6 +10,7 @@ const Document = () => {
     const formalEducations = useSelector((store: Store) => store.formalEducation.formalEducations);
     const languages = useSelector((store: Store) => store.language.languages);
     const workExperiences = useSelector((store: Store) => store.workExperience.workExperiences);
+    const stacks = useSelector((store: Store) => store.stack.stacks);
     const [isDocumentHovered, setIsDocumentHovered] = useState(false);
 
     return (
@@ -59,12 +60,12 @@ const Document = () => {
                 <div className="w-6 h-full bg-gray-400" />
 
                 <div className="w-full px-3 pt-10 flex flex-wrap">
-                    <span className="w-full text-red-400 text-2xl">PROFILE</span>
-                    <span className="w-full mt-2 text-gray-800">{profile.intro}</span>
-                    <span className="w-full text-red-400 text-2xl mt-8">FORMAL EDUCATION</span>
+                    <span className="w-full text-red-400 text-xl">PROFILE</span>
+                    <span className="w-full text-sm text-gray-800">{profile.intro}</span>
+                    <span className="w-full text-red-400 text-xl mt-4">FORMAL EDUCATION</span>
 
                     {formalEducations.map((formalEducation) => (
-                        <div className="w-full flex mt-2 flex-wrap" key={formalEducation.id}>
+                        <div className="w-full flex flex-wrap text-sm" key={formalEducation.id}>
                             <span className="w-fulltext-gray-800 font-bold">{formalEducation.timeframe}</span>
 
                             <span className="w-full text-gray-800">
@@ -75,9 +76,9 @@ const Document = () => {
                         </div>
                     ))}
 
-                    <span className="w-full text-red-400 text-2xl mt-8">LANGUAGES</span>
+                    <span className="w-full text-red-400 text-xl mt-4">LANGUAGES</span>
 
-                    <ul className="list-disc ml-5">
+                    <ul className="list-disc ml-5 text-sm">
                         {languages.map((language) => (
                             <li key={language.id}>
                                 {language.lang} ({language.level})
@@ -85,10 +86,10 @@ const Document = () => {
                         ))}
                     </ul>
 
-                    <span className="w-full text-red-400 text-2xl mt-8">WORK EXPERIENCES</span>
+                    <span className="w-full text-red-400 text-xl mt-4">WORK EXPERIENCES</span>
 
                     {workExperiences.map((workExperience, i) => (
-                        <div className={"w-full flex flex-wrap " + (i === 0 ? "mt-2" : "mt-4")} key={i}>
+                        <div className={"w-full flex flex-wrap text-sm " + (i === 0 ? "" : "mt-2")} key={i}>
                             <span className="w-full text-gray-800 font-bold">{workExperience.timeframe}</span>
                             <span className="w-full text-gray-800">{workExperience.place}</span>
 
@@ -97,6 +98,23 @@ const Document = () => {
                                     <li key={i}>{activity}</li>
                                 ))}
                             </ul>
+
+                            <div className="h-full" />
+                        </div>
+                    ))}
+
+                    <span className="w-full text-red-400 text-xl mt-4">STACKS</span>
+
+                    {stacks.map((stack, i) => (
+                        <div className={"flex flex-wrap w-full text-sm " + (i > 0 ? "mt-2" : "")} key={i}>
+                            <span className="w-full text-gray-800 font-bold capitalize">{stack.department}</span>
+
+                            {stack.skills!!.map((skill, i1) => (
+                                <span className="pr-1" key={i1}>
+                                    {skill}
+                                    {i1 !== stack.skills!!.length - 1 && ","}
+                                </span>
+                            ))}
 
                             <div className="h-full" />
                         </div>

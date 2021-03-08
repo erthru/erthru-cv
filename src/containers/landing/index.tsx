@@ -27,6 +27,7 @@ import { StackDepartment } from "../../plugins/store/stack/types";
 
 enum Navigation {
     workExperiences = "workExperiences",
+    stacks = "stacks",
     portfolios = "portfolios",
 }
 
@@ -54,6 +55,10 @@ const Overview = () => {
         switch (navigation) {
             case Navigation.workExperiences:
                 elemToView = document.getElementById("workExperiences");
+                break;
+
+            case Navigation.stacks:
+                elemToView = document.getElementById("stacks");
                 break;
 
             case Navigation.portfolios:
@@ -107,6 +112,14 @@ const Overview = () => {
                                     <div className="flex w-full items-center">
                                         <span className="w-full font-medium cursor-pointer" onClick={() => navigate(Navigation.workExperiences)}>
                                             Work Experiences
+                                        </span>
+
+                                        <FontAwesomeIcon icon={faAngleDoubleDown} />
+                                    </div>
+
+                                    <div className="w-full flex items-center mt-4">
+                                        <span className="w-full font-medium cursor-pointer" onClick={() => navigate(Navigation.stacks)}>
+                                            Stacks
                                         </span>
 
                                         <FontAwesomeIcon icon={faAngleDoubleDown} />
@@ -294,7 +307,7 @@ const Stacks = () => {
     const stacks = useSelector((store: Store) => store.stack.stacks);
 
     return (
-        <Card className="mt-6 p-6 w-full flex flex-wrap" id="portfolios">
+        <Card className="mt-6 p-6 w-full flex flex-wrap" id="stacks">
             <div className="w-full flex">
                 <div className="flex mx-auto text-gray-600 md:text-xl items-center">
                     <FontAwesomeIcon icon={faEllipsisH} className="mr-4" />

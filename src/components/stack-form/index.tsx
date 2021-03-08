@@ -101,12 +101,8 @@ const StackForm = (props: Props) => {
                                     text: "Web",
                                 },
                                 {
-                                    value: StackDepartment.android,
-                                    text: "Android",
-                                },
-                                {
-                                    value: StackDepartment.ios,
-                                    text: "IOS",
+                                    value: StackDepartment.mobile,
+                                    text: "Mobile",
                                 },
                                 {
                                     value: StackDepartment.game,

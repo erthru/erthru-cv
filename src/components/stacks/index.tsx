@@ -37,31 +37,6 @@ const Stacks = () => {
         }
     }, [search]);
 
-    const translateDepartment = (department: StackDepartment): string => {
-        switch (department) {
-            case StackDepartment.web:
-                return "Web";
-
-            case StackDepartment.android:
-                return "Android";
-
-            case StackDepartment.ios:
-                return "IOS";
-
-            case StackDepartment.game:
-                return "Game";
-
-            case StackDepartment.dekstop:
-                return "Desktop";
-
-            case StackDepartment.database:
-                return "Database";
-
-            case StackDepartment.other:
-                return "Other";
-        }
-    };
-
     return (
         <Card className="w-full p-6 flex flex-wrap">
             <div className="flex flex-wrap w-full">
@@ -79,7 +54,7 @@ const Stacks = () => {
                         rows={[
                             ..._stacks.map((stack) => {
                                 return [
-                                    <span>{translateDepartment(stack.department!!)}</span>,
+                                    <span className="capitalize">{stack.department}</span>,
                                     <span>{stack.skills?.join(", ")}</span>,
 
                                     <div className="flex flex-wrap">

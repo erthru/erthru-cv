@@ -1,5 +1,18 @@
-import { faFacebookF, faGithubAlt, faInstagram, faLinkedinIn, faMediumM } from "@fortawesome/free-brands-svg-icons";
-import { faAngleDoubleDown, faBars, faChevronUp, faCircle, faEllipsisH, faEnvelope, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faAndroid, faApple, faEthereum, faFacebookF, faGithubAlt, faInstagram, faLinkedinIn, faMediumM } from "@fortawesome/free-brands-svg-icons";
+import {
+    faAngleDoubleDown,
+    faBars,
+    faChevronUp,
+    faCircle,
+    faDatabase,
+    faDesktop,
+    faEllipsisH,
+    faEnvelope,
+    faGamepad,
+    faGlobe,
+    faMobileAlt,
+    faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
@@ -10,6 +23,7 @@ import Card from "../../components/card";
 import ProgressBar from "../../components/progress-bar";
 import { APP_TITLE } from "../../helpers/environments";
 import { Store } from "../../plugins/store";
+import { StackDepartment } from "../../plugins/store/stack/types";
 
 enum Navigation {
     workExperiences = "workExperiences",
@@ -277,6 +291,8 @@ const WorkExperiences = () => {
 };
 
 const Stacks = () => {
+    const stacks = useSelector((store: Store) => store.stack.stacks);
+
     return (
         <Card className="mt-6 p-6 w-full flex flex-wrap" id="portfolios">
             <div className="w-full flex">
@@ -290,6 +306,33 @@ const Stacks = () => {
             <Alert className="mt-4" mode={AlertMode.success}>
                 Had used these stacks until production stage :)
             </Alert>
+
+            <div className="mt-1 w-full flex flex-wrap">
+                {stacks.map((stack, index) => (
+                    <div className="flex mt-3 md:w-1/3 w-full md:px-2" key={index}>
+                        <div className="w-full flex flex-wrap bg-gray-100 p-4 rounded-xl">
+                            <div className="flex text-gray-700 items-center text-base md:text-xl">
+                                {stack.department === StackDepartment.web && <FontAwesomeIcon icon={faGlobe} />}
+                                {stack.department === StackDepartment.mobile && <FontAwesomeIcon icon={faMobileAlt} />}
+                                {stack.department === StackDepartment.game && <FontAwesomeIcon icon={faGamepad} />}
+                                {stack.department === StackDepartment.dekstop && <FontAwesomeIcon icon={faDesktop} />}
+                                {stack.department === StackDepartment.database && <FontAwesomeIcon icon={faDatabase} />}
+                                {stack.department === StackDepartment.other && <FontAwesomeIcon icon={faEthereum} />}
+
+                                <span className="ml-2 font-bold capitalize">{stack.department}</span>
+                            </div>
+
+                            <ul className="list-disc w-full ml-8 mt-2 text-sm md:text-base">
+                                {stack.skills!!.map((skill, index) => (
+                                    <li key={index}>{skill}</li>
+                                ))}
+                            </ul>
+
+                            <div className="h-full" />
+                        </div>
+                    </div>
+                ))}
+            </div>
         </Card>
     );
 };

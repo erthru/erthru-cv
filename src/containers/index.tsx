@@ -51,6 +51,7 @@ const Containers = () => {
         if (isNewLanguageAdded || isLanguageUpdated || isLanguageRemoved) dispatch(fetchLanguages());
         if (isNewPortfolioAdded || isPortfolioUpdated || isPortfolioRemoved) dispatch(fetchPortfolios());
         if (isContactUpdated) dispatch(fetchContact());
+        if (isNewStackAdded || isStackUpdated || isStackRemoved) dispatch(fetchStacks());
     }, [
         isProfileUpdated,
         isNewWorkExperienceAdded,

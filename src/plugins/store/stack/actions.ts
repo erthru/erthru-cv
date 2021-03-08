@@ -1,13 +1,13 @@
 import { Dispatch } from "redux";
 import db from "../../db";
-import { StackAction, StackField, STACK_COL_NAME, STACK_TYPES, Stack } from "./types";
+import { StackAction, StackField, STACK_COL_NAME, STACK_TYPES, Stack, StackDepartment } from "./types";
 
 export const fetchStacks = () => async (dispatch: Dispatch<StackAction>) => {
     try {
         dispatch({ type: STACK_TYPES.FETCH_STACKS_PREPARE });
 
         const stacks: any[] = [];
-        let stacksSnapshots = await db.collection(STACK_COL_NAME).orderBy(StackField.createdOn, "desc").get();
+        let stacksSnapshots = await db.collection(STACK_COL_NAME).orderBy(StackField.createdOn, "asc").get();
 
         stacksSnapshots.docs.map((doc) => {
             stacks.push({
@@ -15,8 +15,6 @@ export const fetchStacks = () => async (dispatch: Dispatch<StackAction>) => {
                 ...doc.data(),
             });
         });
-
-        console.log(stacks);
 
         dispatch({
             type: STACK_TYPES.FETCH_STACKS_COMPLETED,

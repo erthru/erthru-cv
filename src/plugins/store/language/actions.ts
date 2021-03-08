@@ -7,7 +7,7 @@ export const fetchLanguages = () => async (dispatch: Dispatch<LanguageAction>) =
         dispatch({ type: LANGUAGE_TYPES.FETCH_LANGUAGES_PREPARE });
 
         const languages: any[] = [];
-        let languagesSnapshots = await db.collection(LANGUAGE_COL_NAME).orderBy(LanguageField.createdOn, "desc").get();
+        let languagesSnapshots = await db.collection(LANGUAGE_COL_NAME).orderBy(LanguageField.createdOn, "asc").get();
 
         languagesSnapshots.docs.map((doc) => {
             languages.push({

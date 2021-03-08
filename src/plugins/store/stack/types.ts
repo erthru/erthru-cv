@@ -22,8 +22,7 @@ export enum StackField {
 
 export enum StackDepartment {
     web = "web",
-    android = "android",
-    ios = "ios",
+    mobile = "mobile",
     game = "game",
     dekstop = "desktop",
     database = "database",

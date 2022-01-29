@@ -33,8 +33,8 @@ const Document = () => {
                     </div>
                 )}
 
-                <div className="w-72 h-full bg-gray-900 flex flex-wrap text-gray-300 px-6">
-                    <span className="w-full text-center mt-10 text-xl font-medium uppercase">{profile.fullName}</span>
+                <div className="w-72 h-full bg-gray-900 flex flex-wrap text-gray-300 px-4">
+                    <span className="w-full text-center mt-4 text-xl font-medium uppercase">{profile.fullName}</span>
 
                     <div className="flex w-full mt-10">
                         <img src={profile.avatarUrl} className="rounded-full w-32 h-32 mx-auto" style={{ objectFit: "cover" }} />
@@ -59,7 +59,7 @@ const Document = () => {
                 <div className="w-6 h-full bg-red-500" />
                 <div className="w-6 h-full bg-gray-400" />
 
-                <div className="w-full px-3 pt-10 flex flex-wrap">
+                <div className="w-full px-4 pt-4 flex flex-wrap">
                     <span className="w-full text-red-400 text-xl">PROFILE</span>
                     <span className="w-full text-sm text-gray-800">{profile.intro}</span>
                     <span className="w-full text-red-400 text-xl mt-4">FORMAL EDUCATION</span>

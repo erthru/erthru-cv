@@ -37,7 +37,7 @@ const Document = () => {
                     <span className="w-full text-center mt-4 text-xl font-medium uppercase">{profile.fullName}</span>
 
                     <div className="flex w-full mt-10">
-                        <img src={profile.avatarUrl} className="rounded-full w-32 h-32 mx-auto" style={{ objectFit: "cover" }} />
+                        <img alt="avatar" src={profile.avatarUrl} className="rounded-full w-32 h-32 mx-auto" style={{ objectFit: "cover" }} />
                     </div>
 
                     <span className="w-full text-center mt-14 uppercase font-medium text-lg">Address</span>
@@ -60,9 +60,9 @@ const Document = () => {
                 <div className="w-6 h-full bg-gray-400" />
 
                 <div className="w-full px-4 pt-4 flex flex-wrap">
-                    <span className="w-full text-red-400 text-xl">PROFILE</span>
+                    <span className="w-full text-red-400 text-xl">SUMMARY</span>
                     <span className="w-full text-sm text-gray-800">{profile.intro}</span>
-                    <span className="w-full text-red-400 text-xl mt-4">FORMAL EDUCATION</span>
+                    <span className="w-full text-red-400 text-xl mt-4">EDUCATIONS</span>
 
                     {formalEducations.map((formalEducation) => (
                         <div className="w-full flex flex-wrap text-sm" key={formalEducation.id}>
